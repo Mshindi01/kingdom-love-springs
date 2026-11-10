@@ -3,6 +3,7 @@ import { html } from '../lib/html.mjs';
 import { head } from './head.mjs';
 import { header } from './header.mjs';
 import { footer } from './footer.mjs';
+import { toastRegion } from './ui.mjs';
 
 /**
  * Full HTML document around a page body.
@@ -23,6 +24,7 @@ export function layout(ctx, body) {
       ${body}
     </main>
     ${footer(ctx)}
+    ${toastRegion()}
   </body>
 </html>
 `;

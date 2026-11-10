@@ -31,7 +31,8 @@ export const DIST = path.join(ROOT, 'dist');
 
 /**
  * @typedef {{ title: string, description: string, path?: string, ogImage?: string | null,
- *   motion?: boolean, draft?: boolean, noindex?: boolean, sitemap?: boolean }} PageMeta
+ *   motion?: boolean, draft?: boolean, noindex?: boolean, sitemap?: boolean,
+ *   header?: 'overlay' | 'solid' }} PageMeta
  *
  * @typedef {{ id: string, path: string, meta: PageMeta, isNotFound: boolean, outFile: string }} PageInfo
  *
@@ -141,23 +142,53 @@ async function bundleCss(file, seen = new Set()) {
 }
 
 /**
+ * Conservative CSS minifier: strips comments and collapses whitespace around { } ; , and
+ * after ":" (never before, so descendant combinators like `.a :is(…)` survive). calc()
+ * operators keep their spaces because "+" / "-" are never touched.
+ * @param {string} css
+ */
+function minifyCss(css) {
+  return css
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{};,])\s*/g, '$1')
+    .replace(/:\s+/g, ':')
+    .replace(/;}/g, '}')
+    .trim();
+}
+
+/**
  * Copy src/assets → dist/assets, bundling CSS entry points. Returns the hash map.
  * CSS partials (imported by main.css) are still copied, so unbundled debugging works.
+ * @param {{ minify: boolean }} options
  */
-async function buildAssets() {
+async function buildAssets({ minify }) {
   const srcAssets = path.join(SRC, 'assets');
   const distAssets = path.join(DIST, 'assets');
   /** @type {Map<string, string>} */
   const hashes = new Map();
+  const files = await walk(srcAssets);
 
-  for (const file of await walk(srcAssets)) {
+  // One version for all JS modules: relative imports get `?v=<jsHash>` so a change anywhere
+  // in the module graph busts every cached module (they're small, and this avoids stale graphs).
+  const jsFiles = files.filter((f) => /\.m?js$/.test(f) && !f.includes(`${path.sep}vendor${path.sep}`)).sort();
+  const jsHash = shortHash(Buffer.concat(await Promise.all(jsFiles.map((f) => readFile(f)))));
+
+  for (const file of files) {
     const rel = toPosix(path.relative(srcAssets, file));
     if (path.basename(rel).startsWith('.') || rel.endsWith('Thumbs.db')) continue; // .gitkeep, .DS_Store…
     if (rel.startsWith('icons/') && (rel === 'icons/icons.json' || rel.startsWith('icons/brands/'))) continue; // sources for the sprite
     const out = path.join(distAssets, rel);
     let content;
     if (rel === 'css/main.css') {
-      content = Buffer.from(await bundleCss(file));
+      const bundled = await bundleCss(file);
+      content = Buffer.from(minify ? minifyCss(bundled) : bundled);
+      await write(out, content);
+    } else if (jsFiles.includes(file)) {
+      const src = await readFile(file, 'utf8');
+      content = Buffer.from(
+        src.replace(/(\bfrom\s*|\bimport\s*\(\s*|\bimport\s+)(["'])(\.{1,2}\/[^"'?]+\.js)\2/g, (_m, pre, q, spec) => `${pre}${q}${spec}?v=${jsHash}${q}`),
+      );
       await write(out, content);
     } else {
       await mkdir(path.dirname(out), { recursive: true });
@@ -233,7 +264,7 @@ export async function build({ dev = false, quiet = false } = {}) {
   site.basePath = normaliseBase(site.basePath || '');
   const tokens = await loadTokens();
 
-  const hashes = await buildAssets();
+  const hashes = await buildAssets({ minify: env.production });
   configureUrls({ basePath: site.basePath, hashes });
 
   /** @type {{ info: PageInfo, render: (ctx: RenderContext) => any }[]} */

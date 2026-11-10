@@ -1,0 +1,126 @@
+/* Pill band (impact numbers) and quote band (rounded top). */
+
+@layer components {
+  .pill-band {
+    display: grid;
+    align-items: center;
+    min-height: 26.25rem;
+    margin-inline: max(var(--gutter), calc((100% - var(--container-wide)) / 2));
+    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 6vw, 6rem);
+    border-radius: clamp(3rem, 14vw, 999px);
+    transform-origin: center;
+  }
+
+  .pill-band__list {
+    display: grid;
+    gap: var(--space-6) var(--space-3);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    text-align: center;
+
+    @media (width >= 56rem) {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+  }
+
+  .pill-band__num {
+    display: grid;
+    justify-items: center;
+    color: var(--sage-300);
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    line-height: 1;
+
+    & .script {
+      display: inline-block;
+      padding-inline: 0.1em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+  }
+
+  .pill-band__stroke {
+    width: min(70%, 8rem);
+    height: auto;
+    margin-block-start: -0.1em;
+    overflow: visible;
+
+    & path {
+      fill: none;
+      stroke: var(--sun-400);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 1000 2000;
+    }
+  }
+
+  .pill-band__caption {
+    max-width: 18ch;
+    margin: var(--space-2) auto 0;
+    color: var(--muted);
+    font-size: 0.9688rem;
+    line-height: 1.45;
+  }
+
+  /* Quote band */
+  .quote-band {
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--section-pad);
+    border-start-start-radius: var(--radius-section);
+    border-start-end-radius: var(--radius-section);
+  }
+
+  .quote-band__inner {
+    position: relative;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .quote-band__mark {
+    color: var(--sage-300);
+
+    & .icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  .quote-band__quote {
+    max-width: 30ch;
+    color: var(--fg);
+    font-size: clamp(1.75rem, 3.6vw, 3rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .quote-band__cite {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-block-start: var(--space-4);
+    font-size: 0.9688rem;
+  }
+
+  .quote-band__avatar {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-circle);
+    background-color: var(--forest-700);
+    color: var(--sage-300);
+  }
+
+  .quote-band__script {
+    justify-self: end;
+    margin-block-start: calc(var(--space-6) * -1);
+
+    @media (width >= 64rem) {
+      position: absolute;
+      inset-inline-end: 0;
+      inset-block-end: -1rem;
+      margin: 0;
+    }
+  }
+}

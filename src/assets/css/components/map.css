@@ -1,0 +1,86 @@
+/* "Across Kenya" map circle. */
+
+@layer components {
+  .map-circle {
+    display: grid;
+    align-items: center;
+    gap: var(--space-6);
+
+    @media (width >= 56rem) {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+  }
+
+  .map-circle__disc {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(100%, 36rem);
+    aspect-ratio: 1;
+    margin-inline: auto;
+    border-radius: var(--radius-circle);
+  }
+
+  .map-circle__map {
+    width: 54%;
+    height: auto;
+    margin-block-start: -18%;
+    overflow: visible;
+  }
+
+  .map-circle__kenya {
+    fill: var(--forest-700);
+    stroke: var(--sage-300);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000 2000;
+  }
+
+  .map-circle__core {
+    fill: var(--sun-400);
+  }
+
+  .map-circle__pulse {
+    fill: var(--sun-400);
+    opacity: 0.35;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .map-circle__label {
+    fill: var(--cream-50);
+    font-family: var(--font-sans);
+    font-size: 21px;
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.01em;
+  }
+
+  .map-circle__script {
+    position: absolute;
+    inset-block-end: 7%;
+    inset-inline: 0;
+    display: grid;
+    justify-items: center;
+  }
+
+  .map-circle__title {
+    font-size: var(--text-h2);
+    margin-block-end: var(--space-2);
+  }
+
+  .map-circle__regions {
+    display: grid;
+    gap: 0.75rem;
+    margin-block-start: var(--space-4);
+
+    & li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-block-end: 0.75rem;
+      border-block-end: var(--border-width) solid var(--line);
+      font-size: 1.125rem;
+      font-weight: var(--weight-medium);
+    }
+  }
+}

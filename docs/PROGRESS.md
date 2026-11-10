@@ -1,6 +1,66 @@
 # Progress
 
-## Current part: **Part A, phase A1 (Foundations)**: done, not deployed
+## Current part: **Part A, phase A2 (Design system & motion)**: done, not deployed
+
+### 2026-11-10: A2 Design system & motion
+
+**Script font decision: Ms Madi.** Rendered the five phrases + 35 · 200 · 600 in Allison, Mrs Saint
+Delafield and Ms Madi over a photo placeholder and on forest-900. Ms Madi has the slanted, flowing
+energy closest to Genocide Edu's brush-pen hand, a larger x-height and stroke weight that stay
+legible over photos, and the clearest numerals for the pill band. Mrs Saint Delafield was more
+brush-like but crowded ("light&salt", an odd "K"); Allison was too thin at display sizes. The other
+two fonts were deleted; `--font-script` is set in `tokens.css`.
+
+**Done**
+- **Handwriting draw-on** (`partials/script-line.mjs` + `js/motion/script-geometry.js` shared by
+  build and browser + `js/motion/script-draw.js`): the words are revealed through a mask holding
+  a zig-zag "pen" path on a slight wave (writes stroke by stroke, not a wipe), then a two-stroke
+  tapered swoosh (thick stops early, thin runs on). 4 presets: `rise`, `loop`, `underline`,
+  `cross`. Re-fitted to the real text width once fonts load. Fully drawn without JS / with
+  reduced motion. Once, at 40% visible.
+- **Components** (partials + CSS, all surface-aware via `--raised`/`--invert-*` tokens): header
+  (overlay/solid, full-screen forest mobile menu with focus trap, Esc, inert page, focus return;
+  no-JS fallback wraps links), footer (hides anything `[CONFIRM]`), buttons (primary/soft/
+  outline/link/ghost, sizes), eyebrow, section header, outline circles (hover/focus/tap reveal),
+  story row, soft card (invert; featured hands off its dark state), float card, programme row,
+  bento grid, pill band, quote band, map circle (simplified Kenya outline from lon/lat + 3 region
+  dots), doc card, person circle, journey bar (renders nothing without a real value), photo
+  collage, photo hero, chips/badges, FAQ (`<details>`), form fields (input, select, textarea,
+  radio cards, checkbox, steps, error summary, all states), toast, breadcrumbs, share row,
+  pagination. `media()` refuses photos without `consent: true`.
+- **Motion modules** (`js/motion/`): `index.js` (loads only what's on the page, waits for fonts,
+  `gsap.matchMedia()` + `html.reduce-motion`), `reveal`, `script-draw`, `circles`, `pill-band`
+  (scrubbed scale/radius + count-up with gold strokes), `quote-band`, `hero`, `float`, `map`.
+  UI modules (`js/ui/`): header/menu, circle taps, toasts + copy link, reduce-motion toggle,
+  script fitting.
+- **`/styleguide/`** (noindex, not in sitemap): palette + contrast table computed from tokens,
+  type scale, script decision, script lines on cream/forest/photo, every component on all six
+  surfaces, header demos, motion lab with replay buttons and a reduce-motion toggle, forms in
+  all states.
+- Build: JS module imports get `?v=<hash>`; production CSS is minified (80 KB → 55 KB, ~11 KB
+  gzipped). Dev server now gzips like GitHub Pages. View transitions between pages.
+
+**Fixed along the way**
+- GSAP rounds px values, so 0→1 dash offsets jumped: every drawn path now uses `pathLength="1000"`.
+- `vector-effect: non-scaling-stroke` breaks `pathLength` dashes (circles only half drew): removed.
+- `backdrop-filter` on the header trapped the fixed mobile menu inside it: moved to `::before`.
+- GSAP `autoAlpha` on circle labels hid the links' accessible names: opacity only.
+
+**Verified**
+- `npm run build && npm run check`: clean. Type check (`tsc --checkJs`, ad hoc): clean.
+- Edge at 375 / 768 / 1280 / 1600. Keyboard: circles reveal on focus, menu traps focus, Esc
+  closes and returns focus. JS off: everything visible (masks fully drawn). Reduced motion: no
+  hidden states, no loops/scrubs/draws, real numbers shown.
+- Lighthouse mobile (local, gzip): **Home 98 / A11y 100 / BP 100**. **Styleguide 75 / A11y 100 /
+  BP 100**. The styleguide is a deliberately heavy internal page (~2,000 elements, ~45 animated
+  script lines, every component six times); real pages in A3/A4 will be far lighter. SEO is low
+  only because the preview is intentionally `noindex`.
+
+**Notes for A3**
+- Use `photoHero` with `header: 'overlay'` in the page meta for the transparent header.
+- On small screens consider hiding the hero float card (it's long on 375px).
+- Example content in the styleguide (journey bar 80%, doc cards, KJV verse) is labelled
+  "Example" and must not be copied into real pages without confirmation.
 
 ### 2026-11-10: A1 Foundations
 
@@ -48,10 +108,8 @@
 - Header/footer only link to pages that exist, so there are no broken links while pages are built in stages.
 - The hex check exempts generated SVG image files (their colours come from `tokens.css` via the generator).
 
-### Next: A2 Design system & motion
-- Pick ONE script font (delete the other two files + `@font-face` blocks), full components,
-  draw-on lines, outline circles, pill band, `/styleguide/`.
-- Run Lighthouse on the local server.
+### Next: A3 Home page
+- The full Home from CONTENT §3 using the A2 components, with the sponsor CTA throughout.
 
 ### Open questions
 - GitHub username + repo name (sets `site.url`; `basePath` assumed `/kingdom-love-springs`).

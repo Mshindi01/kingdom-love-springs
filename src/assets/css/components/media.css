@@ -1,0 +1,294 @@
+/* Photo hero, photo collage (Unity), bento grid (CareNest), photo panels. */
+
+@layer components {
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: end;
+    min-height: min(100svh, 56rem);
+    padding-block: calc(var(--header-height) + var(--space-8)) clamp(3rem, 7vw, 6rem);
+    overflow: hidden;
+    border-end-start-radius: var(--radius-section);
+    border-end-end-radius: var(--radius-section);
+    color: var(--fg);
+  }
+
+  .hero--compact {
+    min-height: 34rem;
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: 50% 40%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, color-mix(in srgb, var(--forest-900) 55%, transparent) 0%, transparent 70%),
+        var(--overlay-photo);
+    }
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: var(--space-6);
+    align-items: end;
+
+    @media (width >= 64rem) {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+
+  .hero__content {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: start;
+  }
+
+  .hero__title {
+    max-width: 17ch;
+    color: var(--fg);
+    font-size: var(--text-hero);
+  }
+
+  .hero__line {
+    display: block;
+    overflow: hidden;
+    padding-block-end: 0.08em;
+    margin-block-end: -0.08em;
+  }
+
+  .hero__line-inner {
+    display: inline-block;
+  }
+
+  .hero__script {
+    margin-block: -0.75rem -0.5rem;
+  }
+
+  .hero__subline {
+    max-width: 40rem;
+    color: var(--muted);
+    font-size: var(--text-lead);
+    line-height: 1.5;
+  }
+
+  .hero__buttons {
+    margin-block-start: var(--space-1);
+  }
+
+  .hero__aside {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+
+    @media (width >= 64rem) {
+      justify-items: end;
+    }
+  }
+
+  .hero__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    @media (width >= 64rem) {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
+  /* ── Photo panel (for demos and photo-surface content) ── */
+  .photo-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(2rem, 5vw, 4rem);
+    border-radius: var(--radius-card);
+
+    & > .photo-panel__media {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--overlay-photo);
+      }
+    }
+  }
+
+  /* ── Collage (Unity in Action) ── */
+  .collage {
+    position: relative;
+    padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(2rem, 4vw, 3rem) clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .collage__main {
+    aspect-ratio: 4 / 4.4;
+    overflow: hidden;
+    border-radius: clamp(6rem, 16vw, 11rem) var(--radius-card) clamp(4rem, 10vw, 8rem) var(--radius-card);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .collage__round {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 34%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 6px solid var(--bg);
+    border-radius: var(--radius-circle);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .collage__chip {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-float);
+    background-color: var(--white);
+    color: var(--ink-900);
+    box-shadow: var(--shadow-float);
+  }
+
+  .collage__chip-icon {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-circle);
+    background-color: var(--sun-400);
+    color: var(--ink-900);
+  }
+
+  .collage__chip-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-tight);
+    line-height: 1;
+  }
+
+  .collage__chip-text {
+    display: block;
+    color: var(--ink-500);
+    font-size: var(--text-small);
+  }
+
+  /* ── Bento grid (CareNest) ── */
+  .bento {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+
+    @media (width >= 64rem) {
+      grid-auto-flow: column;
+      grid-template-columns: none;
+      grid-template-rows: repeat(2, minmax(14rem, auto));
+      grid-auto-columns: minmax(0, 1fr);
+    }
+  }
+
+  .bento__tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    border-radius: var(--radius-card);
+  }
+
+  .bento__tile--photo {
+    padding: 0;
+    overflow: hidden;
+    min-height: 14rem;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .bento__tile--number {
+    background-color: var(--raised);
+    color: var(--raised-fg);
+
+    & .bento__label {
+      margin-block-start: auto;
+      padding-block-start: var(--space-4);
+    }
+  }
+
+  .bento__tile--value {
+    border: var(--border-width) solid var(--line);
+  }
+
+  .bento__value {
+    font-size: clamp(2.75rem, 4.5vw, 3.75rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .bento__label {
+    font-weight: var(--weight-medium);
+  }
+
+  .bento__detail,
+  .bento__text {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .bento__icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-block-end: auto;
+    border-radius: var(--radius-circle);
+    background-color: var(--raised);
+    color: var(--accent);
+  }
+
+  .bento__title {
+    margin-block-start: var(--space-4);
+    font-size: 1.3125rem;
+  }
+}

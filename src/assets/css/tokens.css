@@ -28,15 +28,13 @@
     --line-on-light: color-mix(in srgb, var(--ink-900) 18%, transparent);
     --line-on-dark: color-mix(in srgb, var(--cream-50) 20%, transparent);
     --muted-on-dark: color-mix(in srgb, var(--cream-50) 76%, var(--forest-900)); /* ≈7.5:1 on forest-900 */
-    --overlay-photo: linear-gradient(180deg, color-mix(in srgb, var(--forest-900) 35%, transparent) 0%, color-mix(in srgb, var(--forest-900) 70%, transparent) 100%);
+    /* Text over photos: strong enough for white text + sun accents on bright images */
+    --overlay-photo: linear-gradient(180deg, color-mix(in srgb, var(--forest-900) 58%, transparent) 0%, color-mix(in srgb, var(--forest-900) 48%, transparent) 40%, color-mix(in srgb, var(--forest-900) 80%, transparent) 100%);
 
     /* ── 3. Typography ─────────────────────────────────────────────────────── */
     --font-sans: "General Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    /* Script candidates: A2 picks one, removes the others, and sets --font-script. */
-    --font-script-allison: "Allison", "Brush Script MT", cursive;
-    --font-script-delafield: "Mrs Saint Delafield", "Brush Script MT", cursive;
-    --font-script-madi: "Ms Madi", "Brush Script MT", cursive;
-    --font-script: var(--font-script-allison);
+    /* Script (decorative only). Chosen in A2: Ms Madi. */
+    --font-script: "Ms Madi", "Brush Script MT", cursive;
 
     --text-hero: clamp(2.75rem, 6vw, 5.25rem);
     --text-h2: clamp(2rem, 4vw, 3.25rem);
@@ -46,6 +44,8 @@
     --text-small: 0.875rem;
     --text-eyebrow: 0.75rem;
     --text-script-number: clamp(4rem, 9vw, 6rem);
+    --text-script-lg: clamp(2.75rem, 6vw, 4.5rem);
+    --text-script-md: clamp(2rem, 4vw, 3rem);
 
     --leading-tight: 1.08;
     --leading-snug: 1.25;
@@ -107,12 +107,24 @@
     --float-distance: 6px;
     --stagger: 0.12s;
 
+    --header-height: 5rem;
+
     /* ── Surface defaults (cream) ─────────────────────────────────────────── */
     --bg: var(--cream-50);
     --fg: var(--ink-900);
     --muted: var(--ink-500);
     --accent: var(--leaf-600);
     --line: var(--line-on-light);
+    --raised: var(--sand-100);        /* soft cards, hovered story rows */
+    --raised-fg: var(--ink-900);
+    --invert-bg: var(--forest-900);   /* soft-card hover invert, doc-card hover */
+    --invert-fg: var(--cream-50);
+    --invert-muted: var(--muted-on-dark);
+    --invert-accent: var(--sage-300);
+    --script-color: var(--clay-500);  /* decorative handwriting (large display sizes only) */
+    --field-bg: var(--white);
+    --field-border: color-mix(in srgb, var(--ink-900) 32%, transparent); /* ≥3:1 non-text contrast */
+    --error: var(--clay-700);
   }
 
   /* ── Surfaces: data-surface="cream|sand|mint|white|forest|photo" ───────── */
@@ -121,40 +133,45 @@
     color: var(--fg);
   }
 
-  [data-surface="cream"] {
-    --bg: var(--cream-50);
+  /* Light surfaces share everything except bg + raised */
+  [data-surface="cream"],
+  [data-surface="sand"],
+  [data-surface="mint"],
+  [data-surface="white"] {
     --fg: var(--ink-900);
     --muted: var(--ink-500);
     --accent: var(--leaf-600);
     --line: var(--line-on-light);
     --focus-color: var(--leaf-600);
+    --raised-fg: var(--ink-900);
+    --invert-bg: var(--forest-900);
+    --invert-fg: var(--cream-50);
+    --invert-muted: var(--muted-on-dark);
+    --invert-accent: var(--sage-300);
+    --script-color: var(--clay-500);
+    --field-bg: var(--white);
+    --field-border: color-mix(in srgb, var(--ink-900) 32%, transparent);
+    --error: var(--clay-700);
+  }
+
+  [data-surface="cream"] {
+    --bg: var(--cream-50);
+    --raised: var(--sand-100);
   }
 
   [data-surface="sand"] {
     --bg: var(--sand-100);
-    --fg: var(--ink-900);
-    --muted: var(--ink-500);
-    --accent: var(--leaf-600);
-    --line: var(--line-on-light);
-    --focus-color: var(--leaf-600);
+    --raised: var(--cream-50);
   }
 
   [data-surface="mint"] {
     --bg: var(--mint-50);
-    --fg: var(--ink-900);
-    --muted: var(--ink-500);
-    --accent: var(--leaf-600);
-    --line: var(--line-on-light);
-    --focus-color: var(--leaf-600);
+    --raised: var(--white);
   }
 
   [data-surface="white"] {
     --bg: var(--white);
-    --fg: var(--ink-900);
-    --muted: var(--ink-500);
-    --accent: var(--leaf-600);
-    --line: var(--line-on-light);
-    --focus-color: var(--leaf-600);
+    --raised: var(--sand-100);
   }
 
   [data-surface="forest"] {
@@ -164,15 +181,35 @@
     --accent: var(--sage-300);
     --line: var(--line-on-dark);
     --focus-color: var(--sage-300);
+    --raised: var(--forest-700);
+    --raised-fg: var(--cream-50);
+    --invert-bg: var(--cream-50);
+    --invert-fg: var(--ink-900);
+    --invert-muted: var(--ink-500);
+    --invert-accent: var(--leaf-600);
+    --script-color: var(--sage-300);
+    --field-bg: var(--white);
+    --field-border: transparent;
+    --error: var(--sun-400);
   }
 
   /* Text over photography: always pair with --overlay-photo for contrast. */
   [data-surface="photo"] {
     --bg: var(--forest-900);
     --fg: var(--white);
-    --muted: color-mix(in srgb, var(--white) 86%, transparent);
+    --muted: color-mix(in srgb, var(--white) 88%, transparent);
     --accent: var(--sun-400);
     --line: color-mix(in srgb, var(--white) 30%, transparent);
     --focus-color: var(--sun-400);
+    --raised: color-mix(in srgb, var(--forest-900) 72%, transparent);
+    --raised-fg: var(--white);
+    --invert-bg: var(--white);
+    --invert-fg: var(--ink-900);
+    --invert-muted: var(--ink-500);
+    --invert-accent: var(--leaf-600);
+    --script-color: var(--sun-400);
+    --field-bg: var(--white);
+    --field-border: transparent;
+    --error: var(--sun-400);
   }
 }

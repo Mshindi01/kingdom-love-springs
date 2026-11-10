@@ -1,0 +1,43 @@
+/* Handwritten draw-on lines (partials/script-line.mjs, motion/script-draw.js). */
+
+@layer components {
+  .script-line {
+    display: block;
+    height: calc(var(--h, 1.6) * 1em);
+    width: auto;
+    max-width: 100%;
+    overflow: visible;
+    color: var(--script-color);
+    font-size: var(--text-script-lg);
+    pointer-events: none;
+  }
+
+  .script-line--sm { font-size: 1.75rem; }
+  .script-line--md { font-size: var(--text-script-md); }
+  .script-line--lg { font-size: var(--text-script-lg); }
+  .script-line--xl { font-size: var(--text-script-number); }
+  .script-line--hero { font-size: clamp(3rem, 7.5vw, 6.5rem); }
+
+  .script-line__text {
+    font-family: var(--font-script);
+    fill: currentColor;
+  }
+
+  .script-line__mask {
+    fill: none;
+    stroke: var(--white);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .script-line__swoosh {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .script-line__swoosh--thin {
+    opacity: 0.85;
+  }
+}

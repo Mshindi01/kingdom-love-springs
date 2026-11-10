@@ -21,3 +21,32 @@ export function placeholderImage(slot, { alt = '', className = '', loading = 'la
   const { w, h } = PLACEHOLDERS[slot];
   return html`<img class="${className}" src="${asset(`images/placeholders/${slot}.svg`)}" alt="${alt}" width="${w}" height="${h}" loading="${loading}" decoding="async">`;
 }
+
+/**
+ * A registered, consented photo from data/photos.json, or a placeholder when `id` is empty.
+ * Throws at build time if the photo isn't registered with consent: true (SAFEGUARDING §3).
+ * @param {{ data: Record<string, any> }} ctx
+ * @param {{ id?: string | null, placeholder?: keyof typeof PLACEHOLDERS, alt?: string,
+ *   className?: string, loading?: 'lazy' | 'eager', sizes?: string }} o
+ */
+export function media(ctx, { id, placeholder = 'landscape', alt, className = '', loading = 'lazy', sizes }) {
+  if (!id) return placeholderImage(placeholder, { alt: alt ?? '', className, loading });
+  const photo = (ctx.data.photos?.photos ?? []).find((/** @type {any} */ p) => p.id === id);
+  if (!photo) throw new Error(`media(): photo "${id}" is not in src/data/photos.json`);
+  if (photo.consent !== true) throw new Error(`media(): photo "${id}" has no consent: true (SAFEGUARDING §3)`);
+  return html`<img class="${className}" src="${asset(`images/${photo.file}`)}" alt="${alt ?? photo.alt}" width="${photo.width ?? ''}" height="${photo.height ?? ''}" loading="${loading}" decoding="async" ${sizes ? html`sizes="${sizes}"` : ''}>`;
+}
+
+/**
+ * Initials avatar (adults only: authors, mentors). Never for children.
+ * @param {string} name
+ */
+export function initials(name) {
+  const letters = name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join('');
+  return html`<span class="avatar avatar--initials" aria-hidden="true">${letters}</span>`;
+}

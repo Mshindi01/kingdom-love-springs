@@ -15,6 +15,7 @@
 import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 import { DIST, SRC, watch } from './build.mjs';
 import { normaliseBase } from '../src/lib/url.mjs';
@@ -76,24 +77,35 @@ async function isDir(dir) {
   }
 }
 
+/** Text types are gzipped, as GitHub Pages does. */
+const COMPRESSIBLE = /^(text\/|application\/(json|xml)|image\/svg)/;
+
 /**
  * @param {http.ServerResponse} res
  * @param {number} status
  * @param {string} file
+ * @param {string} [acceptEncoding]
  */
-async function sendFile(res, status, file) {
-  const body = await readFile(file);
-  res.writeHead(status, {
-    'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream',
-    'Cache-Control': 'no-cache',
-  });
+async function sendFile(res, status, file, acceptEncoding = '') {
+  let body = await readFile(file);
+  const type = MIME[path.extname(file).toLowerCase()] || 'application/octet-stream';
+  /** @type {Record<string, string>} */
+  const headers = { 'Content-Type': type, 'Cache-Control': 'no-cache', Vary: 'Accept-Encoding' };
+  if (COMPRESSIBLE.test(type) && /\bgzip\b/.test(acceptEncoding)) {
+    body = gzipSync(body);
+    headers['Content-Encoding'] = 'gzip';
+  }
+  res.writeHead(status, headers);
   res.end(body);
 }
 
-/** @param {http.ServerResponse} res */
-async function notFound(res) {
+/**
+ * @param {http.ServerResponse} res
+ * @param {http.IncomingMessage} req
+ */
+async function notFound(res, req) {
   const file = path.join(DIST, '404.html');
-  if (await isFile(file)) return sendFile(res, 404, file);
+  if (await isFile(file)) return sendFile(res, 404, file, req.headers['accept-encoding']);
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
   res.end('404 Not Found');
 }
@@ -124,24 +136,24 @@ const server = http.createServer(async (req, res) => {
         res.end();
         return;
       }
-      if (pathname !== BASE && !pathname.startsWith(BASE + '/')) return notFound(res);
+      if (pathname !== BASE && !pathname.startsWith(BASE + '/')) return notFound(res, req);
       pathname = pathname.slice(BASE.length) || '/';
     }
 
     const target = path.normalize(path.join(DIST, pathname));
-    if (target !== DIST && !target.startsWith(DIST + path.sep)) return notFound(res); // path traversal
+    if (target !== DIST && !target.startsWith(DIST + path.sep)) return notFound(res, req); // path traversal
 
     if (pathname.endsWith('/')) {
       const index = path.join(target, 'index.html');
-      return (await isFile(index)) ? sendFile(res, 200, index) : notFound(res);
+      return (await isFile(index)) ? sendFile(res, 200, index, req.headers['accept-encoding']) : notFound(res, req);
     }
-    if (await isFile(target)) return sendFile(res, 200, target);
+    if (await isFile(target)) return sendFile(res, 200, target, req.headers['accept-encoding']);
     if (await isDir(target)) {
       res.writeHead(301, { Location: BASE + pathname + '/' });
       res.end();
       return;
     }
-    return notFound(res);
+    return notFound(res, req);
   } catch (err) {
     console.error(err);
     res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });

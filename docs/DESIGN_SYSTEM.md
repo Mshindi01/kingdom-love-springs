@@ -70,7 +70,7 @@
 | Role | Font | Use |
 |---|---|---|
 | `--font-sans` | **General Sans** (Fontshare; weights 400, 500, 600) | Everything: headings (500, tight tracking −0.02em), body (400), UI (500) |
-| `--font-script` | **Allison** (Google, OFL) *or* a similar brush-pen script; decide in A2 by matching Genocide Edu's energetic, slanted hand. Alternatives: **Mrs Saint Delafield**, **Ms Madi** | **Decorative only:** draw-on lines, handwritten numbers in the pill band, hover labels in circles. Always paired with readable text or an `aria-label` |
+| `--font-script` | **Ms Madi** (Google, OFL). **Decided in A2 (2026-11-10)** over Allison and Mrs Saint Delafield: closest to Genocide Edu's energetic, slanted hand while staying legible over photos, with the clearest numerals | **Decorative only:** draw-on lines, handwritten numbers in the pill band, hover labels in circles. Always paired with readable text or an `aria-label` |
 
 Scale: hero `clamp(2.75rem, 6vw, 5.25rem)` / h2 `clamp(2rem, 4vw, 3.25rem)` / h3 `1.5rem` / body `1.0625rem` (line-height 1.65) / small `.875rem` / eyebrow `.75rem` uppercase tracking .12em (Genocide Edu's "OUR STORIES").
 

@@ -4,6 +4,22 @@ Plain-language updates on the new website, newest first.
 
 ---
 
+## 10 November 2026: The look and feel
+
+**Today you can see** a "styleguide" page: a showroom of every building block the website will use, before they're put together into real pages.
+- **Handwriting that writes itself.** Short phrases like *from struggle to purpose*, *light & salt* and *across Kenya* now appear as if written by hand, stroke by stroke, with a flowing pen line underneath. We tried three handwriting styles and chose **Ms Madi**: it's energetic and warm but still easy to read over photos.
+- **"What we do" circles.** Five simple circles (Education, Football, Mentorship, Families, Faith). When you point at one, it fills with a photo and the word turns into handwriting.
+- **Your numbers, in a big green band.** 35 children sponsored, about 200 at each gathering, 500–600 reached each year, and 3 regions. The numbers count up as you scroll to them.
+- **A map of Kenya** with Nairobi, Western Kenya and the Coast marked (regions only, never exact places).
+- **Cards, buttons and forms** in your colours, including the "Sponsor a child" card that will float over the main photo.
+
+**Good to know**
+- Everything also works for people who use a keyboard or a screen reader, or who turn animations off on their phone.
+- Some samples are marked **"Example"** (for instance a progress bar and a Bible verse). They're there only to show the design and won't go on the real pages unless you confirm them.
+- The photos are still illustrated placeholders. Real photos go in once guardian consent is recorded.
+
+---
+
 ## 10 November 2026: The foundations are in place
 
 **Today you can see** (on our computer for now; an online link will follow soon):

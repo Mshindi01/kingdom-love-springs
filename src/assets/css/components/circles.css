@@ -1,0 +1,130 @@
+/* "What we do" outline circles → photo reveal + script label (Genocide Edu). */
+
+@layer components {
+  .circles {
+    --size: clamp(9.5rem, 17vw, 15.5rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+
+    @media (width >= 72rem) {
+      flex-wrap: nowrap;
+      gap: 0;
+
+      & .circles__item + .circles__item {
+        margin-inline-start: calc(var(--size) * -0.06);
+      }
+    }
+  }
+
+  .circle {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    width: var(--size);
+    aspect-ratio: 1;
+    border-radius: var(--radius-circle);
+    color: var(--fg);
+    text-align: center;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus-visible {
+      outline-offset: 4px;
+      border-radius: var(--radius-circle);
+    }
+  }
+
+  .circle__ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+
+    & circle {
+      fill: none;
+      stroke: color-mix(in srgb, var(--fg) 45%, transparent);
+      stroke-width: 0.5; /* ≈1px at 150–250px; no non-scaling-stroke: it breaks pathLength dashes */
+      stroke-dasharray: 1000 2000;
+    }
+  }
+
+  .circle__photo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    border-radius: var(--radius-circle);
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path var(--dur-reveal) var(--ease-out);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.12);
+      transition: transform 1.2s var(--ease-out);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: color-mix(in srgb, var(--forest-900) 48%, transparent);
+    }
+  }
+
+  .circle__label {
+    padding-inline: 1rem;
+    font-size: clamp(1rem, 1.4vw, 1.1875rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    transition: opacity var(--dur-hover) var(--ease-out), transform var(--dur-hover) var(--ease-out);
+  }
+
+  .circle__script {
+    position: absolute;
+    color: var(--white);
+    font-family: var(--font-script);
+    font-size: clamp(2.25rem, 3.8vw, 3.5rem);
+    line-height: 1;
+    opacity: 0;
+    transform: translateY(8px) rotate(-8deg) scale(0.92);
+    transition: opacity var(--dur-hover) var(--ease-out) 0.08s, transform var(--dur-reveal) var(--ease-out) 0.08s;
+  }
+
+  .circle:is(:hover, :focus-visible, .is-revealed) {
+    & .circle__photo {
+      clip-path: circle(50% at 50% 50%);
+    }
+
+    & .circle__photo img {
+      transform: scale(1);
+    }
+
+    & .circle__label {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    & .circle__script {
+      opacity: 1;
+      transform: rotate(-8deg);
+    }
+
+    & .circle__ring circle {
+      stroke: transparent;
+    }
+  }
+
+  .circles__item {
+    position: relative;
+  }
+
+  .circles__item:has(.circle:is(:hover, :focus-visible, .is-revealed)) {
+    z-index: 1;
+  }
+}

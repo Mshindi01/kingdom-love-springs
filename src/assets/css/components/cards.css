@@ -1,0 +1,520 @@
+/* Cards: soft (invert), float, story row, programme row, doc, person circle, journey bar. */
+
+@layer components {
+  /* Shared "inverted" state: swaps the surface tokens in place */
+  .soft-card:is(:hover, :focus-within),
+  .soft-card.soft-card--featured,
+  .doc-card:is(:hover, :focus-within) {
+    --fg: var(--invert-fg);
+    --muted: var(--invert-muted);
+    --accent: var(--invert-accent);
+    --line: color-mix(in srgb, var(--invert-fg) 22%, transparent);
+    --focus-color: var(--invert-accent);
+    background-color: var(--invert-bg);
+    color: var(--invert-fg);
+  }
+
+  /* ── Soft card ── */
+  .soft-cards {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  }
+
+  .soft-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-height: 21rem;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border-radius: var(--radius-card);
+    background-color: var(--raised);
+    color: var(--raised-fg);
+    transition:
+      background-color var(--dur-hover) var(--ease-out),
+      color var(--dur-hover) var(--ease-out),
+      transform var(--dur-hover) var(--ease-out);
+
+    &:is(:hover, :focus-within) {
+      transform: translateY(calc(var(--hover-lift) * -1));
+    }
+  }
+
+  /* The featured (dark) card hands its dark state to whichever card is hovered */
+  .soft-cards:has(.soft-card:hover) .soft-card--featured:not(:hover, :focus-within) {
+    --fg: var(--raised-fg);
+    --muted: var(--ink-500);
+    --accent: var(--leaf-600);
+    --line: var(--line-on-light);
+    background-color: var(--raised);
+    color: var(--raised-fg);
+  }
+
+  [data-surface="forest"] .soft-cards:has(.soft-card:hover) .soft-card--featured:not(:hover, :focus-within),
+  [data-surface="photo"] .soft-cards:has(.soft-card:hover) .soft-card--featured:not(:hover, :focus-within) {
+    --muted: var(--muted-on-dark);
+    --accent: var(--sage-300);
+    --line: var(--line-on-dark);
+  }
+
+  .soft-card__icon {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius-circle);
+    color: var(--accent);
+    transition: color var(--dur-hover), border-color var(--dur-hover);
+
+    & .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .soft-card__title {
+    margin-block-start: auto;
+    padding-block-start: var(--space-4);
+    font-size: 1.5rem;
+  }
+
+  .soft-card__text {
+    color: var(--muted);
+  }
+
+  .soft-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-block-start: var(--space-1);
+    color: var(--fg);
+    font-weight: var(--weight-medium);
+    text-decoration: none;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &:focus-visible::after {
+      outline: var(--focus-width) solid var(--focus-color);
+      outline-offset: var(--focus-offset);
+    }
+  }
+
+  /* ── Float card (CareNest) ── */
+  .float-card {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: start;
+    width: min(100%, 22rem);
+    padding: 1.5rem;
+    border-radius: var(--radius-float);
+    box-shadow: var(--shadow-float);
+  }
+
+  .float-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+    color: var(--muted);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+  }
+
+  .float-card__brand,
+  .float-card__meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .float-card__brand .icon {
+    color: var(--leaf-500);
+  }
+
+  .float-card__icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-block-start: var(--space-1);
+    border-radius: var(--radius-circle);
+    background-color: var(--mint-50);
+    color: var(--leaf-600);
+  }
+
+  .float-card__title {
+    font-size: 1.375rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.2;
+  }
+
+  .float-card__text {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  /* ── Story row (Genocide Edu) ── */
+  .story-rows {
+    display: grid;
+  }
+
+  .story-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius-card);
+    transition: background-color var(--dur-hover) var(--ease-out);
+
+    /* straight divider (a border would curve with the radius) */
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline: var(--space-3);
+      inset-block-end: 0;
+      height: 1px;
+      background-color: var(--line);
+      transition: opacity var(--dur-hover);
+    }
+
+    &:is(:hover, :focus-within) {
+      background-color: var(--raised);
+
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+
+  .story-row__body {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .story-row__author {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--fg);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+  }
+
+  .story-row__tag {
+    color: var(--muted);
+    font-weight: var(--weight-regular);
+
+    &::before {
+      content: "·";
+      margin-inline-end: 0.625rem;
+    }
+  }
+
+  .story-row__title {
+    font-size: clamp(1.1875rem, 2vw, 1.4375rem);
+    line-height: 1.3;
+
+    & a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    & a:focus-visible {
+      outline: none;
+    }
+
+    & a:focus-visible::after {
+      outline: var(--focus-width) solid var(--focus-color);
+      outline-offset: 2px;
+    }
+  }
+
+  .story-row:hover .story-row__title a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .story-row__excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 0.9688rem;
+  }
+
+  .story-row__meta {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .story-row__thumb {
+    width: clamp(5.5rem, 14vw, 8.5rem);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 1rem;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+  }
+
+  .story-row:hover .story-row__thumb img {
+    transform: scale(1.05);
+  }
+
+  /* ── Programme row (CareNest, alternating) ── */
+  .programme-rows {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .programme-row {
+    display: grid;
+    gap: var(--space-2);
+
+    @media (width >= 48rem) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .programme-row--reverse .programme-row__card {
+      order: 2;
+    }
+  }
+
+  .programme-row__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    border-radius: var(--radius-card);
+    background-color: var(--raised);
+    color: var(--raised-fg);
+  }
+
+  .programme-row__icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-circle);
+    background-color: var(--bg);
+    color: var(--accent);
+  }
+
+  .programme-row__title {
+    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+  }
+
+  .programme-row__text {
+    color: var(--muted);
+    max-width: 52ch;
+  }
+
+  .programme-row__media {
+    min-height: 18rem;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* ── Doc card ── */
+  .docs {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  }
+
+  .doc-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-height: 14rem;
+    padding: 1.75rem;
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius-card);
+    color: var(--fg);
+    transition: background-color var(--dur-hover) var(--ease-out), color var(--dur-hover), border-color var(--dur-hover);
+
+    &:is(:hover, :focus-within) {
+      border-color: var(--invert-bg);
+    }
+  }
+
+  .doc-card__type {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: var(--text-eyebrow);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .doc-card__title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+
+    & a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    & a:focus-visible {
+      outline: none;
+    }
+
+    & a:focus-visible::after {
+      outline: var(--focus-width) solid var(--focus-color);
+      outline-offset: var(--focus-offset);
+    }
+  }
+
+  .doc-card__date {
+    margin-block-start: auto;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .doc-card__download {
+    position: absolute;
+    inset-inline-end: 1.5rem;
+    inset-block-end: 1.5rem;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius-circle);
+    color: var(--fg);
+    transition: transform var(--dur-hover) var(--ease-out), background-color var(--dur-hover);
+  }
+
+  .doc-card:is(:hover, :focus-within) .doc-card__download {
+    background-color: var(--accent);
+    color: var(--invert-bg);
+    border-color: transparent;
+    transform: translateY(-3px);
+  }
+
+  /* ── Person circle ── */
+  .person-circle {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+  }
+
+  .person-circle__photo {
+    width: 12rem;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--radius-circle);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .person-circle figcaption {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .person-circle__name {
+    font-size: 1.25rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .person-circle__role {
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .person-circle--lg {
+    align-items: center;
+    gap: var(--space-4) clamp(2rem, 6vw, 5rem);
+
+    @media (width >= 48rem) {
+      grid-template-columns: auto 1fr;
+    }
+
+    & .person-circle__photo {
+      width: clamp(14rem, 28vw, 22rem);
+    }
+
+    & .person-circle__text {
+      margin-block-start: var(--space-2);
+      font-size: clamp(1.375rem, 2.4vw, 2rem);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1.35;
+      color: var(--fg);
+    }
+  }
+
+  /* ── Journey bar ── */
+  .journey {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .journey__head,
+  .journey__foot {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-small);
+  }
+
+  .journey__head {
+    font-weight: var(--weight-medium);
+  }
+
+  .journey__foot {
+    color: var(--muted);
+  }
+
+  .journey__track {
+    height: 0.5rem;
+    overflow: hidden;
+    border-radius: var(--radius-pill);
+    background-color: color-mix(in srgb, var(--fg) 12%, transparent);
+  }
+
+  .journey__fill {
+    display: block;
+    width: var(--value);
+    height: 100%;
+    border-radius: inherit;
+    background-image: linear-gradient(90deg, var(--sun-400), var(--clay-500));
+  }
+}
