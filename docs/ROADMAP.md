@@ -92,3 +92,4 @@ Security review, deploy guide, DNS move (domain from GitHub Pages → cPanel, wi
 | 2026-11-10 | Giving in Part A: **Sponsor-a-child enquiry** only (WhatsApp/email). Online giving is deferred to C5 |
 | 2026-11-10 | Hosting: GitHub Pages for Part A/B, **cPanel for Part C** |
 | 2026-11-10 | Motion: GSAP + ScrollTrigger (self-hosted) |
+| 2026-11-10 | A4: ScrollTrigger dropped from the runtime for performance (IntersectionObserver + a small scrub helper). GSAP stays. Same visible effects |

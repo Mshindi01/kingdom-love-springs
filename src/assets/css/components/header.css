@@ -177,27 +177,17 @@
     }
   }
 
-  /* < 64rem: mobile header */
+  /* < 64rem: mobile header (menu button). The no-JS fallback (links wrapping under the logo)
+     lives in a <noscript><style> in head.mjs, so the layout never jumps when JS starts. */
   @media (width < 64rem) {
-    .js .site-nav,
-    .js .site-header__secondary,
-    .js .site-header__divider {
+    .site-nav,
+    .site-header__secondary,
+    .site-header__divider {
       display: none;
     }
 
-    .js .menu-toggle {
+    .menu-toggle {
       display: grid;
-    }
-
-    /* No JS: links wrap under the logo instead of a menu */
-    .no-js .site-header__inner {
-      flex-wrap: wrap;
-      padding-block: var(--space-2);
-    }
-
-    .no-js .site-nav {
-      order: 3;
-      flex-basis: 100%;
     }
   }
 

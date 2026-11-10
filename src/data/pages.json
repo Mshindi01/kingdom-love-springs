@@ -1,0 +1,180 @@
+{
+  "$note": "Copy for inner pages (CONTENT §4). Client facts come from programmes.json / stats.json / faqs.json; this file holds headings and short connecting microcopy. Items with draft: true are hidden in production. Images: { photo: <photos.json id> | null, placeholder, alt }.",
+
+  "about": {
+    "hero": {
+      "eyebrow": "About us",
+      "title": "Helping children and youth thrive in school, in life and in faith",
+      "script": "light & salt",
+      "intro": "Kingdom Love Springs exists to give children and youth from poor and vulnerable communities across Kenya the opportunity to thrive in school, in life, and in faith.",
+      "image": { "photo": null, "placeholder": "hero", "alt": "" }
+    },
+    "missionTitle": "Our mission",
+    "visionTitle": "Our vision",
+    "approachEyebrow": "Our approach",
+    "approachTitle": "Intentionally wholesome",
+    "whyTitle": "Why it matters",
+    "whyIntro": "Through consistent support, children who once faced the streets or an uncertain future are now:",
+    "teamTitle": "Our team",
+    "faith": { "draft": true, "title": "What we believe", "text": "[CONFIRM: statement of faith summary]" },
+    "partnersTitle": "Our partners"
+  },
+
+  "education": {
+    "hero": {
+      "eyebrow": "Education & sponsorship",
+      "title": "From primary through secondary school",
+      "script": "walk alongside",
+      "intro": "School fees and ongoing mentorship for children from vulnerable communities, with a team that walks alongside them and their families.",
+      "image": { "photo": null, "placeholder": "hero", "alt": "" }
+    },
+    "whoTitle": "Who we sponsor",
+    "coversTitle": "What sponsorship covers",
+    "visitsTitle": "School visits & holiday meetups",
+    "visitsText": "Our team regularly visits the children’s schools and also meets them during school holidays to track their progress, encourage them, and walk alongside their families.",
+    "visitsPhotos": [
+      { "caption": "School visits", "image": { "photo": null, "placeholder": "landscape", "alt": "" } },
+      { "caption": "Holiday meetups", "image": { "photo": null, "placeholder": "landscape", "alt": "" } },
+      { "caption": "Walking with families", "image": { "photo": null, "placeholder": "landscape", "alt": "" } }
+    ],
+    "outcomesTitle": "What we’re seeing",
+    "faqTitle": "Questions about sponsorship",
+    "cta": { "title": "Walk with one child", "text": "Sponsor a child from primary through secondary school. A member of our team will get in touch with you personally.", "button": "Sponsor a child", "path": "/sponsor/" }
+  },
+
+  "sports": {
+    "hero": {
+      "eyebrow": "Sports ministry",
+      "title": "Football, friendship and the Gospel",
+      "script": "play · hope · faith",
+      "intro": "Football tournaments and clinics across Nairobi, Western Kenya and the Coast.",
+      "image": { "photo": null, "placeholder": "hero", "alt": "" }
+    },
+    "gatheringTitle": "What happens at a gathering",
+    "gatheringSteps": [
+      { "title": "Play", "text": "Young people play football at tournaments and clinics." },
+      { "title": "Friendships", "text": "They build friendships with each other and with mentors." },
+      { "title": "Christian teaching", "text": "They hear life-transforming Christian teaching." },
+      { "title": "Mentorship", "text": "Each gathering creates space for mentorship, hope and a personal encounter with the love of Jesus Christ." }
+    ],
+    "regionsTitle": "Where we play",
+    "regionText": "Football tournaments and clinics",
+    "numbersTitle": "Every gathering counts",
+    "eventsTitle": "Upcoming tournaments",
+    "eventsEmpty": "Dates for the next tournaments are coming soon.",
+    "eventsAsk": "Ask us about the next tournament",
+    "cta": { "title": "Host or support a tournament", "text": "Churches, schools and businesses can host, support or volunteer at a tournament near them.", "button": "Support a tournament", "path": "/get-involved/#tournament" }
+  },
+
+  "mentorship": {
+    "hero": {
+      "eyebrow": "Mentorship & families",
+      "title": "Consistent mentorship, walking alongside families",
+      "script": "walk alongside",
+      "intro": "Our approach is intentionally wholesome: quality education, active family involvement, consistent mentorship, and the Gospel shared through sports and relationships.",
+      "image": { "photo": null, "placeholder": "hero", "alt": "" }
+    },
+    "blocks": [
+      { "id": "mentorship", "icon": "hand-heart", "title": "Consistent mentorship", "text": "Our team regularly visits the children’s schools and also meets them during school holidays to track their progress and encourage them.", "image": { "photo": null, "placeholder": "landscape", "alt": "" } },
+      { "id": "families", "icon": "users", "title": "Walking alongside families", "text": "Active family involvement is part of everything we do. We walk alongside the families of the children we sponsor.", "image": { "photo": null, "placeholder": "landscape", "alt": "" } },
+      { "id": "gospel", "icon": "church", "title": "The Gospel through relationships", "text": "Through sports and relationships, young people hear life-transforming Christian teaching and have space for a personal encounter with the love of Jesus Christ.", "image": { "photo": null, "placeholder": "landscape", "alt": "" } }
+    ],
+    "quote": { "text": "We believe every child and youth deserves the chance to move from struggle to purpose, and to become light and salt in their generation.", "cite": "Kingdom Love Springs", "script": "light & salt" },
+    "cta": { "title": "Become a mentor or volunteer", "text": "Help at tournaments or walk alongside young people as a mentor.", "button": "Volunteer with us", "path": "/get-involved/#volunteer" }
+  },
+
+  "stories": {
+    "hero": {
+      "eyebrow": "Stories",
+      "title": "Stories from the field",
+      "script": "from struggle to purpose",
+      "intro": "Children who once faced the streets or an uncertain future are now completing secondary school."
+    },
+    "allLabel": "All stories",
+    "featuredLabel": "Featured story",
+    "empty": "Our first stories are on their way. Every story is shared with the consent of the child’s family.",
+    "relatedTitle": "More stories",
+    "tags": [
+      { "id": "education", "label": "Education", "programmes": ["education"] },
+      { "id": "sports", "label": "Sports", "programmes": ["sports"] },
+      { "id": "families", "label": "Families", "programmes": ["mentorship"] }
+    ]
+  },
+
+  "get-involved": {
+    "hero": {
+      "eyebrow": "Get involved",
+      "title": "Walk alongside a child with us",
+      "script": "walk alongside",
+      "intro": "Sponsor a child, pray with us, volunteer, partner with us, or support a football tournament."
+    },
+    "sponsor": { "title": "Sponsor a child", "text": "Walk with one child from primary through secondary school, with school fees and ongoing mentorship. Sponsorship enquiries are handled personally by our team.", "button": "Start a sponsorship enquiry", "path": "/sponsor/" },
+    "pray": { "title": "Pray with us", "text": "Pray for the children and youth we serve, their families, and our tournaments and mentors.", "pointsTitle": "Prayer points", "formTitle": "Send a prayer note" },
+    "volunteer": { "title": "Volunteer", "text": "Help at tournaments or walk alongside young people as a mentor.", "formTitle": "Volunteer with us" },
+    "partner": { "title": "Partner with us", "text": "Churches, schools and businesses can partner with us to reach more children and youth.", "formTitle": "Partner enquiry" },
+    "tournament": { "title": "Support a tournament", "text": "Our gatherings bring together around 200 children and youth at a time. Host one, support one, or volunteer at one.", "formTitle": "Tournament support" }
+  },
+
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "We’d love to hear from you",
+      "script": "across Kenya",
+      "intro": "Send us a message on WhatsApp or by email, and a member of our team will get back to you."
+    },
+    "detailsTitle": "Contact details",
+    "detailsPending": "Our phone, WhatsApp and email details will be listed here very soon.",
+    "formTitle": "Send us a message",
+    "regionsTitle": "Our regions"
+  },
+
+  "safeguarding": {
+    "hero": {
+      "eyebrow": "Safeguarding",
+      "title": "Keeping children safe",
+      "intro": "Most of the people we serve are children. Protecting them comes first, online and in person."
+    },
+    "commitments": [
+      { "icon": "user", "title": "First names only", "text": "Children appear on this website by first name only, or a chosen name. We never publish surnames." },
+      { "icon": "map-pin", "title": "No locations", "text": "We never publish a child’s school, village, estate or exact location. We only mention regions, like “Western Kenya”." },
+      { "icon": "image", "title": "Photos with consent", "text": "We only share photos when a parent or guardian has given consent. We prefer group photos at tournaments, and we never show children in distress." },
+      { "icon": "book-open", "title": "Stories told with care", "text": "A child’s story is shared only with their guardian’s consent, and the child’s agreement where they are old enough. We focus on growth and hope, never on painful details." },
+      { "icon": "shield-check", "title": "Location data removed", "text": "We remove location information from photos before they go online." },
+      { "icon": "heart-handshake", "title": "Sponsorship is personal", "text": "There are no public profiles of individual children. Sponsorship enquiries are handled personally by our team." },
+      { "icon": "message-circle", "title": "Forms ask about you, not children", "text": "Our forms never ask for information about children. We only ask adults for what we need to reply." }
+    ],
+    "concernTitle": "Raising a concern",
+    "concernText": "If you have any concern about the safety or wellbeing of a child connected with Kingdom Love Springs, please tell us straight away. Every concern is taken seriously and handled in confidence.",
+    "concernPending": "Our safeguarding contact person will be listed here. Until then, please reach us through the contact page.",
+    "policy": { "draft": true, "text": "[CONFIRM: full safeguarding policy, if any]" }
+  },
+
+  "privacy": {
+    "hero": {
+      "eyebrow": "Privacy",
+      "title": "Your privacy, in plain words",
+      "intro": "This page explains what happens to your information when you use this website."
+    },
+    "updated": "2026-11-10",
+    "sections": [
+      { "title": "This website doesn’t store your messages", "body": ["When you fill in a form on this website, nothing is saved on the website. Your answers are turned into a message that opens in your own WhatsApp or email app, and you decide whether to send it.", "Once you send it, your message reaches Kingdom Love Springs like any other WhatsApp message or email."] },
+      { "title": "What we use your information for", "body": ["We use the details you send us only to reply to you and to follow up on your enquiry, for example about sponsoring a child, volunteering or praying with us.", "We never sell or share your information for marketing."] },
+      { "title": "Information about children", "body": ["Our forms never ask for information about children. Please don’t include children’s names or personal details in your messages."] },
+      { "title": "No tracking", "body": ["This website doesn’t use advertising or analytics cookies, and it doesn’t load tracking scripts. Fonts and images are served from this website itself.", "The website is hosted on GitHub Pages, which may keep basic technical logs (such as IP addresses) to keep the service secure."] },
+      { "title": "Your rights", "body": ["Under the Kenya Data Protection Act, 2019, you can ask to see the information we hold about you, ask us to correct or delete it, and object to how it is used. Contact us and we’ll help."] }
+    ]
+  },
+
+  "not-found": {
+    "eyebrow": "404",
+    "title": "Looks like this ball went out of play",
+    "text": "We couldn’t find that page. It may have moved, or the link may be mistyped."
+  },
+
+  "help": {
+    "eyebrow": "How you can help",
+    "title": "Walk alongside a child with us",
+    "cards": ["sponsor", "pray", "volunteer"],
+    "featured": "pray"
+  }
+}

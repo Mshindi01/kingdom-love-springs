@@ -5,8 +5,11 @@
  * Screen readers always get the real value (sr-only caption text), never the counter.
  */
 
+import { onVisible } from './observe.js';
+import { scrub } from './scrub.js';
+
 /** @param {import('./index.js').MotionContext} ctx */
-export default function pillBand({ gsap, ScrollTrigger, reduced }) {
+export default function pillBand({ gsap, reduced }) {
   if (reduced) return;
   /** @type {(() => void)[]} */
   const off = [];
@@ -15,11 +18,8 @@ export default function pillBand({ gsap, ScrollTrigger, reduced }) {
     const band = /** @type {HTMLElement} */ (node);
     const finalRadius = getComputedStyle(band).borderTopLeftRadius;
 
-    gsap.fromTo(
-      band,
-      { scale: 0.92, borderRadius: '32px' },
-      { scale: 1, borderRadius: finalRadius, ease: 'none', scrollTrigger: { trigger: band, start: 'top bottom', end: 'top 30%', scrub: 0.6 } },
-    );
+    const grow = gsap.fromTo(band, { scale: 0.92, borderRadius: '32px' }, { scale: 1, borderRadius: finalRadius, ease: 'none', paused: true });
+    off.push(scrub(gsap, band, grow, { startAt: 1, endAt: 0.3, smooth: 0.6 }));
 
     const nums = /** @type {HTMLElement[]} */ ([...band.querySelectorAll('[data-count]')]);
     const strokes = band.querySelectorAll('.pill-band__stroke path');
@@ -43,7 +43,7 @@ export default function pillBand({ gsap, ScrollTrigger, reduced }) {
 
     nums.forEach((el) => (el.textContent = (el.dataset.prefix || '') + '0'));
     gsap.set(strokes, { strokeDashoffset: 1000 });
-    ScrollTrigger.create({ trigger: band, start: 'top 75%', once: true, onEnter: count });
+    off.push(onVisible(band, count, { rootMargin: '0px 0px -25% 0px' }));
 
     const replay = () => count();
     band.addEventListener('kls:replay', replay);

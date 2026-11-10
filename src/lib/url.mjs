@@ -36,6 +36,7 @@ export function getBasePath() {
 export function url(path = '/') {
   if (/^([a-z][a-z0-9+.-]*:|\/\/|#)/i.test(path)) return path;
   const p = path.startsWith('/') ? path : '/' + path;
+  if (basePath && (p === basePath || p.startsWith(basePath + '/'))) return p; // already prefixed
   return basePath + p;
 }
 

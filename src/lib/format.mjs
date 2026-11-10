@@ -34,6 +34,20 @@ export function slugify(text) {
 }
 
 /**
+ * Should a data item appear? Drafts show only in dev builds; anything whose visible text
+ * still contains [CONFIRM] never appears in production.
+ * @param {any} item
+ * @param {{ production: boolean }} env
+ * @param {string[]} [textKeys] keys to scan for [CONFIRM]
+ */
+export function isVisible(item, env, textKeys = ['title', 'text', 'name', 'question', 'answer']) {
+  if (!item) return false;
+  if (!env.production) return true;
+  if (item.draft) return false;
+  return !textKeys.some((k) => isUnconfirmed(item[k]));
+}
+
+/**
  * True when a value still holds a [CONFIRM] placeholder.
  * @param {unknown} value
  */

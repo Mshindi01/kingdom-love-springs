@@ -51,18 +51,24 @@ function setError(field, message) {
 /** @param {HTMLFormElement} form */
 function fields(form) {
   return /** @type {(HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement)[]} */ (
-    [...form.elements].filter((el) => 'value' in el && /** @type {any} */ (el).name && !(/** @type {any} */ (el).disabled))
+    [...form.elements].filter(
+      (el) => 'value' in el && el.tagName !== 'BUTTON' && /** @type {any} */ (el).name && !(/** @type {any} */ (el).disabled),
+    )
   );
 }
 
 export function initCompose() {
   document.querySelectorAll('form[data-compose]').forEach((node) => {
     const form = /** @type {HTMLFormElement} */ (node);
-    if (!form.dataset.to) return; // disabled until the address is confirmed
+    const toEmail = form.dataset.toEmail || (form.dataset.compose === 'email' ? form.dataset.to : '');
+    const toWhatsapp = form.dataset.toWhatsapp || (form.dataset.compose === 'whatsapp' ? form.dataset.to : '');
+    if (!toEmail && !toWhatsapp) return; // disabled until KLS's details are confirmed
     form.noValidate = true;
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      // Which button was pressed (data-compose="auto" forms offer both channels)
+      const via = /** @type {HTMLButtonElement | null} */ (/** @type {SubmitEvent} */ (e).submitter)?.value || (toWhatsapp && !toEmail ? 'whatsapp' : 'email');
       let firstInvalid = null;
       for (const f of fields(form)) {
         const ok = f.checkValidity();
@@ -80,15 +86,15 @@ export function initCompose() {
         if (f.value.trim()) lines.push(`${labelFor(f)}: ${f.value.trim()}`);
       }
       const body = lines.join('\n').trim();
-      const to = form.dataset.to || '';
       const href =
-        form.dataset.compose === 'whatsapp'
-          ? `https://wa.me/${to.replace(/\D/g, '')}?text=${encodeURIComponent(body)}`
-          : `mailto:${to}?subject=${encodeURIComponent(form.dataset.subject || '')}&body=${encodeURIComponent(body)}`;
+        via === 'whatsapp'
+          ? `https://wa.me/${toWhatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(body)}`
+          : `mailto:${toEmail}?subject=${encodeURIComponent(form.dataset.subject || '')}&body=${encodeURIComponent(body)}`;
 
       window.location.href = href;
 
-      const done = /** @type {HTMLElement | null} */ (form.nextElementSibling?.matches('[data-compose-done]') ? form.nextElementSibling : null);
+      const next = form.nextElementSibling;
+      const done = /** @type {HTMLElement | null} */ (next && next.matches('[data-compose-done]') ? next : null);
       if (done) {
         form.hidden = true;
         done.hidden = false;

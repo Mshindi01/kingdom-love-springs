@@ -6,6 +6,7 @@
  */
 import { html, attrs } from '../../lib/html.mjs';
 import { icon } from '../icon.mjs';
+import { slugify } from '../../lib/format.mjs';
 
 /**
  * @typedef {{ id: string, name?: string, label: string, hint?: string, error?: string,
@@ -73,15 +74,16 @@ export function selectField(f) {
  *   options: { value: string, label: string, description?: string, icon?: string }[] }} f
  */
 export function radioCards(f) {
-  const hintId = f.hint ? `${f.name}-hint` : null;
-  const errId = f.error ? `${f.name}-error` : null;
+  const base = slugify(f.name);
+  const hintId = f.hint ? `${base}-hint` : null;
+  const errId = f.error ? `${base}-error` : null;
   return html`<fieldset class="field field--group${f.error ? ' field--error' : ''}"${attrs({ 'aria-describedby': [hintId, errId].filter(Boolean).join(' ') || null })}>
     <legend class="field__label">${f.legend}</legend>
     ${f.hint ? html`<p class="field__hint" id="${hintId}">${f.hint}</p>` : ''}
     ${f.error ? html`<p class="field__error" id="${errId}">${icon('info')}<span><span class="sr-only">Error: </span>${f.error}</span></p>` : ''}
     <div class="radio-cards">
       ${f.options.map((o, i) => {
-        const id = `${f.name}-${o.value}`;
+        const id = `${base}-${slugify(o.value)}`;
         return html`<div class="radio-card">
           <input class="radio-card__input" type="radio"${attrs({ id, name: f.name, value: o.value, checked: o.value === f.value, required: f.required && i === 0 })}>
           <label class="radio-card__label" for="${id}">

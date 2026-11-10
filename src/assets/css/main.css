@@ -20,7 +20,9 @@
 @import "components/map.css";
 @import "components/media.css";
 @import "components/forms.css";
+@import "components/steps.css";
 @import "pages/home.css";
+@import "pages/inner.css";
 @import "pages/styleguide.css";
 @import "utilities.css";
 

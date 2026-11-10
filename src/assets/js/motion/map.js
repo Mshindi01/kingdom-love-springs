@@ -1,11 +1,13 @@
 // @ts-check
 /**
- * Map circle (DESIGN_SYSTEM §5 #8): the circle scales in, Kenya's outline draws, the dots
- * pop in, then pulse softly (paused off-screen). Reduced motion: static.
+ * Map circle (DESIGN_SYSTEM §5 #8): the circle scales in, Kenya's outline draws, the dots pop
+ * in; the dots then pulse softly via CSS while the map is on screen (.is-live).
+ * Reduced motion: static.
  */
+import { onVisible } from './observe.js';
 
 /** @param {import('./index.js').MotionContext} ctx */
-export default function map({ gsap, ScrollTrigger, reduced }) {
+export default function map({ gsap, reduced }) {
   if (reduced) return;
   /** @type {(() => void)[]} */
   const off = [];
@@ -14,10 +16,6 @@ export default function map({ gsap, ScrollTrigger, reduced }) {
     const disc = root.querySelector('.map-circle__disc');
     const outline = root.querySelector('.map-circle__kenya');
     const dots = root.querySelectorAll('.map-circle__core, .map-circle__label');
-    const pulses = root.querySelectorAll('.map-circle__pulse');
-
-    const pulse = gsap.timeline({ repeat: -1, paused: true });
-    pulse.fromTo(pulses, { scale: 1, opacity: 0.45 }, { scale: 2.8, opacity: 0, duration: 2.2, ease: 'power1.out', stagger: 0.6 });
 
     const intro = () => {
       const tl = gsap.timeline();
@@ -27,16 +25,14 @@ export default function map({ gsap, ScrollTrigger, reduced }) {
       return tl;
     };
 
-    ScrollTrigger.create({ trigger: root, start: 'top 75%', once: true, onEnter: intro });
-    ScrollTrigger.create({
-      trigger: root,
-      start: 'top bottom',
-      end: 'bottom top',
-      onToggle: (/** @type {any} */ self) => (self.isActive ? pulse.play() : pulse.pause()),
-    });
+    off.push(onVisible(root, intro, { rootMargin: '0px 0px -25% 0px' }));
+    off.push(onVisible(root, (_el, visible) => root.classList.toggle('is-live', visible), { once: false }));
     const replay = () => intro();
     root.addEventListener('kls:replay', replay);
-    off.push(() => root.removeEventListener('kls:replay', replay));
+    off.push(() => {
+      root.removeEventListener('kls:replay', replay);
+      root.classList.remove('is-live');
+    });
   });
 
   return () => off.forEach((fn) => fn());

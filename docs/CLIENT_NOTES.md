@@ -4,6 +4,38 @@ Plain-language updates on the new website, newest first.
 
 ---
 
+## 10 November 2026: All the inside pages
+
+**Today you can see** every page of the website (except the "Sponsor a child" enquiry, which comes next):
+- **About:** your mission and vision, your four-part approach, and "Why it matters".
+- **Education & Sponsorship:** who you sponsor, what sponsorship covers, how it works, school visits and holiday meetups, what you're seeing, and common questions.
+- **Sports Ministry:** what happens at a gathering, where you play (with the map), your numbers, and a place for upcoming tournaments.
+- **Mentorship & Families**, **Stories** (with topic filters), **Get involved** (sponsor, pray, volunteer, partner, support a tournament), **Contact**, **Safeguarding**, **Privacy**, and a friendly "page not found" page.
+
+**Good to know**
+- The forms (prayer note, volunteer, partner, tournament, contact) will open WhatsApp or email with the person's message ready to send. They're switched off until we have your WhatsApp number and email.
+- Nothing personal is stored on the website. The Privacy page explains this in plain words.
+- Anything we're still waiting for from you stays hidden, so the site never shows gaps or guesses.
+
+**Questions for you** (whenever you're ready)
+1. **Contact:** your email address, phone number, WhatsApp number and town/area.
+2. **Social media:** links to your Instagram, Facebook and/or YouTube (if you use them).
+3. **Safeguarding:** who should people contact with a concern about a child (name or role and email)? Do you have a written safeguarding policy we can link to?
+4. **Team:** names, roles, short bios and photos of your founder and team.
+5. **What you believe:** a short statement of faith for the About page (optional).
+6. **Partners:** churches or organisations you work with, and permission to show their logos.
+7. **Sponsorship:** besides school fees and mentorship, does sponsorship cover anything else (uniforms, books)? Would you like to show what it costs to sponsor a child?
+8. **Prayer points:** a few things you'd like people to pray for.
+9. **Volunteering:** besides tournaments and mentorship, do you need help with admin or media?
+10. **Tournaments:** dates and regions of upcoming tournaments or clinics.
+11. **Stories:** 2–3 real stories (with the family's consent and the child's agreement), plus photos.
+12. **Photos:** pictures of tournaments, classrooms, mentors and families, with guardian consent recorded.
+13. **Bible verse:** which verse and translation would you like on the home page?
+14. **Registration:** are you registered as an NGO, CBO or church ministry? When did you start?
+15. **Logo and colours,** and the **web address** (domain) you'd like to use.
+
+---
+
 ## 10 November 2026: The home page
 
 **Today you can see** the full home page, top to bottom:

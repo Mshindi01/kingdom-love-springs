@@ -47,10 +47,17 @@ export function head(ctx) {
     <link rel="preload" href="${url('/assets/fonts/GeneralSans-Regular.woff2')}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="${url('/assets/fonts/GeneralSans-Medium.woff2')}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="${asset('css/main.css')}">
+    <noscript><style>
+      @media (width < 64rem) {
+        .site-header__inner { flex-wrap: wrap; padding-block: 1rem; }
+        .site-nav { display: block; order: 3; flex-basis: 100%; }
+        .menu-toggle { display: none !important; }
+      }
+      .js-only { display: none !important; }
+    </style></noscript>
     ${page.meta.motion
       ? html`
-    <script defer src="${asset('vendor/gsap/gsap.min.js')}"></script>
-    <script defer src="${asset('vendor/gsap/ScrollTrigger.min.js')}"></script>`
+    <script defer src="${asset('vendor/gsap/gsap.min.js')}"></script>`
       : ''}
     <script type="module" src="${asset('js/main.js')}"></script>
     ${env.dev ? raw(`<script type="module" src="${url('/__livereload.js')}"></script>`) : ''}

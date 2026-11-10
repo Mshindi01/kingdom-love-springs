@@ -31,6 +31,11 @@
     }
   ],
   "prayerPoints": ["[CONFIRM]"],
-  "volunteerRoles": ["[CONFIRM]"],
+  "$prayerNote": "Prayer points from KLS [CONFIRM]. Unconfirmed items are never shown.",
+  "volunteerRoles": [
+    { "id": "tournaments", "title": "Tournaments", "text": "Help run football tournaments and clinics.", "icon": "trophy" },
+    { "id": "mentorship", "title": "Mentorship", "text": "Walk alongside young people as a mentor.", "icon": "hand-heart" },
+    { "id": "admin-media", "title": "Admin & media", "text": "[CONFIRM: is this a role KLS needs?]", "icon": "image", "draft": true }
+  ],
   "partnerTypes": ["Churches", "Schools", "Businesses"]
 }

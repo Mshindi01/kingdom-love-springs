@@ -547,7 +547,7 @@ export function render(ctx) {
     <!-- ── Motion lab ──────────────────────────────────────────────────────── -->
     <section class="sg-section" id="sg-motion" aria-labelledby="sg-motion-t" data-surface="forest">
       <div class="container">
-        ${sectionHeader({ eyebrow: 'Motion lab', title: 'Gentle and joyful, never in the way', id: 'sg-motion-t', lead: 'GSAP + ScrollTrigger, all inside gsap.matchMedia(). With reduced motion everything shows in its final state instantly: no loops, scrubs or draws. Without JS, everything is visible.' })}
+        ${sectionHeader({ eyebrow: 'Motion lab', title: 'Gentle and joyful, never in the way', id: 'sg-motion-t', lead: 'GSAP tweens, triggered by IntersectionObserver (and a tiny scrub helper for scroll-linked effects), all inside gsap.matchMedia(). With reduced motion everything shows in its final state instantly: no loops, scrubs or draws. Without JS, everything is visible.' })}
         <div class="sg-row">
           <button class="btn btn--soft" type="button" data-reduce-toggle aria-pressed="false">${icon('sparkles')}Reduce motion</button>
           <button class="btn btn--outline btn--sm" type="button" data-replay="#sg-script-light">${icon('play')}Script (cream)</button>

@@ -3,9 +3,10 @@
  * Outline circles (DESIGN_SYSTEM §5 #3): on scroll-in each circle draws its 1px outline in
  * sequence and its label fades up. (The hover/focus photo reveal is CSS clip-path.)
  */
+import { onVisible } from './observe.js';
 
 /** @param {import('./index.js').MotionContext} ctx */
-export default function circles({ gsap, ScrollTrigger, reduced }) {
+export default function circles({ gsap, reduced }) {
   if (reduced) return;
   /** @type {(() => void)[]} */
   const off = [];
@@ -18,7 +19,7 @@ export default function circles({ gsap, ScrollTrigger, reduced }) {
     // opacity only (not autoAlpha): visibility:hidden would remove the link's accessible name
     tl.fromTo(labels, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.14, clearProps: 'opacity,transform' }, 0.45);
 
-    ScrollTrigger.create({ trigger: list, start: 'top 80%', once: true, onEnter: () => tl.play() });
+    off.push(onVisible(list, () => tl.play(), { rootMargin: '0px 0px -20% 0px' }));
     const replay = () => tl.restart();
     list.addEventListener('kls:replay', replay);
     off.push(() => list.removeEventListener('kls:replay', replay));

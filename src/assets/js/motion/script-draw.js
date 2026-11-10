@@ -7,8 +7,10 @@
  * (hero.js). Reduced motion: nothing to do, lines render fully drawn.
  */
 
+import { onVisible } from './observe.js';
+
 /** @param {import('./index.js').MotionContext} ctx */
-export default function scriptDraw({ gsap, ScrollTrigger, reduced }) {
+export default function scriptDraw({ gsap, reduced }) {
   if (reduced) return;
   /** @type {(() => void)[]} */
   const off = [];
@@ -35,7 +37,7 @@ export default function scriptDraw({ gsap, ScrollTrigger, reduced }) {
       svg.addEventListener('kls:play', play);
       off.push(() => svg.removeEventListener('kls:play', play));
     } else {
-      ScrollTrigger.create({ trigger: svg, start: '40% bottom', once: true, onEnter: play });
+      off.push(onVisible(svg, play, { threshold: 0.4 })); // once, when 40% visible
     }
   });
 

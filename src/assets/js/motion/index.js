@@ -5,12 +5,14 @@
  * styleguide's html.reduce-motion switch) give the final state instantly: no loops, no
  * scrub, no draws.
  *
- * Module contract: export default function init({ gsap, ScrollTrigger, reduced }) → cleanup?
+ * Module contract: export default function init({ gsap, reduced }) → cleanup?
  * Animations created inside are reverted automatically by matchMedia.
+ * No ScrollTrigger: "when visible" uses IntersectionObserver (observe.js) and the few
+ * scrubbed effects use scrub.js, so there's no page-wide measuring pass on load.
  */
 import { fontsReady, fitAllScriptLines } from '../ui/script-fit.js';
 
-/** @typedef {{ gsap: any, ScrollTrigger: any, reduced: boolean }} MotionContext */
+/** @typedef {{ gsap: any, reduced: boolean }} MotionContext */
 
 /** Order matters: script-draw registers play listeners that hero.js triggers. */
 const MODULES = /** @type {[string, () => Promise<any>][]} */ ([
@@ -25,10 +27,6 @@ const MODULES = /** @type {[string, () => Promise<any>][]} */ ([
   ['[data-hero]', () => import('./hero.js')],
 ]);
 
-/**
- * @param {any} gsap
- * @param {any} ScrollTrigger
- */
 /** Give the browser a turn between chunks of work, so no single task blocks for long. */
 const yieldToMain = () =>
   new Promise((resolve) => {
@@ -37,10 +35,8 @@ const yieldToMain = () =>
     else setTimeout(resolve, 0);
   });
 
-export async function initMotion(gsap, ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
-  // Don't re-measure everything when the mobile address bar shows/hides.
-  ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: true });
+/** @param {any} gsap */
+export async function initMotion(gsap) {
 
   const present = MODULES.filter(([selector]) => document.querySelector(selector));
   const inits = await Promise.all(present.map(([, load]) => load().then((m) => m.default)));
@@ -51,25 +47,22 @@ export async function initMotion(gsap, ScrollTrigger) {
   /** @type {any} */
   let mm;
   // One matchMedia, one add() per module, each in its own task (short tasks = low TBT).
-  // ScrollTrigger refreshes itself on window load, so no explicit refresh() is needed here.
   const start = async () => {
     mm = gsap.matchMedia();
     for (const init of inits) {
       await yieldToMain();
       mm.add(conditions, (/** @type {any} */ context) => {
         const reduced = Boolean(context.conditions.osReduced) || document.documentElement.classList.contains('reduce-motion');
-        return init({ gsap, ScrollTrigger, reduced });
+        return init({ gsap, reduced });
       });
     }
   };
 
   await start();
-  if (document.readyState === 'complete') ScrollTrigger.refresh();
 
   document.addEventListener('kls:motionpref', async () => {
     mm?.revert();
     await start();
-    ScrollTrigger.refresh();
   });
 }
 

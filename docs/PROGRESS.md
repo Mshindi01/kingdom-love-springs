@@ -1,6 +1,42 @@
 # Progress
 
-## Current part: **Part A, phase A3 (Home)**: done, not deployed
+## Current part: **Part A, phase A4 (Inner pages)**: done, not deployed
+
+### 2026-11-10: A4 Inner pages
+
+**Done**
+- Pages: `/about/`, `/education/`, `/sports/`, `/mentorship/`, `/stories/` (+ `/stories/tag/<education|sports|families>/`
+  and `/stories/<slug>/`), `/get-involved/` (#sponsor #pray #volunteer #partner #tournament), `/contact/`,
+  `/safeguarding/`, `/privacy/`, branded 404 ("Looks like this ball went out of play").
+- Copy in `data/pages.json` (headings + short connecting microcopy); facts from programmes/stats/faqs.
+  Shared partials: `partials/page.mjs` (page hero cream/photo + breadcrumbs, help strip, CTA band,
+  `askHref`), `partials/sections/steps.mjs`, `partials/stories.mjs`, `partials/forms/compose-form.mjs`.
+- Story blocks: paragraph, heading, quote, verse, photo (consented) + caption, list; share row, related
+  stories, sponsor CTA. Tag filters are plain links (work without JS). Drafts only in dev builds.
+- Forms (prayer, volunteer, partner, tournament, contact) use the composer pattern with "Send on
+  WhatsApp" / "Send by email". **Shown but disabled until KLS's WhatsApp/email are confirmed.**
+  Visual only for now (owner: no form testing until A5).
+- Hidden until confirmed: team (draft founder), statement of faith, partners, prayer points, the
+  "Admin & media" volunteer role, safeguarding contact + full policy, contact details, socials.
+  `isVisible()` (format.mjs) hides drafts and anything containing `[CONFIRM` in production.
+- `plannedPages` now only `/sponsor/` (A5).
+
+**Performance work (all pages)**
+- **ScrollTrigger removed from the runtime.** "When visible" effects use IntersectionObserver
+  (`motion/observe.js`); the three scrubbed effects use a tiny helper (`motion/scrub.js`). This
+  removed a 270–1,500 ms layout pass on load. The vendored ScrollTrigger file stays in the repo, unused.
+- Map dot pulse moved from a GSAP loop to a CSS animation (runs only while on screen).
+- CLS 0.1 → 0: the no-JS mobile header fallback moved into `<noscript><style>` in the head, so the
+  JS layout is the default and nothing jumps when JS starts.
+
+**Verified**
+- `build` + `check` clean (1 warning: `/sponsor/` planned). Type check clean.
+- Lighthouse mobile (local, gzip): Home 93–96, About 95, Education 96, Sports 96, Mentorship 95,
+  Stories 97, Get involved 98, Contact 95, Safeguarding 98, Privacy 100 (styleguide 85).
+  **Accessibility 100 and Best practices 100 on every page. CLS 0 everywhere.**
+- No horizontal overflow at 375 / 1280 on any page (fixed one on Sports).
+- JS off, reduced motion and full motion: nothing left hidden, script lines drawn, real numbers,
+  steps line complete. Mobile menu: focus moves in, page inert, Esc closes and returns focus.
 
 ### 2026-11-10: A3 Home page
 
@@ -144,9 +180,9 @@ two fonts were deleted; `--font-script` is set in `tokens.css`.
 - Header/footer only link to pages that exist, so there are no broken links while pages are built in stages.
 - The hex check exempts generated SVG image files (their colours come from `tokens.css` via the generator).
 
-### Next: A4 Inner pages
-- About, Education, Sports, Mentorship, Stories (+ story pages), Get involved, Contact,
-  Safeguarding, Privacy, 404. Remove entries from `plannedPages` as they land.
+### Next: A5 Sponsor flow, polish & client kit
+- The multi-step `/sponsor/` enquiry (then remove it from `plannedPages`), then test all composer
+  forms **with mailto:/wa.me hand-offs blocked in the browser**, a11y/perf/SEO passes, client kit.
 
 ### Open questions
 - GitHub username + repo name (sets `site.url`; `basePath` assumed `/kingdom-love-springs`).
