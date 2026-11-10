@@ -3,6 +3,18 @@ import { html, raw } from '../lib/html.mjs';
 import { url, asset, absoluteUrl } from '../lib/url.mjs';
 
 /**
+ * Structured data: page meta may set `jsonLd: (ctx) => object`. Rendered as data (not script
+ * code); "<" is escaped so the JSON can't close the element.
+ * @param {import('../../tools/build.mjs').RenderContext} ctx
+ */
+function jsonLd(ctx) {
+  const fn = /** @type {any} */ (ctx.page.meta).jsonLd;
+  if (typeof fn !== 'function') return '';
+  const json = JSON.stringify(fn(ctx)).replace(/</g, '\\u003c');
+  return raw(`<script type="application/ld+json">${json}</script>`);
+}
+
+/**
  * <head> contents.
  * @param {import('../../tools/build.mjs').RenderContext} ctx
  */
@@ -29,6 +41,8 @@ export function head(ctx) {
     <meta property="og:locale" content="${site.locale}">
     ${ogImage ? html`<meta property="og:image" content="${absoluteUrl(site.url, ogImage)}">` : ''}
     <meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">
+    ${ogImage ? html`<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${site.name}: ${site.tagline}">` : ''}
+    ${jsonLd(ctx)}
     <link rel="icon" href="${asset('images/favicon.svg')}" type="image/svg+xml">
     <link rel="preload" href="${url('/assets/fonts/GeneralSans-Regular.woff2')}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="${url('/assets/fonts/GeneralSans-Medium.woff2')}" as="font" type="font/woff2" crossorigin>

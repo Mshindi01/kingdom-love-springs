@@ -27,12 +27,13 @@ import { configureUrls, normaliseBase, absoluteUrl } from '../src/lib/url.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const SRC = path.join(ROOT, 'src');
-export const DIST = path.join(ROOT, 'dist');
+/** Output folder. KLS_DIST lets a production check run beside `npm run dev` without racing it. */
+export const DIST = path.resolve(ROOT, process.env.KLS_DIST || 'dist');
 
 /**
  * @typedef {{ title: string, description: string, path?: string, ogImage?: string | null,
  *   motion?: boolean, draft?: boolean, noindex?: boolean, sitemap?: boolean,
- *   header?: 'overlay' | 'solid' }} PageMeta
+ *   header?: 'overlay' | 'solid', jsonLd?: (ctx: any) => object }} PageMeta
  *
  * @typedef {{ id: string, path: string, meta: PageMeta, isNotFound: boolean, outFile: string }} PageInfo
  *
@@ -356,7 +357,7 @@ ${sitemapPages.map((j) => `  <url><loc>${absoluteUrl(site.url, j.info.path)}</lo
   const ms = Math.round(performance.now() - started);
   if (!quiet) {
     console.log(
-      `✓ built ${jobs.length} page${jobs.length === 1 ? '' : 's'} in ${ms}ms → dist/  (${env.dev ? 'dev' : 'production'}, basePath "${site.basePath}")`,
+      `✓ built ${jobs.length} page${jobs.length === 1 ? '' : 's'} in ${ms}ms → ${path.relative(ROOT, DIST)}/  (${env.dev ? 'dev' : 'production'}, basePath "${site.basePath}")`,
     );
   }
   return { pages: jobs.length, ms, site };

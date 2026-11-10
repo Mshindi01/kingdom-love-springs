@@ -12,11 +12,12 @@ import { button, chip } from '../ui.mjs';
  * buttons, optional floating card + pill badges (CareNest).
  * @param {{ lines: string[], subline?: string, media: unknown, script?: unknown,
  *   buttons?: { label: string, href: string, icon?: string, variant?: 'primary' | 'soft' | 'outline' }[],
- *   floatCard?: unknown, badges?: string[], id?: string, compact?: boolean, headingLevel?: 1 | 2 }} o
+ *   floatCard?: unknown, badges?: string[], id?: string, compact?: boolean, headingLevel?: 1 | 2,
+ *   layout?: 'split' | 'centered' }} o
  */
-export function photoHero({ lines, subline, media, script, buttons = [], floatCard, badges = [], id = 'hero-title', compact = false, headingLevel = 1 }) {
+export function photoHero({ lines, subline, media, script, buttons = [], floatCard, badges = [], id = 'hero-title', compact = false, headingLevel = 1, layout = 'split' }) {
   const lineHtml = lines.map((l) => html`<span class="hero__line"><span class="hero__line-inner">${l}</span></span> `);
-  return html`<section class="hero${compact ? ' hero--compact' : ''}" data-surface="photo" aria-labelledby="${id}" data-hero>
+  return html`<section class="hero hero--${layout}${compact ? ' hero--compact' : ''}" data-surface="photo" aria-labelledby="${id}" data-hero>
     <div class="hero__media">${media}</div>
     <div class="container hero__inner">
       <div class="hero__content">

@@ -312,8 +312,8 @@ export function render(ctx) {
       <div class="container">
         ${sectionHeader({ eyebrow: 'What we do', title: 'Outline circles that reveal a photo', id: 'sg-circles-t', lead: 'Hover, focus (Tab) or tap: the circle fills with a photo from the centre and the label turns into handwriting. Each one is a link.' })}
         ${outlineCircles({
-          items: home['what-we-do'].circles.map((/** @type {string} */ label, /** @type {number} */ i) => ({
-            label,
+          items: home['what-we-do'].circles.map((/** @type {any} */ c, /** @type {number} */ i) => ({
+            label: c.label,
             href: demo('sg-circles'),
             media: placeholderImage(i % 2 ? 'square' : 'portrait'),
           })),
@@ -392,10 +392,10 @@ export function render(ctx) {
           tiles: [
             { type: 'photo', media: placeholderImage('portrait') },
             { type: 'number', value: stat('children').display, label: stat('children').label, detail: 'ages 7–17' },
-            { type: 'value', icon: 'heart-handshake', title: home['impact-bento'].values[0], text: 'Our team regularly visits their schools and meets them during school holidays, walking alongside their families.' },
+            { type: 'value', icon: 'heart-handshake', title: home['impact-bento'].values[0].title, text: 'Our team regularly visits their schools and meets them during school holidays, walking alongside their families.' },
             { type: 'number', value: stat('per-gathering').display, label: stat('per-gathering').label, detail: stat('per-gathering').detail },
             { type: 'number', value: stat('per-year').display, label: stat('per-year').label, detail: stat('per-year').detail },
-            { type: 'value', icon: 'church', title: home['impact-bento'].values[1], text: 'The Gospel shared through sports and relationships.' },
+            { type: 'value', icon: 'church', title: home['impact-bento'].values[1].title, text: 'The Gospel shared through sports and relationships.' },
             { type: 'number', value: stat('regions').display, label: stat('regions').label, detail: stat('regions').detail },
             { type: 'photo', media: placeholderImage('square') },
           ],
@@ -434,7 +434,7 @@ export function render(ctx) {
       ${quoteBand({
         id: 'sg-quote-t',
         quote: 'Ye are the light of the world. A city that is set on an hill cannot be hid.',
-        cite: home.quote.reference.replace('–16', ''),
+        cite: home.quote.reference,
         citeDetail: 'Example (KJV). Verse and translation to be confirmed',
         script: home.quote.script,
       })}

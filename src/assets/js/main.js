@@ -12,6 +12,8 @@ import { initCircleTaps } from './ui/circles.js';
 import { initToasts } from './ui/toast.js';
 import { initReduceToggle } from './ui/reduce-toggle.js';
 import { fitAllScriptLines, fontsReady } from './ui/script-fit.js';
+import { initCompose } from './ui/compose.js';
+import { initScrollHints } from './ui/scroll-hint.js';
 
 const root = document.documentElement;
 root.classList.remove('no-js');
@@ -21,6 +23,8 @@ initReduceToggle();
 initHeader();
 initCircleTaps();
 initToasts();
+initCompose();
+initScrollHints();
 
 /** @type {any} */
 const w = window;

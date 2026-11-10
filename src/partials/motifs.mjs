@@ -1,5 +1,5 @@
 // @ts-check
-import { html } from '../lib/html.mjs';
+import { html, attrs } from '../lib/html.mjs';
 import { asset } from '../lib/url.mjs';
 
 /**
@@ -15,26 +15,60 @@ export const PLACEHOLDERS = /** @type {const} */ ({
 
 /**
  * @param {keyof typeof PLACEHOLDERS} slot
- * @param {{ alt?: string, className?: string, loading?: 'lazy' | 'eager' }} [options]
+ * @param {{ alt?: string, className?: string, loading?: 'lazy' | 'eager', priority?: boolean }} [options]
  */
-export function placeholderImage(slot, { alt = '', className = '', loading = 'lazy' } = {}) {
-  const { w, h } = PLACEHOLDERS[slot];
-  return html`<img class="${className}" src="${asset(`images/placeholders/${slot}.svg`)}" alt="${alt}" width="${w}" height="${h}" loading="${loading}" decoding="async">`;
+export function placeholderImage(slot, { alt = '', className = '', loading = 'lazy', priority = false } = {}) {
+  const { w, h } = PLACEHOLDERS[slot] || PLACEHOLDERS.landscape;
+  return html`<img${attrs({
+    class: className || null,
+    src: asset(`images/placeholders/${slot}.svg`),
+    alt,
+    width: w,
+    height: h,
+    loading: priority ? 'eager' : loading,
+    fetchpriority: priority ? 'high' : null,
+    decoding: priority ? null : 'async',
+  })}>`;
 }
 
 /**
  * A registered, consented photo from data/photos.json, or a placeholder when `id` is empty.
  * Throws at build time if the photo isn't registered with consent: true (SAFEGUARDING §3).
+ * Responsive: add `srcset: [{ file, width }]` to the photos.json entry (e.g. WebP at 640/1280/1920).
  * @param {{ data: Record<string, any> }} ctx
  * @param {{ id?: string | null, placeholder?: keyof typeof PLACEHOLDERS, alt?: string,
- *   className?: string, loading?: 'lazy' | 'eager', sizes?: string }} o
+ *   className?: string, loading?: 'lazy' | 'eager', sizes?: string, priority?: boolean }} o
  */
-export function media(ctx, { id, placeholder = 'landscape', alt, className = '', loading = 'lazy', sizes }) {
-  if (!id) return placeholderImage(placeholder, { alt: alt ?? '', className, loading });
+export function media(ctx, { id, placeholder = 'landscape', alt, className = '', loading = 'lazy', sizes = '100vw', priority = false }) {
+  if (!id) return placeholderImage(placeholder, { alt: alt ?? '', className, loading, priority });
   const photo = (ctx.data.photos?.photos ?? []).find((/** @type {any} */ p) => p.id === id);
   if (!photo) throw new Error(`media(): photo "${id}" is not in src/data/photos.json`);
   if (photo.consent !== true) throw new Error(`media(): photo "${id}" has no consent: true (SAFEGUARDING §3)`);
-  return html`<img class="${className}" src="${asset(`images/${photo.file}`)}" alt="${alt ?? photo.alt}" width="${photo.width ?? ''}" height="${photo.height ?? ''}" loading="${loading}" decoding="async" ${sizes ? html`sizes="${sizes}"` : ''}>`;
+  const srcset = Array.isArray(photo.srcset)
+    ? photo.srcset.map((/** @type {any} */ s) => `${asset(`images/${s.file}`)} ${s.width}w`).join(', ')
+    : null;
+  return html`<img${attrs({
+    class: className || null,
+    src: asset(`images/${photo.file}`),
+    srcset,
+    sizes: srcset ? sizes : null,
+    alt: alt || photo.alt || '',
+    width: photo.width,
+    height: photo.height,
+    loading: priority ? 'eager' : loading,
+    fetchpriority: priority ? 'high' : null,
+    decoding: priority ? null : 'async',
+  })}>`;
+}
+
+/**
+ * Render an image reference from a data file: { photo, placeholder, alt }.
+ * @param {{ data: Record<string, any> }} ctx
+ * @param {{ photo?: string | null, placeholder?: any, alt?: string } | undefined} ref
+ * @param {{ className?: string, sizes?: string, priority?: boolean, fallback?: keyof typeof PLACEHOLDERS }} [o]
+ */
+export function imageRef(ctx, ref, { className, sizes, priority, fallback = 'landscape' } = {}) {
+  return media(ctx, { id: ref?.photo, placeholder: ref?.placeholder || fallback, alt: ref?.alt, className, sizes, priority });
 }
 
 /**

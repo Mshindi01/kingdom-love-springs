@@ -23,9 +23,14 @@ export function header(ctx, { variant, demo = false, demoHref = '#', idPrefix = 
   const { site, pages, page } = ctx;
   const v = variant || page.meta.header || 'solid';
 
+  const planned = new Set(site.plannedPages || []);
   /** @param {{ label: string, path: string, icon?: string }} item */
   const resolve = (item) =>
-    pages.has(item.path) ? { ...item, href: url(item.path), current: page.path === item.path } : demo ? { ...item, href: demoHref, current: false } : null;
+    demo && !pages.has(item.path)
+      ? { ...item, href: demoHref, current: false }
+      : pages.has(item.path) || planned.has(item.path)
+        ? { ...item, href: url(item.path), current: page.path === item.path }
+        : null;
   const main = (site.nav?.main || []).map(resolve).filter(Boolean);
   const secondary = (site.nav?.secondary || []).map(resolve).filter(Boolean);
   const cta = site.nav?.cta ? resolve(site.nav.cta) : null;

@@ -1,54 +1,132 @@
 {
-  "$note": "Home page sections: order, visibility and copy (CONTENT §3). Copy is completed in A3.",
-
-  "comingSoon": {
-    "badge": "New website coming soon",
-    "script": "from struggle to purpose",
-    "note": "We're building our new website. Soon you'll be able to read stories from the field, learn how sponsorship works, and find ways to walk alongside the children and youth we serve."
-  },
+  "$note": "Home page (CONTENT §3). Sections render in this order; set visible: false to hide one. Images: { photo: <id in photos.json> | null, placeholder: hero|landscape|square|portrait, alt }. Copy marked [CONFIRM] is never shown as-is.",
 
   "sections": [
     {
       "id": "hero",
       "visible": true,
-      "headline": "Every child deserves the chance to move from struggle to purpose.",
+      "layout": "split",
+      "$layoutNote": "split = headline left + float card right (CareNest). centered = centred headline (Genocide Edu).",
+      "lines": ["Every child deserves the chance", "to move from struggle to purpose."],
       "subline": "Education, football and mentorship for children and youth across Kenya, so they thrive in school, in life and in faith.",
       "script": "from struggle to purpose",
       "buttons": [
         { "label": "Sponsor a child", "path": "/sponsor/", "icon": "heart" },
-        { "label": "See our work", "path": "/education/" }
+        { "label": "See our work", "path": "/education/", "icon": "arrow-right", "variant": "outline" }
       ],
       "floatCard": {
+        "eyebrow": "Kingdom Love Springs",
+        "meta": "Sponsorship",
         "title": "Sponsor a child",
         "text": "Walk with one child from primary through secondary school.",
         "button": { "label": "Sponsor a child", "path": "/sponsor/" }
       },
-      "badges": ["35 children sponsored", "Nairobi · Western · Coast"]
+      "badges": ["35 children sponsored", "Nairobi · Western · Coast"],
+      "image": { "photo": null, "placeholder": "hero", "alt": "" }
     },
     {
       "id": "what-we-do",
       "visible": true,
-      "circles": ["Education", "Football", "Mentorship", "Families", "Faith"],
+      "eyebrow": "What we do",
+      "title": "Helping children and youth thrive in school, in life and in faith",
+      "circles": [
+        { "label": "Education", "script": "Education", "path": "/education/", "image": { "photo": null, "placeholder": "portrait" } },
+        { "label": "Football", "script": "Football", "path": "/sports/", "image": { "photo": null, "placeholder": "square" } },
+        { "label": "Mentorship", "script": "Mentorship", "path": "/mentorship/", "image": { "photo": null, "placeholder": "portrait" } },
+        { "label": "Families", "script": "Families", "path": "/mentorship/", "image": { "photo": null, "placeholder": "square" } },
+        { "label": "Faith", "script": "Faith", "path": "/about/", "image": { "photo": null, "placeholder": "portrait" } }
+      ],
+      "scrollHint": "Swipe to see more",
       "link": { "label": "Learn about our approach", "path": "/about/" }
     },
-    { "id": "impact-bento", "visible": true, "values": ["Walking alongside families", "The Gospel through sport and relationships"] },
-    { "id": "education", "visible": true },
-    { "id": "numbers-band", "visible": true, "stats": ["children", "per-gathering", "per-year", "regions"] },
-    { "id": "sports", "visible": true, "chip": "~200 at every tournament", "link": { "label": "See tournaments", "path": "/sports/" } },
+    {
+      "id": "impact-bento",
+      "visible": true,
+      "eyebrow": "Our impact",
+      "title": "Every number is a child or young person we walk alongside",
+      "values": [
+        { "icon": "heart-handshake", "title": "Walking alongside families", "text": "Our team regularly visits the children’s schools and meets them during school holidays, walking alongside their families." },
+        { "icon": "church", "title": "The Gospel through sport and relationships", "text": "Mentorship, hope and a personal encounter with the love of Jesus Christ." }
+      ],
+      "images": [
+        { "photo": null, "placeholder": "portrait", "alt": "" },
+        { "photo": null, "placeholder": "square", "alt": "" }
+      ]
+    },
+    {
+      "id": "education",
+      "visible": true,
+      "eyebrow": "Education & sponsorship",
+      "title": "From primary through secondary school",
+      "cta": { "label": "Sponsor a child", "path": "/sponsor/" },
+      "image": { "photo": null, "placeholder": "landscape", "alt": "" },
+      "stepsTitle": "How sponsorship works",
+      "steps": [
+        { "title": "We identify children in need", "text": "Children and youth from poor and vulnerable communities across Kenya." },
+        { "title": "School fees are paid", "text": "Quality education from primary through secondary school." },
+        { "title": "Mentors visit schools and meet in the holidays", "text": "To track progress, encourage them and walk alongside them." },
+        { "title": "Families walk with us", "text": "Active family involvement at every step." }
+      ]
+    },
+    {
+      "id": "numbers-band",
+      "visible": true,
+      "stats": ["children", "per-gathering", "per-year", "regions"]
+    },
+    {
+      "id": "sports",
+      "visible": true,
+      "eyebrow": "Sports ministry",
+      "title": "Football, friendship and the Gospel",
+      "chip": { "stat": "per-gathering", "text": "at every tournament" },
+      "link": { "label": "See tournaments", "path": "/sports/" },
+      "images": {
+        "main": { "photo": null, "placeholder": "portrait", "alt": "" },
+        "round": { "photo": null, "placeholder": "square", "alt": "" }
+      }
+    },
     {
       "id": "stories",
       "visible": true,
-      "intro": "Children who once faced the streets or an uncertain future are now completing secondary school."
+      "eyebrow": "Our stories",
+      "intro": "Children who once faced the streets or an uncertain future are now completing secondary school.",
+      "limit": 3,
+      "link": { "label": "Read all stories", "path": "/stories/" }
     },
-    { "id": "help", "visible": true, "cards": ["sponsor", "pray", "volunteer"] },
+    {
+      "id": "help",
+      "visible": true,
+      "eyebrow": "How you can help",
+      "title": "Walk alongside a child with us",
+      "cards": ["sponsor", "pray", "volunteer"],
+      "featured": "pray"
+    },
     {
       "id": "quote",
       "visible": true,
-      "reference": "Matthew 5:14–16",
-      "text": "[CONFIRM: verse text + Bible translation]",
+      "text": "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.",
+      "reference": "Matthew 5:16",
+      "translation": "KJV",
+      "$confirm": "[CONFIRM: verse + Bible translation preference]",
       "script": "light & salt"
     },
-    { "id": "map", "visible": true, "title": "Across Kenya", "script": "across Kenya" },
-    { "id": "newsletter", "visible": true, "title": "Get updates that make a difference" }
+    {
+      "id": "map",
+      "visible": true,
+      "title": "Across Kenya",
+      "script": "across Kenya",
+      "lead": "Football tournaments and clinics across Nairobi, Western Kenya and the Coast, reaching an estimated 500 to 600 children and youth each year."
+    },
+    {
+      "id": "newsletter",
+      "visible": true,
+      "eyebrow": "Stay in touch",
+      "title": "Get updates that make a difference",
+      "text": "Stories from the field, tournament news and ways to pray with us.",
+      "button": "Sign me up",
+      "note": "This opens your email app with a short message to Kingdom Love Springs. Nothing is stored on this website.",
+      "unavailable": "Sign-up opens soon.",
+      "image": { "photo": null, "placeholder": "landscape", "alt": "" }
+    }
   ]
 }

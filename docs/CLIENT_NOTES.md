@@ -4,6 +4,23 @@ Plain-language updates on the new website, newest first.
 
 ---
 
+## 10 November 2026: The home page
+
+**Today you can see** the full home page, top to bottom:
+1. A large welcome photo with your words, *"Every child deserves the chance to move from struggle to purpose"*, the handwritten line drawing across it, and a "Sponsor a child" card.
+2. **What we do:** Education, Football, Mentorship, Families and Faith circles that fill with a photo when you point at them (on phones you swipe through them).
+3. **Our impact:** your numbers (35 children, about 200 per gathering, 500–600 a year, 3 regions) next to photos and two short notes about families and the Gospel.
+4. **Education & sponsorship,** with a simple four-step "How sponsorship works".
+5. The big green band of numbers, the sports ministry section, "How you can help" (sponsor, pray, volunteer or partner), a Bible verse, the "Across Kenya" map, and a sign-up card for updates.
+
+**Please check**
+- **Bible verse:** we've used Matthew 5:16 in the King James Version as a placeholder. Which verse and translation would you like?
+- **Stories:** this section stays hidden until you share a real story (with consent). Then it appears automatically.
+- **Updates sign-up:** it will work once we have your email address. Until then it says "Sign-up opens soon."
+- The menu links (About, Education…) lead to pages we're building next.
+
+---
+
 ## 10 November 2026: The look and feel
 
 **Today you can see** a "styleguide" page: a showroom of every building block the website will use, before they're put together into real pages.

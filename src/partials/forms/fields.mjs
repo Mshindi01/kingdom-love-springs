@@ -10,7 +10,7 @@ import { icon } from '../icon.mjs';
 /**
  * @typedef {{ id: string, name?: string, label: string, hint?: string, error?: string,
  *   required?: boolean, disabled?: boolean, value?: string, placeholder?: string,
- *   autocomplete?: string }} BaseField
+ *   autocomplete?: string, errorMessage?: string }} BaseField
  */
 
 /** @param {BaseField} f */
@@ -35,6 +35,7 @@ const common = (f) => ({
   autocomplete: f.autocomplete,
   'aria-invalid': f.error ? 'true' : null,
   'aria-describedby': describedBy(f),
+  'data-error': f.errorMessage, // shown by ui/compose.js when the field is invalid
 });
 
 /** @param {BaseField & { type?: string, inputmode?: string }} f */

@@ -1,6 +1,42 @@
 # Progress
 
-## Current part: **Part A, phase A2 (Design system & motion)**: done, not deployed
+## Current part: **Part A, phase A3 (Home)**: done, not deployed
+
+### 2026-11-10: A3 Home page
+
+**Done**
+- `src/pages/index.page.mjs` renders the sections listed in `data/home.json` (order, `visible`,
+  copy, image refs `{ photo, placeholder, alt }`), one partial each in
+  `partials/sections/home-*.mjs`: hero (`layout: split | centered`, default split), what we do
+  (circles scroll-snap on mobile + "Swipe to see more" hint), impact bento (stats.json only),
+  education programme row + "How sponsorship works" (line draws on scroll), pill band, sports
+  collage, stories (hidden in production until a published, consented story exists; drafts show
+  in `npm run dev`), how you can help (middle card dark), quote band, map circle, newsletter card.
+- Header uses the transparent overlay variant on Home.
+- Newsletter: composes an email to KLS (`ui/compose.js`, mailto fallback without JS,
+  `TODO(part-c)`). **Disabled with "Sign-up opens soon." until `site.contact.email` is confirmed.**
+- `media()`/`imageRef()` support `srcset` + `sizes` from photos.json and `fetchpriority=high` for
+  the hero. OG image `assets/images/og-default.png` (1200×630, template `tools/og/og-template.html`).
+  JSON-LD `NGO` (name, description, url, areaServed Kenya, `sameAs` only from confirmed socials).
+- `site.json → plannedPages`: links to pages arriving in A4/A5 are allowed (check warns, never
+  fails) and the header/footer show the full navigation now. They 404 until built.
+- Build: `KLS_DIST=dist-check` builds/checks/serves into another folder (no race with `npm run dev`).
+- Motion start-up split into one task per module + no redundant `ScrollTrigger.refresh()`:
+  home TBT went from ~800 ms to ~75 ms.
+
+**Verified**
+- `build` + `check` clean (1 warning: planned pages). Type check clean.
+- 375 / 1280 screenshots of every section (768/1600 via the shared components in A2).
+- JS off and reduced motion: nothing hidden, script lines fully drawn, real numbers shown.
+- Lighthouse mobile (local, gzip): **Performance 94–95, Accessibility 100, Best practices 100**.
+  SEO is low only because the preview is intentionally `noindex`.
+- **Not yet:** hero photo ≤ 250 KB WebP (no consented photos yet; the `srcset` plumbing is ready).
+  Forms are visual-only for now (owner's instruction): no further form testing until A5.
+
+**Notes**
+- The quote band shows Matthew 5:16 (KJV) as a default; translation is still [CONFIRM] (#18).
+- A browser test of the newsletter form launched the local mail app (a draft to a fake address,
+  nothing sent). Future form tests must block `mailto:`/`wa.me` hand-offs first.
 
 ### 2026-11-10: A2 Design system & motion
 
@@ -108,8 +144,9 @@ two fonts were deleted; `--font-script` is set in `tokens.css`.
 - Header/footer only link to pages that exist, so there are no broken links while pages are built in stages.
 - The hex check exempts generated SVG image files (their colours come from `tokens.css` via the generator).
 
-### Next: A3 Home page
-- The full Home from CONTENT §3 using the A2 components, with the sponsor CTA throughout.
+### Next: A4 Inner pages
+- About, Education, Sports, Mentorship, Stories (+ story pages), Get involved, Contact,
+  Safeguarding, Privacy, 404. Remove entries from `plannedPages` as they land.
 
 ### Open questions
 - GitHub username + repo name (sets `site.url`; `basePath` assumed `/kingdom-love-springs`).
@@ -136,7 +173,7 @@ two fonts were deleted; `--font-script` is set in `tokens.css`.
 | 15 | Upcoming tournaments / clinics | `events.json` |
 | 16 | Prayer points | `involve.json → prayerPoints` |
 | 17 | Volunteer roles | `involve.json → volunteerRoles` |
-| 18 | Quote-band verse + Bible translation (Matthew 5:14–16?) | `home.json → quote` |
+| 18 | Quote-band verse + Bible translation (currently Matthew 5:16, KJV, as a default) | `home.json → quote` |
 | 19 | Statement of faith summary | About page (A4) |
 | 20 | Any reports / documents (annual report, newsletters) | Documents grid (A3/A4) |
 | 21 | Consented photos | `photos.json` (empty) |

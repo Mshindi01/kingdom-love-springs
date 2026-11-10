@@ -122,6 +122,9 @@ async function targetExists(file) {
 
 /** @type {Set<string>} photo files referenced by built pages */
 const usedPhotos = new Set();
+const PLANNED = new Set(site.plannedPages || []);
+/** @type {Set<string>} planned pages that are linked but not built yet */
+const plannedLinks = new Set();
 
 /** @param {string} file @param {string} ref @param {string} where */
 async function checkRef(file, ref, where) {
@@ -133,7 +136,10 @@ async function checkRef(file, ref, where) {
   }
   const target = r.file && (await targetExists(r.file));
   if (!target) {
-    errors.push(`${where}: broken link → ${ref}`);
+    // Pages scheduled for a later phase (site.json → plannedPages) only warn.
+    const plannedPath = r.file ? '/' + path.relative(DIST, r.file).split(path.sep).join('/').replace(/index\.html$/, '') : '';
+    if (PLANNED.has(plannedPath)) plannedLinks.add(plannedPath);
+    else errors.push(`${where}: broken link → ${ref}`);
     return;
   }
   const relToAssets = path.relative(path.join(DIST, 'assets/images'), target).split(path.sep).join('/');
@@ -316,6 +322,7 @@ for (const f of jpegs) {
 
 // ─── Report ─────────────────────────────────────────────────────────────────
 
+if (plannedLinks.size) warnings.push(`links to planned pages not built yet: ${[...plannedLinks].sort().join(' ')}`);
 for (const w of warnings) console.warn(`⚠ ${w}`);
 if (errors.length) {
   for (const e of errors) console.error(`✗ ${e}`);

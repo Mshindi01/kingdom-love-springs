@@ -20,6 +20,7 @@ const MODULES = /** @type {[string, () => Promise<any>][]} */ ([
   ['[data-pill-band]', () => import('./pill-band.js')],
   ['[data-quote-band]', () => import('./quote-band.js')],
   ['[data-map]', () => import('./map.js')],
+  ['[data-draw-line]', () => import('./line-draw.js')],
   ['[data-float]', () => import('./float.js')],
   ['[data-hero]', () => import('./hero.js')],
 ]);
@@ -28,35 +29,46 @@ const MODULES = /** @type {[string, () => Promise<any>][]} */ ([
  * @param {any} gsap
  * @param {any} ScrollTrigger
  */
+/** Give the browser a turn between chunks of work, so no single task blocks for long. */
+const yieldToMain = () =>
+  new Promise((resolve) => {
+    const s = /** @type {any} */ (globalThis).scheduler;
+    if (s?.yield) s.yield().then(resolve);
+    else setTimeout(resolve, 0);
+  });
+
 export async function initMotion(gsap, ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
+  // Don't re-measure everything when the mobile address bar shows/hides.
+  ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: true });
+
   const present = MODULES.filter(([selector]) => document.querySelector(selector));
   const inits = await Promise.all(present.map(([, load]) => load().then((m) => m.default)));
   await fontsReady();
   fitAllScriptLines();
 
+  const conditions = { osReduced: '(prefers-reduced-motion: reduce)', full: '(prefers-reduced-motion: no-preference)' };
   /** @type {any} */
   let mm;
-  const start = () => {
+  // One matchMedia, one add() per module, each in its own task (short tasks = low TBT).
+  // ScrollTrigger refreshes itself on window load, so no explicit refresh() is needed here.
+  const start = async () => {
     mm = gsap.matchMedia();
-    mm.add(
-      { osReduced: '(prefers-reduced-motion: reduce)', full: '(prefers-reduced-motion: no-preference)' },
-      (/** @type {any} */ context) => {
+    for (const init of inits) {
+      await yieldToMain();
+      mm.add(conditions, (/** @type {any} */ context) => {
         const reduced = Boolean(context.conditions.osReduced) || document.documentElement.classList.contains('reduce-motion');
-        /** @type {MotionContext} */
-        const ctx = { gsap, ScrollTrigger, reduced };
-        const cleanups = inits.map((init) => init(ctx));
-        return () => cleanups.forEach((fn) => typeof fn === 'function' && fn());
-      },
-    );
+        return init({ gsap, ScrollTrigger, reduced });
+      });
+    }
   };
 
-  start();
-  ScrollTrigger.refresh();
+  await start();
+  if (document.readyState === 'complete') ScrollTrigger.refresh();
 
-  document.addEventListener('kls:motionpref', () => {
+  document.addEventListener('kls:motionpref', async () => {
     mm?.revert();
-    start();
+    await start();
     ScrollTrigger.refresh();
   });
 }

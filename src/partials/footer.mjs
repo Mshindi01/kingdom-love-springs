@@ -13,8 +13,9 @@ import { button } from './ui.mjs';
 /** @param {import('../../tools/build.mjs').RenderContext} ctx */
 export function footer(ctx) {
   const { site, pages, buildYear } = ctx;
+  const planned = new Set(site.plannedPages || []);
   /** @param {{ path: string }} item */
-  const exists = (item) => pages.has(item.path);
+  const exists = (item) => pages.has(item.path) || planned.has(item.path);
   const links = [...(site.nav?.main || []), ...(site.nav?.secondary || [])].filter(exists);
   const legal = (site.nav?.legal || []).filter(exists);
   const cta = site.nav?.cta && exists(site.nav.cta) ? site.nav.cta : null;
