@@ -1,0 +1,20 @@
+{
+  "name": "kingdom-love-springs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kingdom Love Springs website: static build for GitHub Pages (Part A).",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "dev": "node tools/serve.mjs --watch",
+    "check": "node tools/check.mjs",
+    "icons": "node tools/build-icons.mjs",
+    "placeholders": "node tools/build-placeholders.mjs"
+  },
+  "devDependencies": {
+    "lucide-static": "^1.71.0"
+  }
+}

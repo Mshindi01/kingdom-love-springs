@@ -1,0 +1,64 @@
+name: Deploy to GitHub Pages
+
+# ⏸ Push-to-deploy is OFF for now (owner's request: don't deploy yet).
+# To turn it on, uncomment the `push` block below. Until then the workflow only runs
+# when started by hand: GitHub → Actions → "Deploy to GitHub Pages" → Run workflow.
+on:
+  # push:
+  #   branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Node (LTS)
+        uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+
+      # configure-pages runs first so the build gets the real Pages URL and base path
+      # (https://<user>.github.io/<repo> and /<repo>, or the custom domain and "").
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        run: node tools/build.mjs
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      - name: Check
+        run: node tools/check.mjs
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

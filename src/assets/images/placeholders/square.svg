@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img" aria-label="Placeholder: Square photo">
+  <rect width="800" height="800" fill="#F3EBDD"/>
+  <circle cx="400" cy="344" r="192" fill="#F2B544" fill-opacity="0.28"/>
+  <circle cx="400" cy="344" r="248" fill="none" stroke="#3E9A5F" stroke-opacity="0.55" stroke-width="2.4"/>
+  <g fill="none" stroke="#C8693F" stroke-width="4.8" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="351.6" cy="357.2" r="88"/>
+    <polygon points="351.6,323.8 383.4,346.9 371.3,384.3 331.9,384.3 319.8,346.9"/>
+    <path d="M351.6 323.8L351.6 269.2M383.4 346.9L435.3 330M371.3 384.3L403.3 428.4M331.9 384.3L299.9 428.4M319.8 346.9L267.9 330"/>
+  </g>
+  <g transform="translate(448.4 335.2) rotate(-38)" fill="none" stroke="#2B7548" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0C41.8 -53.5 125.4 -53.5 167.2 0C125.4 53.5 41.8 53.5 0 0Z"/>
+    <path d="M13.4 0L150.5 0"/>
+    <path d="M-30.1 10L0 0"/>
+  </g>
+  <text x="400" y="664" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="20.8" letter-spacing="2.4" fill="#5F6B63">PHOTO PLACEHOLDER</text>
+  <text x="400" y="704" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="27.2" font-weight="500" fill="#5F6B63">Square photo · 800×800</text>
+</svg>

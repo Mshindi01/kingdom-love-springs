@@ -1,0 +1,56 @@
+{
+  "$source": "Client text verbatim from docs/CONTENT.md §1 (typos fixed per CONTENT note).",
+  "programmes": [
+    {
+      "id": "education",
+      "title": "Education & Sponsorship",
+      "path": "/education/",
+      "icon": "graduation-cap",
+      "summary": "School fees and ongoing mentorship for 35 children, ages 7–17.",
+      "body": "We currently sponsor 35 children (ages 7–17) with school fees and ongoing mentorship. Our team regularly visits their schools and also meets them during school holidays to track their progress, encourage them, and walk alongside their families. Through this consistent support, children who once faced the streets or an uncertain future are now completing secondary school, improving academically, and in some cases advancing to college.",
+      "covers": ["School fees", "Ongoing mentorship", "[CONFIRM: uniforms / books?]"],
+      "steps": [
+        { "title": "We identify children in need", "icon": "users" },
+        { "title": "School fees are paid", "icon": "school" },
+        { "title": "Mentors visit schools and meet in the holidays", "icon": "calendar" },
+        { "title": "Families walk with us", "icon": "heart-handshake" }
+      ]
+    },
+    {
+      "id": "sports",
+      "title": "Sports Ministry",
+      "path": "/sports/",
+      "icon": "trophy",
+      "summary": "Football tournaments and clinics across Nairobi, Western Kenya and the Coast.",
+      "body": "Alongside education, we use sports, especially football, as a powerful tool to reach hundreds of children and youth each year. In tournaments and clinics held across Nairobi, Western Kenya, and Coast regions, young people play, build friendships, and hear life-transforming Christian teaching. These gatherings, attended by around 200 children and youth on average, at a time and reaching an estimated 500 to 600 annually, create space for mentorship, hope, and a personal encounter with the love of Jesus Christ.",
+      "atATournament": ["Play", "Friendships", "Christian teaching", "Mentorship"]
+    },
+    {
+      "id": "mentorship",
+      "title": "Mentorship & Families",
+      "path": "/mentorship/",
+      "icon": "hand-heart",
+      "summary": "Consistent mentorship, active family involvement and the Gospel shared through relationships.",
+      "body": "Our approach is intentionally wholesome: quality education from primary through secondary, active family involvement, consistent mentorship, and the Gospel shared through sports and relationships."
+    }
+  ],
+
+  "approach": {
+    "intro": "Our approach is intentionally wholesome:",
+    "pillars": [
+      { "id": "education", "title": "Quality education", "text": "From primary through secondary.", "icon": "book-open" },
+      { "id": "families", "title": "Active family involvement", "text": "Walking alongside families.", "icon": "users" },
+      { "id": "mentorship", "title": "Consistent mentorship", "text": "School visits and holiday meetups.", "icon": "hand-heart" },
+      { "id": "gospel", "title": "The Gospel", "text": "Shared through sports and relationships.", "icon": "church" }
+    ],
+    "belief": "We believe every child and youth deserves the chance to move from struggle to purpose, and to become light and salt in their generation."
+  },
+
+  "vision": "Kingdom Love Springs seeks to change and impact more destinies in this nation and beyond, and the current generation through education, sports and mentorship.",
+
+  "outcomes": [
+    "Completing secondary school",
+    "Improving academically",
+    "In some cases, advancing to college"
+  ]
+}

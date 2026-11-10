@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Placeholder: Hero photo">
+  <rect width="1600" height="1000" fill="#F3EBDD"/>
+  <circle cx="800" cy="430" r="240" fill="#F2B544" fill-opacity="0.28"/>
+  <circle cx="800" cy="430" r="310" fill="none" stroke="#3E9A5F" stroke-opacity="0.55" stroke-width="3"/>
+  <g fill="none" stroke="#C8693F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="739.5" cy="446.5" r="110"/>
+    <polygon points="739.5,404.7 779.3,433.6 764.1,480.3 714.9,480.3 699.7,433.6"/>
+    <path d="M739.5 404.7L739.5 336.5M779.3 433.6L844.1 412.5M764.1 480.3L804.2 535.5M714.9 480.3L674.8 535.5M699.7 433.6L634.9 412.5"/>
+  </g>
+  <g transform="translate(860.5 419) rotate(-38)" fill="none" stroke="#2B7548" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0C52.3 -66.9 156.8 -66.9 209 0C156.8 66.9 52.3 66.9 0 0Z"/>
+    <path d="M16.7 0L188.1 0"/>
+    <path d="M-37.6 12.5L0 0"/>
+  </g>
+  <text x="800" y="830" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" letter-spacing="3" fill="#5F6B63">PHOTO PLACEHOLDER</text>
+  <text x="800" y="880" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="500" fill="#5F6B63">Hero photo · 1600×1000</text>
+</svg>

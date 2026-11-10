@@ -1,0 +1,13 @@
+{
+  "$note": "Founder / team (adults). Names, roles, photos and bios [CONFIRM]. Photos must be in photos.json. draft: true members are not shown.",
+  "members": [
+    {
+      "id": "founder",
+      "draft": true,
+      "name": "[CONFIRM]",
+      "role": "Founder [CONFIRM]",
+      "bio": "[CONFIRM]",
+      "photo": null
+    }
+  ]
+}

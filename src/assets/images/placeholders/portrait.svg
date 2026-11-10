@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" role="img" aria-label="Placeholder: Portrait photo">
+  <rect width="900" height="1200" fill="#F3EBDD"/>
+  <circle cx="450" cy="537" r="216" fill="#F2B544" fill-opacity="0.28"/>
+  <circle cx="450" cy="537" r="279" fill="none" stroke="#3E9A5F" stroke-opacity="0.55" stroke-width="2.7"/>
+  <g fill="none" stroke="#C8693F" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="395.6" cy="551.9" r="99"/>
+    <polygon points="395.6,514.2 431.3,540.2 417.7,582.3 373.4,582.3 359.8,540.2"/>
+    <path d="M395.6 514.2L395.6 452.9M431.3 540.2L489.7 521.3M417.7 582.3L453.7 631.9M373.4 582.3L337.4 631.9M359.8 540.2L301.4 521.3"/>
+  </g>
+  <g transform="translate(504.5 527.1) rotate(-38)" fill="none" stroke="#2B7548" stroke-width="5.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0C47 -60.2 141.1 -60.2 188.1 0C141.1 60.2 47 60.2 0 0Z"/>
+    <path d="M15 0L169.3 0"/>
+    <path d="M-33.9 11.3L0 0"/>
+  </g>
+  <text x="450" y="897" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="23.4" letter-spacing="2.7" fill="#5F6B63">PHOTO PLACEHOLDER</text>
+  <text x="450" y="942" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30.6" font-weight="500" fill="#5F6B63">Portrait photo · 900×1200</text>
+</svg>

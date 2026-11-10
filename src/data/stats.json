@@ -1,0 +1,40 @@
+{
+  "$source": "docs/CONTENT.md §2. Only these numbers until the client adds more.",
+  "stats": [
+    {
+      "id": "children",
+      "value": 35,
+      "display": "35",
+      "label": "children sponsored",
+      "detail": "with school fees and ongoing mentorship"
+    },
+    {
+      "id": "ages",
+      "value": null,
+      "display": "7–17",
+      "label": "ages of the children we sponsor",
+      "detail": "from primary through secondary school"
+    },
+    {
+      "id": "per-gathering",
+      "value": 200,
+      "display": "~200",
+      "label": "children and youth at each gathering",
+      "detail": "on average, at our football tournaments and clinics"
+    },
+    {
+      "id": "per-year",
+      "value": 600,
+      "display": "500–600",
+      "label": "children and youth reached each year",
+      "detail": "an estimate, through sports ministry"
+    },
+    {
+      "id": "regions",
+      "value": 3,
+      "display": "3",
+      "label": "regions",
+      "detail": "Nairobi, Western Kenya and Coast"
+    }
+  ]
+}

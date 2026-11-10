@@ -1,0 +1,54 @@
+{
+  "$note": "Home page sections: order, visibility and copy (CONTENT §3). Copy is completed in A3.",
+
+  "comingSoon": {
+    "badge": "New website coming soon",
+    "script": "from struggle to purpose",
+    "note": "We're building our new website. Soon you'll be able to read stories from the field, learn how sponsorship works, and find ways to walk alongside the children and youth we serve."
+  },
+
+  "sections": [
+    {
+      "id": "hero",
+      "visible": true,
+      "headline": "Every child deserves the chance to move from struggle to purpose.",
+      "subline": "Education, football and mentorship for children and youth across Kenya, so they thrive in school, in life and in faith.",
+      "script": "from struggle to purpose",
+      "buttons": [
+        { "label": "Sponsor a child", "path": "/sponsor/", "icon": "heart" },
+        { "label": "See our work", "path": "/education/" }
+      ],
+      "floatCard": {
+        "title": "Sponsor a child",
+        "text": "Walk with one child from primary through secondary school.",
+        "button": { "label": "Sponsor a child", "path": "/sponsor/" }
+      },
+      "badges": ["35 children sponsored", "Nairobi · Western · Coast"]
+    },
+    {
+      "id": "what-we-do",
+      "visible": true,
+      "circles": ["Education", "Football", "Mentorship", "Families", "Faith"],
+      "link": { "label": "Learn about our approach", "path": "/about/" }
+    },
+    { "id": "impact-bento", "visible": true, "values": ["Walking alongside families", "The Gospel through sport and relationships"] },
+    { "id": "education", "visible": true },
+    { "id": "numbers-band", "visible": true, "stats": ["children", "per-gathering", "per-year", "regions"] },
+    { "id": "sports", "visible": true, "chip": "~200 at every tournament", "link": { "label": "See tournaments", "path": "/sports/" } },
+    {
+      "id": "stories",
+      "visible": true,
+      "intro": "Children who once faced the streets or an uncertain future are now completing secondary school."
+    },
+    { "id": "help", "visible": true, "cards": ["sponsor", "pray", "volunteer"] },
+    {
+      "id": "quote",
+      "visible": true,
+      "reference": "Matthew 5:14–16",
+      "text": "[CONFIRM: verse text + Bible translation]",
+      "script": "light & salt"
+    },
+    { "id": "map", "visible": true, "title": "Across Kenya", "script": "across Kenya" },
+    { "id": "newsletter", "visible": true, "title": "Get updates that make a difference" }
+  ]
+}

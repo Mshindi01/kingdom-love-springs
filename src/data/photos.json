@@ -1,0 +1,12 @@
+{
+  "$note": "Photo consent registry (SAFEGUARDING §3). Every image in src/assets/images/photos/ must be listed here with consent: true before any page may use it. tools/check.mjs enforces this.",
+  "$schema": {
+    "id": "short-kebab-id",
+    "file": "photos/<file>.jpg (relative to src/assets/images/)",
+    "alt": "Describe the scene; first names only, no school or exact location",
+    "consent": "true only when KLS holds guardian consent (and child assent where age-appropriate)",
+    "consentNote": "who gave consent, when, and where the record is kept (no personal data here)",
+    "childrenVisible": "true if any child is identifiable in the photo"
+  },
+  "photos": []
+}

@@ -1,0 +1,4 @@
+{
+  "$note": "Upcoming tournaments and clinics [CONFIRM with the client]. Shape: { id, title, date (YYYY-MM-DD), region (regions.json id), type: 'tournament' | 'clinic', summary }. Region only, never a school or exact venue for sponsored children.",
+  "events": []
+}

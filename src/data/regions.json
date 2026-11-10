@@ -1,0 +1,8 @@
+{
+  "$note": "Regions only, never exact locations of sponsored children (SAFEGUARDING §2). Map dot positions are illustrative (0–100 within the Kenya outline SVG), set in A3.",
+  "regions": [
+    { "id": "nairobi", "name": "Nairobi", "short": "Nairobi", "map": null },
+    { "id": "western", "name": "Western Kenya", "short": "Western", "map": null },
+    { "id": "coast", "name": "Coast", "short": "Coast", "map": null }
+  ]
+}

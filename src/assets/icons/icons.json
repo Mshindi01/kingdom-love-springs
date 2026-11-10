@@ -1,0 +1,11 @@
+{
+  "$note": "Icons in the sprite. Lucide names (lucide-static) unless a file exists in icons/brands/<name>.svg. Run `npm run icons` after editing.",
+  "icons": [
+    "heart", "heart-handshake", "hand-heart", "graduation-cap", "book-open", "school", "trophy",
+    "users", "user", "baby", "church", "map-pin", "calendar", "clock", "phone", "mail",
+    "message-circle", "send", "arrow-right", "arrow-up-right", "chevron-left", "chevron-right",
+    "chevron-down", "menu", "x", "check", "check-circle-2", "sparkles", "sun", "leaf", "globe",
+    "image", "play", "quote", "download", "file-text", "link", "share-2", "shield-check", "info",
+    "instagram", "facebook", "youtube"
+  ]
+}

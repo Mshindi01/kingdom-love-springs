@@ -1,0 +1,36 @@
+{
+  "$note": "Answers use only facts from CONTENT §2. Anything else is [CONFIRM]; items with draft: true are hidden.",
+  "faqs": [
+    {
+      "id": "who",
+      "topic": "sponsorship",
+      "question": "Who do you sponsor?",
+      "answer": "We currently sponsor 35 children, aged 7 to 17, from vulnerable communities across Kenya."
+    },
+    {
+      "id": "covers",
+      "topic": "sponsorship",
+      "question": "What does sponsorship cover?",
+      "answer": "School fees and ongoing mentorship. Our team regularly visits the children's schools and meets them during school holidays to track their progress, encourage them, and walk alongside their families."
+    },
+    {
+      "id": "cost",
+      "topic": "sponsorship",
+      "draft": true,
+      "question": "How much does it cost to sponsor a child?",
+      "answer": "[CONFIRM: cost per term / year, and whether to show it]"
+    },
+    {
+      "id": "start",
+      "topic": "sponsorship",
+      "question": "How do I start sponsoring a child?",
+      "answer": "Send us a sponsorship enquiry. A member of our team will get in touch with you personally to talk it through."
+    },
+    {
+      "id": "where",
+      "topic": "general",
+      "question": "Where do you work?",
+      "answer": "Our football tournaments and clinics are held across Nairobi, Western Kenya and the Coast."
+    }
+  ]
+}

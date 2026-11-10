@@ -1,0 +1,47 @@
+{
+  "$note": "Stories (CONTENT §4). Published only with guardian consent + child assent (SAFEGUARDING §4). First names only; no school names or exact locations; no surname/school fields (check.mjs). draft: true items are hidden in production builds.",
+  "stories": [
+    {
+      "slug": "placeholder-education-story",
+      "draft": true,
+      "consent": false,
+      "title": "Placeholder: an education story [CONFIRM real story]",
+      "date": "2026-11-10",
+      "author": "[CONFIRM]",
+      "programme": "education",
+      "excerpt": "This is a placeholder until Kingdom Love Springs shares a real story, with consent.",
+      "cover": { "placeholder": "landscape", "alt": "" },
+      "body": [
+        { "type": "paragraph", "text": "Placeholder text. A real story about a sponsored child's growth will go here, shared with guardian consent and the child's assent." }
+      ]
+    },
+    {
+      "slug": "placeholder-tournament-story",
+      "draft": true,
+      "consent": false,
+      "title": "Placeholder: a day at a football tournament [CONFIRM real story]",
+      "date": "2026-11-10",
+      "author": "[CONFIRM]",
+      "programme": "sports",
+      "excerpt": "This is a placeholder until Kingdom Love Springs shares a real story from a tournament.",
+      "cover": { "placeholder": "landscape", "alt": "" },
+      "body": [
+        { "type": "paragraph", "text": "Placeholder text. A real story from a tournament or clinic will go here." }
+      ]
+    },
+    {
+      "slug": "placeholder-family-story",
+      "draft": true,
+      "consent": false,
+      "title": "Placeholder: walking alongside a family [CONFIRM real story]",
+      "date": "2026-11-10",
+      "author": "[CONFIRM]",
+      "programme": "mentorship",
+      "excerpt": "This is a placeholder until Kingdom Love Springs shares a real story about mentorship and families.",
+      "cover": { "placeholder": "landscape", "alt": "" },
+      "body": [
+        { "type": "paragraph", "text": "Placeholder text. A real story about mentorship and family involvement will go here." }
+      ]
+    }
+  ]
+}

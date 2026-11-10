@@ -1,0 +1,36 @@
+{
+  "$note": "Ways to get involved (CONTENT §3.8 + §4). Forms compose WhatsApp/email messages in Part A (A5).",
+  "ways": [
+    {
+      "id": "sponsor",
+      "title": "Sponsor a child",
+      "icon": "heart",
+      "text": "Walk with one child from primary through secondary school, with school fees and ongoing mentorship.",
+      "cta": { "label": "Sponsor a child", "path": "/sponsor/" }
+    },
+    {
+      "id": "pray",
+      "title": "Pray with us",
+      "icon": "hand-heart",
+      "text": "Pray for the children and youth we serve, their families, and our tournaments and mentors.",
+      "cta": { "label": "Pray with us", "path": "/get-involved/#pray" }
+    },
+    {
+      "id": "volunteer",
+      "title": "Volunteer or partner",
+      "icon": "heart-handshake",
+      "text": "Help at tournaments, mentor young people, or partner with us as a church, school or business.",
+      "cta": { "label": "Get involved", "path": "/get-involved/#volunteer" }
+    },
+    {
+      "id": "tournament",
+      "title": "Support a tournament",
+      "icon": "trophy",
+      "text": "Help us bring football, friendship and the Gospel to around 200 children and youth at a time.",
+      "cta": { "label": "Support a tournament", "path": "/get-involved/#tournament" }
+    }
+  ],
+  "prayerPoints": ["[CONFIRM]"],
+  "volunteerRoles": ["[CONFIRM]"],
+  "partnerTypes": ["Churches", "Schools", "Businesses"]
+}

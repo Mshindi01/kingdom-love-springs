@@ -1,0 +1,4 @@
+<!-- Local outline brand mark in Lucide style (24 grid, stroked). Lucide does not ship brand icons. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M17 2.5h-2.75A4.75 4.75 0 0 0 9.5 7.25V10H7v4h2.5v7.5h4V14h2.75l.75-4h-3.5V7.5a1 1 0 0 1 1-1H17z" />
+</svg>

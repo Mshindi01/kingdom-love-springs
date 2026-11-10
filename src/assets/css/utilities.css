@@ -1,0 +1,27 @@
+/* Single-purpose helpers (highest layer). */
+
+@layer utilities {
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mt-0 {
+    margin-block-start: 0;
+  }
+
+  .visually-hidden-until-focus:not(:focus-visible) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}

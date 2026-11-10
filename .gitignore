@@ -1,0 +1,10 @@
+dist/
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Planning material (kept locally, not part of the website repo)
+kingdom-love-springs-plan/
+*.pdf
+*.docx

@@ -1,0 +1,57 @@
+{
+  "name": "Kingdom Love Springs",
+  "shortName": "KLS",
+  "tagline": "Helping children and youth thrive in school, in life and in faith",
+  "mission": "Kingdom Love Springs exists to give children and youth from poor and vulnerable communities across Kenya the opportunity to thrive in school, in life, and in faith.",
+  "language": "en",
+  "locale": "en_KE",
+
+  "url": "https://USERNAME.github.io/kingdom-love-springs",
+  "basePath": "/kingdom-love-springs",
+  "customDomain": "",
+  "$urlNote": "url = the full public address INCLUDING the base path. In CI, actions/configure-pages sets SITE_URL and BASE_PATH automatically. [CONFIRM GitHub username / repo name / domain]",
+
+  "seo": {
+    "indexing": false,
+    "$indexingNote": "false while the site is a client preview: robots.txt disallows all and pages carry noindex. Set true at launch (A5).",
+    "defaultOgImage": null
+  },
+
+  "contact": {
+    "email": "[CONFIRM]",
+    "phone": "[CONFIRM]",
+    "whatsapp": "[CONFIRM: international format, digits only, e.g. 2547XXXXXXXX]",
+    "location": "[CONFIRM: city / area]",
+    "safeguardingContact": "[CONFIRM: name or role + email]"
+  },
+
+  "organisation": {
+    "foundingYear": "[CONFIRM]",
+    "registration": "[CONFIRM: NGO / CBO / church ministry + number]"
+  },
+
+  "socials": [
+    { "name": "Instagram", "icon": "instagram", "url": "[CONFIRM]" },
+    { "name": "Facebook", "icon": "facebook", "url": "[CONFIRM]" },
+    { "name": "YouTube", "icon": "youtube", "url": "[CONFIRM]" }
+  ],
+
+  "nav": {
+    "main": [
+      { "label": "About", "path": "/about/" },
+      { "label": "Education", "path": "/education/" },
+      { "label": "Sports", "path": "/sports/" },
+      { "label": "Mentorship", "path": "/mentorship/" },
+      { "label": "Stories", "path": "/stories/" },
+      { "label": "Get involved", "path": "/get-involved/" }
+    ],
+    "secondary": [
+      { "label": "Contact", "path": "/contact/" }
+    ],
+    "cta": { "label": "Sponsor a child", "path": "/sponsor/", "icon": "heart" },
+    "legal": [
+      { "label": "Safeguarding", "path": "/safeguarding/" },
+      { "label": "Privacy", "path": "/privacy/" }
+    ]
+  }
+}
