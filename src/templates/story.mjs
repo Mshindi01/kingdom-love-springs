@@ -27,6 +27,7 @@ export function meta(story) {
     ogImage: null,
     noindex: Boolean(story.draft),
     motion: true,
+    article: { date: story.date, author: /\[CONFIRM/.test(story.author || '') ? null : story.author },
   };
 }
 

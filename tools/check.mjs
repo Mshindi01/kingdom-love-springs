@@ -56,6 +56,10 @@ const cssFiles = distFiles.filter((f) => f.endsWith('.css'));
 const idsByFile = new Map();
 /** @type {Map<string, string>} */
 const htmlSource = new Map();
+/** @type {Map<string, string[]>} */
+const seenTitles = new Map();
+/** @type {Map<string, string[]>} */
+const seenDescs = new Map();
 
 for (const file of htmlFiles) {
   const src = await readFile(file, 'utf8');
@@ -82,10 +86,26 @@ for (const file of htmlFiles) {
     if (!/\salt=("[^"]*"|'[^']*')/i.test(m[0])) errors.push(`${where}: <img> without alt → ${m[0].slice(0, 120)}`);
   }
 
+  // SEO: unique titles/descriptions (404 excluded), valid JSON-LD
+  if (!file.endsWith('404.html')) {
+    if (title) (seenTitles.get(title) || seenTitles.set(title, []).get(title)).push(where);
+    if (desc) (seenDescs.get(desc) || seenDescs.set(desc, []).get(desc)).push(where);
+  }
+  for (const m of src.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try {
+      JSON.parse(m[1]);
+    } catch {
+      errors.push(`${where}: invalid JSON-LD`);
+    }
+  }
+
   // Unconfirmed placeholders visible to visitors
   const visible = body.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, ' ');
   if (visible.includes('[CONFIRM')) warnings.push(`${where}: page shows "[CONFIRM" text`);
 }
+
+for (const [t, where] of seenTitles) if (where.length > 1) errors.push(`duplicate <title> "${t}" on ${where.join(', ')}`);
+for (const [d, where] of seenDescs) if (where.length > 1) errors.push(`duplicate meta description on ${where.join(', ')}`);
 
 /**
  * Resolve an internal URL to a dist file path. Returns null for external/ignored URLs.

@@ -4,6 +4,61 @@ Plain-language updates on the new website, newest first.
 
 ---
 
+## Welcome to your new website preview
+
+**Your preview link:** [link coming soon. We'll send it as soon as the preview is online]
+
+This is a working preview of the whole website. It isn't public yet, and search engines can't find it.
+Please click around on your phone and computer, and tell us what you think.
+
+### How to give feedback
+1. Open a page and find something you'd like changed.
+2. Take a **screenshot** (or a photo of the screen).
+3. Tell us **which page**, **what you see**, and **what you'd like instead**. You can use the
+   feedback table we've attached (FEEDBACK_TEMPLATE), or simply send a WhatsApp message with the screenshot.
+
+Small things (a word, a number, a photo) are quick to change. Bigger ideas are welcome too.
+
+### What's still a placeholder
+- **Photos:** the drawings of a football and leaf mark where your real photos will go.
+- **Forms:** the forms (sponsor a child, prayer, volunteer, partner, tournament, contact) are there
+  to show how they'll look. They'll start working once we have your WhatsApp number and email.
+- **Stories:** the Stories page shows "coming soon" until you share real stories.
+
+### Photos we need (please read)
+Because most of the people in your photos are children, we will only use a photo when you have
+**written consent from the child's parent or guardian**. We prefer **group photos** (tournaments,
+classrooms, mentors with youth, families). We never show children in distress, and we never name a
+child's school or village. Please send photos in the best quality you have, and tell us for each one
+that consent is recorded.
+
+### Logo & colours
+If you have a logo (ideally an SVG or a large PNG) and brand colours, please send them. The website
+will switch to them quickly. Until then we use warm greens and sunrise gold.
+
+### Questions for you
+See the full list below under "All the inside pages" (15 questions). One more for the sponsor page:
+
+16. **"What happens next" on the Sponsor page:** we've written four steps (we receive your message →
+    we call or meet you → we share how sponsorship works and agree together → you begin walking with a
+    child). Is this how you'd like it to work?
+
+---
+
+## 11 November 2026: The "Sponsor a child" page and final polish
+
+**Today you can see** the **Sponsor a child** page: on one side, what sponsorship means and what happens
+next; on the other, a simple four-step enquiry (about you, how you'd like to help, a note, review & send).
+It's there to show the design. It will send to your WhatsApp or email once we have them.
+
+**Behind the scenes**
+- Every page was checked for accessibility (people using keyboards, screen readers, or zoom): no problems found.
+- Every page loads quickly on a phone.
+- The website is ready to move to your own web address (domain) whenever you have one.
+- Each page now has a proper title and description for Google and for link previews on WhatsApp and Facebook.
+
+---
+
 ## 10 November 2026: All the inside pages
 
 **Today you can see** every page of the website (except the "Sponsor a child" enquiry, which comes next):

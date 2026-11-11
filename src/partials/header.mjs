@@ -49,7 +49,7 @@ export function header(ctx, { variant, demo = false, demoHref = '#', idPrefix = 
     <div class="container site-header__inner">
       ${brand}
       ${main.length
-        ? html`<nav class="site-nav" aria-label="${demo ? 'Main (example)' : 'Main'}">
+        ? html`<nav class="site-nav" aria-label="${demo ? `Main (${idPrefix} example)` : 'Main'}">
             <ul class="site-nav__list" role="list">${main.map((item) => html`<li>${link(item, 'site-nav__link')}</li>`)}</ul>
           </nav>`
         : html`<span class="site-nav"></span>`}
@@ -70,7 +70,7 @@ export function header(ctx, { variant, demo = false, demoHref = '#', idPrefix = 
             <span class="brand brand--menu"><span class="brand__mark">${icon('leaf')}</span><span class="brand__name">${site.name}</span></span>
             <button class="menu-toggle menu-toggle--close" type="button" data-menu-close>${icon('x')}<span class="sr-only">Close menu</span></button>
           </div>
-          <nav class="container site-menu__nav" aria-label="${demo ? 'Menu (example)' : 'Menu'}">
+          <nav class="container site-menu__nav" aria-label="${demo ? `Menu (${idPrefix} example)` : 'Menu'}">
             <ul class="site-menu__list" role="list">
               ${[...main, ...secondary].map((item) => html`<li>${link(item, 'site-menu__link')}</li>`)}
             </ul>

@@ -888,4 +888,213 @@
     stroke-dasharray: 2 10;
     stroke-width: 3;
   }
+
+  /* ── Sponsor a child ── */
+  .sponsor {
+    padding-block: var(--space-4) var(--section-pad);
+
+    & .breadcrumbs {
+      margin-block-end: clamp(2rem, 4vw, 3rem);
+    }
+  }
+
+  .sponsor__grid {
+    display: grid;
+    gap: var(--space-6);
+    align-items: start;
+
+    @media (width >= 56rem) {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(2.5rem, 5vw, 4.5rem);
+    }
+  }
+
+  .sponsor__aside {
+    display: grid;
+    gap: var(--space-4);
+
+    @media (width >= 56rem) {
+      position: sticky;
+      inset-block-start: calc(var(--header-height) + var(--space-3));
+    }
+  }
+
+  .sponsor__intro {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .sponsor__title {
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  }
+
+  .sponsor__photo {
+    position: relative;
+    aspect-ratio: 16 / 10;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-card);
+    }
+  }
+
+  .sponsor__script {
+    position: absolute;
+    inset-inline-start: 1.25rem;
+    inset-block-end: -1rem;
+    filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--forest-900) 45%, transparent));
+  }
+
+  .sponsor__info {
+    display: grid;
+    gap: var(--space-2);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--radius-card);
+  }
+
+  .sponsor__subtitle {
+    margin-block-start: var(--space-1);
+    font-size: 1.1875rem;
+  }
+
+  .sponsor__next {
+    display: grid;
+    gap: 0.75rem;
+
+    & li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  }
+
+  .sponsor__next-num {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: var(--border-width) solid var(--accent);
+    border-radius: var(--radius-circle);
+    color: var(--accent);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+  }
+
+  .sponsor__form {
+    display: grid;
+    gap: var(--space-3);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-float);
+  }
+
+  .sponsor__form-title {
+    font-size: clamp(1.625rem, 3vw, 2.125rem);
+  }
+
+  .sponsor-form {
+    gap: 0;
+
+    & .radio-cards {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr));
+    }
+
+    & .radio-card__label {
+      padding-inline-end: 1.25rem;
+    }
+
+    & .radio-card__check {
+      inset-inline-end: 0.75rem;
+      inset-block-start: 0.75rem;
+    }
+  }
+
+  /* The form card is narrow: only the current step keeps its visible label */
+  .sponsor__form .steps__item:not(.steps__item--current) .steps__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .sponsor__form .steps__label {
+    white-space: nowrap;
+  }
+
+  .sponsor-step {
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+    margin: 0;
+    padding: var(--space-5) 0 0;
+    border: 0;
+
+    & + .sponsor-step {
+      margin-block-start: var(--space-5);
+      border-block-start: var(--border-width) solid var(--line);
+    }
+  }
+
+  .sponsor-step__count {
+    color: var(--accent);
+    font-size: var(--text-eyebrow);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .sponsor-step__title {
+    margin-block-start: -0.75rem;
+    font-size: 1.375rem;
+  }
+
+  .sponsor-step__body {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .sponsor-review {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-float);
+  }
+
+  .sponsor-review__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: var(--weight-medium);
+
+    & .icon {
+      color: var(--accent);
+    }
+  }
+
+  .sponsor-actions .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  /* ── Review banner (Part B preview rounds; site.reviewBanner) ── */
+  .review-banner {
+    position: relative;
+    z-index: 60;
+    padding-block: 0.5rem;
+    background-color: var(--sun-400);
+    color: var(--ink-900);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    text-align: center;
+
+    & a {
+      color: var(--ink-900);
+      font-weight: var(--weight-semibold);
+    }
+  }
 }

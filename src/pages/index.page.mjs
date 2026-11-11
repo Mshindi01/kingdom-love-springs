@@ -5,8 +5,6 @@
  * Part B are data edits.
  */
 import { html } from '../lib/html.mjs';
-import { absoluteUrl } from '../lib/url.mjs';
-import { isUnconfirmed } from '../lib/format.mjs';
 import homeHero from '../partials/sections/home-hero.mjs';
 import homeWhatWeDo from '../partials/sections/home-what-we-do.mjs';
 import homeImpact from '../partials/sections/home-impact.mjs';
@@ -41,18 +39,7 @@ export const meta = {
   path: '/',
   motion: true,
   header: /** @type {const} */ ('overlay'),
-  /** @param {import('../../tools/build.mjs').RenderContext} ctx */
-  jsonLd: (ctx) => ({
-    '@context': 'https://schema.org',
-    '@type': 'NGO',
-    name: ctx.site.name,
-    description: ctx.site.mission,
-    url: absoluteUrl(ctx.site.url, '/'),
-    logo: absoluteUrl(ctx.site.url, '/assets/images/og-default.png'),
-    areaServed: { '@type': 'Country', name: 'Kenya' },
-    // [CONFIRM] social profiles: only confirmed URLs are listed
-    sameAs: (ctx.site.socials || []).map((/** @type {any} */ s) => s.url).filter((/** @type {string} */ u) => u && !isUnconfirmed(u)),
-  }),
+  // NGO structured data is added site-wide by partials/head.mjs
 };
 
 /** @param {import('../../tools/build.mjs').RenderContext} ctx */

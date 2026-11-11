@@ -1,16 +1,57 @@
 // @ts-check
 import { html, raw } from '../lib/html.mjs';
 import { url, asset, absoluteUrl } from '../lib/url.mjs';
+import { isUnconfirmed } from '../lib/format.mjs';
 
 /**
- * Structured data: page meta may set `jsonLd: (ctx) => object`. Rendered as data (not script
- * code); "<" is escaped so the JSON can't close the element.
+ * Structured data (one @graph): `NGO` on every page, `BreadcrumbList` on inner pages, `Article`
+ * when meta.article is set (story pages), plus anything from meta.jsonLd(ctx).
+ * Rendered as data, not script code; "<" is escaped so the JSON can't close the element.
  * @param {import('../../tools/build.mjs').RenderContext} ctx
  */
 function jsonLd(ctx) {
-  const fn = /** @type {any} */ (ctx.page.meta).jsonLd;
-  if (typeof fn !== 'function') return '';
-  const json = JSON.stringify(fn(ctx)).replace(/</g, '\\u003c');
+  const { site, page } = ctx;
+  if (page.isNotFound) return '';
+  const abs = (/** @type {string} */ p) => absoluteUrl(site.url, p);
+  /** @type {any[]} */
+  const graph = [
+    {
+      '@type': 'NGO',
+      '@id': abs('/#organization'),
+      name: site.name,
+      description: site.mission,
+      url: abs('/'),
+      logo: abs('/assets/images/og-default.png'),
+      areaServed: { '@type': 'Country', name: 'Kenya' },
+      // [CONFIRM] social profiles: only confirmed URLs are listed
+      sameAs: (site.socials || []).map((/** @type {any} */ s) => s.url).filter((/** @type {string} */ u) => u && !isUnconfirmed(u)),
+    },
+  ];
+  if (page.path !== '/') {
+    const crumbs = [{ name: 'Home', path: '/' }];
+    if (page.path.startsWith('/stories/') && page.path !== '/stories/') crumbs.push({ name: 'Stories', path: '/stories/' });
+    crumbs.push({ name: page.meta.title, path: page.path });
+    graph.push({
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.path) })),
+    });
+  }
+  const article = /** @type {any} */ (page.meta).article;
+  if (article) {
+    graph.push({
+      '@type': 'Article',
+      headline: page.meta.title,
+      description: page.meta.description,
+      datePublished: article.date,
+      author: { '@type': 'Organization', name: article.author || site.name },
+      publisher: { '@id': abs('/#organization') },
+      mainEntityOfPage: abs(page.path),
+      image: abs(page.meta.ogImage || site.seo?.defaultOgImage || '/assets/images/og-default.png'),
+    });
+  }
+  const extra = /** @type {any} */ (page.meta).jsonLd;
+  if (typeof extra === 'function') graph.push(extra(ctx));
+  const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
   return raw(`<script type="application/ld+json">${json}</script>`);
 }
 

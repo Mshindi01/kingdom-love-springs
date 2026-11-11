@@ -165,6 +165,46 @@
     ]
   },
 
+  "sponsor": {
+    "eyebrow": "Sponsor a child",
+    "title": "Walk with a child from struggle to purpose",
+    "script": "walk alongside",
+    "intro": "Sponsorship gives a child the chance to stay in school and thrive, with people walking alongside them and their family.",
+    "image": { "photo": null, "placeholder": "portrait", "alt": "" },
+    "meansTitle": "What sponsorship means",
+    "means": [
+      { "icon": "school", "text": "School fees, from primary through secondary school" },
+      { "icon": "hand-heart", "text": "Ongoing mentorship" },
+      { "icon": "calendar", "text": "School visits and holiday meetups" },
+      { "icon": "users", "text": "Walking alongside the child’s family" }
+    ],
+    "nextTitle": "What happens next",
+    "$nextConfirm": "[CONFIRM: these four steps with KLS]",
+    "next": [
+      "We receive your message",
+      "We call or meet you",
+      "We share how sponsorship works and agree together",
+      "You begin walking with a child"
+    ],
+    "formTitle": "Sponsorship enquiry",
+    "formIntro": "Tell us a little about yourself. A member of our team will get in touch with you personally. We never share children’s details online.",
+    "steps": ["About you", "How you’d like to help", "A note", "Review & send"],
+    "help": [
+      { "value": "Sponsor one child", "label": "Sponsor one child", "icon": "heart" },
+      { "value": "Sponsor more than one child", "label": "Sponsor more than one", "icon": "users" },
+      { "value": "Not sure yet, just learning", "label": "Not sure yet", "description": "I’d like to learn more first", "icon": "info" }
+    ],
+    "contactMethods": [
+      { "value": "WhatsApp", "label": "WhatsApp", "icon": "message-circle" },
+      { "value": "Phone call", "label": "Call", "icon": "phone" },
+      { "value": "Email", "label": "Email", "icon": "mail" }
+    ],
+    "heardOptions": ["A friend or family member", "Church", "Social media", "A tournament or event", "Other"],
+    "consent": "I agree that Kingdom Love Springs may contact me about sponsorship",
+    "sendNote": "Your message isn’t sent until you tap one of these.",
+    "unavailable": "Sending opens once our WhatsApp and email details are confirmed."
+  },
+
   "not-found": {
     "eyebrow": "404",
     "title": "Looks like this ball went out of play",

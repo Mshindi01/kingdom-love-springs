@@ -33,7 +33,8 @@ export const DIST = path.resolve(ROOT, process.env.KLS_DIST || 'dist');
 /**
  * @typedef {{ title: string, description: string, path?: string, ogImage?: string | null,
  *   motion?: boolean, draft?: boolean, noindex?: boolean, sitemap?: boolean,
- *   header?: 'overlay' | 'solid', jsonLd?: (ctx: any) => object }} PageMeta
+ *   header?: 'overlay' | 'solid', jsonLd?: (ctx: any) => object,
+ *   article?: { date: string, author?: string | null } }} PageMeta
  *
  * @typedef {{ id: string, path: string, meta: PageMeta, isNotFound: boolean, outFile: string }} PageInfo
  *

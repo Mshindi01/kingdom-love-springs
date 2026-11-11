@@ -17,7 +17,14 @@
     "defaultOgImage": "/assets/images/og-default.png"
   },
 
-  "plannedPages": ["/sponsor/"],
+  "plannedPages": [],
+
+  "reviewBanner": false,
+  "review": {
+    "$note": "Optional preview banner for client review rounds (Part B). Off for launch.",
+    "text": "Preview: share your feedback with Dennis",
+    "whatsapp": "[CONFIRM: Dennis's WhatsApp number for feedback]"
+  },
   "$plannedNote": "Pages arriving in A4/A5. Links to them are allowed (check.mjs warns instead of failing) and they appear in the header/footer. Remove an entry once its page exists, or leave it: built pages are always fine.",
 
   "contact": {

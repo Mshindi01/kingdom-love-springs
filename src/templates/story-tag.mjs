@@ -30,7 +30,7 @@ export function render(ctx, tag) {
     ${pageHero(ctx, { eyebrow: p.hero.eyebrow, title: `${tag.label} stories`, intro: p.hero.intro }, {
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Stories', href: '/stories/' }, { label: tag.label }],
     })}
-    <section class="section section--flush-top" aria-label="${tag.label} stories">
+    <section class="section section--flush-top" aria-label="${tag.label} story list">
       <div class="container stack stack--lg">
         ${tagChips(ctx, tag.id)}
         ${stories.length ? html`<div data-reveal>${storyRows(ctx, stories)}</div>` : emptyStories(ctx)}

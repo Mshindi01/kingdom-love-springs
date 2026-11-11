@@ -1,6 +1,50 @@
 # Progress
 
-## Current part: **Part A, phase A4 (Inner pages)**: done, not deployed
+## Current part: **Part A, phase A5**: done (forms visual-only), **not deployed**. ⏸ End of Part A.
+
+### 2026-11-11: A5 Sponsor flow (visual), polish, SEO, client kit
+
+**Owner's instruction for this phase:** forms are about looks only, with zero functionality and no
+form testing. Everything else was tested.
+
+**Done**
+- `/sponsor/`: sticky left panel (photo, what sponsorship means, "What happens next" [CONFIRM]) +
+  the enquiry form: one `<form>`, a `<fieldset>` per step (About you · How you'd like to help ·
+  A note · Review & send), "Step n of 4" headings, steps indicator, consent checkbox, "Send via
+  WhatsApp" / "Send via email" / "Copy message" (disabled until KLS details are confirmed). All
+  steps show on one page, which is also the no-JS fallback (`mailto:` action once the email exists).
+  Never asks about children. `plannedPages` is now empty.
+- **SEO:** structured data on every page as one `@graph`: `NGO` site-wide, `BreadcrumbList` on
+  inner pages, `Article` on story pages. `check.mjs` now fails on duplicate titles/descriptions
+  and invalid JSON-LD. Canonical/OG/sitemap/robots verified.
+- **Custom domain readiness:** tested in a scratch copy with `basePath: ""`, `url`
+  `https://www.example.org`, `customDomain` set: build + check clean, `CNAME` written, root-relative
+  assets, canonical/sitemap on the domain, 404 behaves.
+- **Review banner:** `site.reviewBanner` (off by default) shows "Preview: share your feedback with
+  Dennis" + a WhatsApp link once `site.review.whatsapp` is set.
+- Docs: `A11Y_REPORT.md`, `IMAGES_AND_PERFORMANCE.md` (Squoosh workflow, page-weight table),
+  `FEEDBACK_TEMPLATE.md`, CLIENT_NOTES welcome section.
+
+**Verified**
+- `build` + `check` clean, **0 warnings**. Type check clean.
+- **axe-core: 0 violations** on 14 pages × 375/1280 (fixed 5 moderate ones).
+- **Lighthouse mobile:** every page 94–100 performance (Home 91–96 across runs), **accessibility 100,
+  best practices 100** on all pages. Styleguide (internal) 70.
+- Sponsor page screenshots at 1280 and 375 (no form interaction).
+
+**Deferred (owner's call, or needs input)**
+- **Form behaviour:** step-by-step JS with focus management, the review summary, `sessionStorage`
+  drafts, `src/assets/js/forms/composer.js` and its `/tests/` page (encoding, emoji, line breaks,
+  WhatsApp ~2,000-char truncation). The existing `ui/compose.js` is a starting point. Test forms only
+  with `mailto:`/`wa.me` blocked in the browser.
+- **Deploy:** not done (owner's instruction). The Pages link isn't live yet; CLIENT_NOTES says "link
+  coming soon". To deploy: follow `DEPLOY_GITHUB_PAGES.md` and uncomment the push trigger.
+- **Screen-reader pass** (NVDA/TalkBack/VoiceOver), recommended before launch.
+- **Font subsetting:** needs a local font tool (not installed).
+
+**Tooling note:** Edge updated to 157 overnight; Playwright 1.49 and Lighthouse's chrome-launcher
+can't start it. Use Playwright ≥ 1.56 (ad hoc) and run Lighthouse via its Node API against a
+Playwright-launched Edge with `--remote-debugging-port`.
 
 ### 2026-11-10: A4 Inner pages
 
@@ -180,9 +224,10 @@ two fonts were deleted; `--font-script` is set in `tokens.css`.
 - Header/footer only link to pages that exist, so there are no broken links while pages are built in stages.
 - The hex check exempts generated SVG image files (their colours come from `tokens.css` via the generator).
 
-### Next: A5 Sponsor flow, polish & client kit
-- The multi-step `/sponsor/` enquiry (then remove it from `plannedPages`), then test all composer
-  forms **with mailto:/wa.me hand-offs blocked in the browser**, a11y/perf/SEO passes, client kit.
+### Next: Part B (client rounds)
+- Share the preview (after deploying), collect feedback with FEEDBACK_TEMPLATE.md, run
+  `prompts/part-b-client-rounds/feedback-round.md` per batch, `brand-swap.md` when the logo arrives.
+- Switch on form behaviour when the owner says so (see A5 "Deferred").
 
 ### Open questions
 - GitHub username + repo name (sets `site.url`; `basePath` assumed `/kingdom-love-springs`).
@@ -215,3 +260,6 @@ two fonts were deleted; `--font-script` is set in `tokens.css`.
 | 21 | Consented photos | `photos.json` (empty) |
 | 22 | Logo + brand colours | `tokens.css` (brand-swap) |
 | 23 | Full safeguarding policy (if any) | `/safeguarding/` (A4) |
+| 24 | Sponsor page "What happens next" steps | `pages.json → sponsor.next` |
+| 25 | Dennis's WhatsApp number for the review banner | `site.json → review.whatsapp` |
+| 26 | Volunteer role "Admin & media" | `involve.json → volunteerRoles` |

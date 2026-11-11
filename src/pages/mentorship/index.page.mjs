@@ -19,7 +19,8 @@ export function render(ctx) {
   return html`
     ${pageHero(ctx, p.hero)}
 
-    <section class="section" aria-label="How we walk alongside">
+    <section class="section" aria-labelledby="walk-title">
+      <h2 class="sr-only" id="walk-title">How we walk alongside</h2>
       <div class="container programme-rows">
         ${p.blocks.map(
           (/** @type {any} */ b, /** @type {number} */ i) => html`<div data-reveal>${programmeRow({
