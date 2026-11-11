@@ -6,7 +6,7 @@
   "language": "en",
   "locale": "en_KE",
 
-  "url": "https://USERNAME.github.io/kingdom-love-springs",
+  "url": "https://mshindi01.github.io/kingdom-love-springs",
   "basePath": "/kingdom-love-springs",
   "customDomain": "",
   "$urlNote": "url = the full public address INCLUDING the base path. In CI, actions/configure-pages sets SITE_URL and BASE_PATH automatically. [CONFIRM GitHub username / repo name / domain]",

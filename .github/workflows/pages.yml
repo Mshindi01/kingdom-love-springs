@@ -1,12 +1,11 @@
 name: Deploy to GitHub Pages
 
-# ⏸ Push-to-deploy is OFF for now (owner's request: don't deploy yet).
-# To turn it on, uncomment the `push` block below. Until then the workflow only runs
-# when started by hand: GitHub → Actions → "Deploy to GitHub Pages" → Run workflow.
+# ⏸ Push-to-deploy is on now.
 on:
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
+
 
 permissions:
   contents: read
