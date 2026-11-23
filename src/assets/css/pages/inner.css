@@ -138,7 +138,7 @@
     position: absolute;
     inset-inline-start: clamp(1rem, 5vw, 3.5rem);
     inset-block-end: clamp(-1.5rem, -2vw, -0.5rem);
-    filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--forest-900) 45%, transparent));
+    filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--navy-900) 45%, transparent));
   }
 
   .page-hero__script--inline {
@@ -425,7 +425,7 @@
 
   .region-card__icon {
     margin-block-end: var(--space-2);
-    color: var(--clay-500);
+    color: var(--scarlet-500);
   }
 
   .region-card__title {
@@ -749,7 +749,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--leaf-600);
+    color: var(--blue-600);
     font-size: 1.25rem;
     font-weight: var(--weight-medium);
   }
@@ -874,12 +874,12 @@
   }
 
   .not-found__ball {
-    stroke: var(--clay-500);
+    stroke: var(--scarlet-500);
     stroke-width: 3;
   }
 
   .not-found__line {
-    stroke: var(--leaf-500);
+    stroke: var(--violet-500);
     stroke-width: 2;
   }
 
@@ -944,7 +944,7 @@
     position: absolute;
     inset-inline-start: 1.25rem;
     inset-block-end: -1rem;
-    filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--forest-900) 45%, transparent));
+    filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--navy-900) 45%, transparent));
   }
 
   .sponsor__info {

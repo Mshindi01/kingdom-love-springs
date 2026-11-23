@@ -1,4 +1,4 @@
-/* Footer: forest-900, rounded top. */
+/* Footer: navy-900, rounded top. */
 
 @layer components {
   .site-footer {
@@ -23,6 +23,47 @@
     gap: var(--space-3);
     justify-items: start;
     align-content: start;
+  }
+
+  /* Full logo on a cream medallion (its lettering is black, so it never sits on navy directly) */
+  .site-footer__logo {
+    display: block;
+    margin: 6px; /* room for the medallion's halo so it lines up with the column edge */
+    border-radius: var(--radius-circle);
+    transition: transform var(--dur-hover) var(--ease-out);
+
+    &:hover {
+      transform: rotate(-3deg);
+    }
+
+    &:focus-visible {
+      outline: var(--focus-width) solid var(--focus-color);
+      outline-offset: var(--focus-offset);
+    }
+  }
+
+  .brand-logo {
+    display: block;
+    width: clamp(9.5rem, 22vw, 12rem);
+    aspect-ratio: 1;
+    padding: 0.25rem;
+    border-radius: var(--radius-circle);
+    background-color: var(--cream-50);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--butter-200) 22%, transparent);
+
+    & img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      /* the PNG has generous empty margins; scale up slightly so the artwork fills the disc */
+      transform: scale(1.16);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer__logo:hover {
+      transform: none;
+    }
   }
 
   .site-footer__mission {

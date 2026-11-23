@@ -53,7 +53,7 @@ export function render(ctx) {
       </div>
     </section>
 
-    <section class="home-band" data-surface="mint" aria-labelledby="how-title">
+    <section class="home-band" data-surface="lavender" aria-labelledby="how-title">
       <div class="container">
         ${stepsStrip({ title: 'How sponsorship works', steps, headingLevel: 2, id: 'how-title' })}
       </div>

@@ -5,7 +5,7 @@
  *    fixed, solid white/blur bar with dark text after scrolling. Without JS it simply scrolls away.
  *  - variant 'solid' (default): sticky cream/blur bar with dark text.
  * Left: logo. Centre-left: links. Right: secondary links | divider | "Sponsor a child".
- * Mobile: a full-screen menu on forest-900 (ui/menu.js: focus trap, Esc, scroll lock).
+ * Mobile: a full-screen menu on navy-900 (ui/menu.js: focus trap, Esc, scroll lock).
  * Without JS the menu button is hidden and the links wrap under the logo.
  *
  * Only links to pages that exist are rendered (no broken links while Part A is built in
@@ -14,6 +14,7 @@
 import { html, attrs } from '../lib/html.mjs';
 import { url } from '../lib/url.mjs';
 import { icon } from './icon.mjs';
+import { brandMark } from './brand.mjs';
 
 /**
  * @param {import('../../tools/build.mjs').RenderContext} ctx
@@ -39,7 +40,7 @@ export function header(ctx, { variant, demo = false, demoHref = '#', idPrefix = 
   /** @param {any} item @param {string} cls */
   const link = (item, cls) => html`<a${attrs({ class: cls, href: item.href, 'aria-current': item.current ? 'page' : null })}>${item.label}</a>`;
   const brand = html`<a class="brand" href="${url('/')}"${attrs({ 'aria-current': !demo && page.path === '/' ? 'page' : null })}>
-      <span class="brand__mark">${icon('leaf')}</span><span class="brand__name">${site.name}</span>
+      ${brandMark()}<span class="brand__name">${site.name}</span>
     </a>`;
   const ctaButton = cta
     ? html`<a class="btn btn--primary btn--sm site-header__cta" href="${cta.href}">${icon(cta.icon || 'heart')}<span class="btn__label">${cta.label}</span></a>`
@@ -65,9 +66,9 @@ export function header(ctx, { variant, demo = false, demoHref = '#', idPrefix = 
       </div>
     </div>
     ${main.length || secondary.length
-      ? html`<div class="site-menu" id="${menuId}" data-surface="forest" role="dialog" aria-modal="true" aria-label="Menu" hidden data-menu>
+      ? html`<div class="site-menu" id="${menuId}" data-surface="navy" role="dialog" aria-modal="true" aria-label="Menu" hidden data-menu>
           <div class="container site-menu__top">
-            <span class="brand brand--menu"><span class="brand__mark">${icon('leaf')}</span><span class="brand__name">${site.name}</span></span>
+            <span class="brand brand--menu">${brandMark()}<span class="brand__name">${site.name}</span></span>
             <button class="menu-toggle menu-toggle--close" type="button" data-menu-close>${icon('x')}<span class="sr-only">Close menu</span></button>
           </div>
           <nav class="container site-menu__nav" aria-label="${demo ? `Menu (${idPrefix} example)` : 'Menu'}">

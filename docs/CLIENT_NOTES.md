@@ -4,6 +4,36 @@ Plain-language updates on the new website, newest first.
 
 ---
 
+## Your logo is in (23 November 2026)
+
+Thank you for the logo. Here's where it now appears:
+
+- **Top of every page:** the waterfall circle from your logo, with the name "Kingdom Love Springs" beside it. At this small size the curved lettering and the dove would be too tiny to read, so we use just the circle there. This is how most organisations handle detailed logos.
+- **Bottom of every page:** your **full logo**, with the dove and vine, on a soft cream circle so the black lettering stands out against the dark blue.
+- **Browser tab and phone home screen:** the waterfall circle is now the little icon.
+- **When someone shares a link** (WhatsApp, Facebook and so on): the preview picture now shows your full logo.
+
+**One request:** the logo file we have is fairly small (500 × 500 pixels). If your designer has a **larger version** (2000 pixels or more), or the original design file (Canva, SVG, AI or PDF), please send it. It will look sharper on large screens and in print.
+
+---
+
+## Your brand colours are in (23 November 2026)
+
+The whole site now uses your four colours: **scarlet, blue, purple and light yellow**. The greens are gone.
+
+Four strong colours can easily look busy, so each one has a meaning and a job:
+
+- **Blue, for the spring:** a deep navy is the main colour (the dark bands, the footer and the menu). Brighter blue is used for links.
+- **Purple, for the Kingdom:** royal purple for the map of Kenya and when you hover over dark areas, and a very soft lavender behind some sections.
+- **Scarlet, for love:** saved for the most important button, **Sponsor a child**, and the handwritten lines on light backgrounds. Because scarlet only appears where we ask people to act, the eye goes straight to it.
+- **Light yellow, for light and hope:** the handwritten words and big numbers on the dark blue bands.
+
+The background stays a warm off-white, so your photos stay the star. All text still meets accessibility standards for easy reading.
+
+**Please look at:** the home page, the Sponsor page and the footer. If you'd like any colour stronger, softer, or used more or less, just tell us. Small adjustments are quick.
+
+---
+
 ## Welcome to your new website preview
 
 **Your preview link:** [link coming soon. We'll send it as soon as the preview is online]
@@ -33,8 +63,7 @@ child's school or village. Please send photos in the best quality you have, and 
 that consent is recorded.
 
 ### Logo & colours
-If you have a logo (ideally an SVG or a large PNG) and brand colours, please send them. The website
-will switch to them quickly. Until then we use warm greens and sunrise gold.
+Your logo and brand colours are now in (see the updates above).
 
 ### Questions for you
 See the full list below under "All the inside pages" (15 questions). One more for the sponsor page:

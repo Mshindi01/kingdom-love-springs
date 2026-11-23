@@ -39,7 +39,7 @@ export function render(ctx) {
         </div>
         <div class="stat-pair" data-reveal>
           ${['per-gathering', 'per-year'].map(
-            (id) => html`<div class="big-stat" data-surface="${id === 'per-year' ? 'forest' : 'sand'}">
+            (id) => html`<div class="big-stat" data-surface="${id === 'per-year' ? 'navy' : 'sand'}">
               <p class="big-stat__value">${stat(id).display}</p>
               <p class="big-stat__label">${stat(id).label}</p>
               <p class="big-stat__detail">${stat(id).detail}</p>
@@ -49,7 +49,7 @@ export function render(ctx) {
       </div>
     </section>
 
-    <section class="home-band" data-surface="mint" aria-labelledby="gathering-title">
+    <section class="home-band" data-surface="lavender" aria-labelledby="gathering-title">
       <div class="container">${stepsStrip({ title: p.gatheringTitle, steps: p.gatheringSteps, headingLevel: 2, id: 'gathering-title' })}</div>
     </section>
 

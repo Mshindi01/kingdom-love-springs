@@ -33,7 +33,7 @@ export function render(ctx) {
     <section class="section section--flush-top" aria-label="Contact us">
       <div class="container contact">
         <div class="contact__details stack" data-reveal>
-          <div class="contact__card" data-surface="forest">
+          <div class="contact__card" data-surface="navy">
             <h2 class="contact__title">${p.detailsTitle}</h2>
             ${details.length ? html`<ul class="contact__list" role="list">${details}</ul>` : html`<p class="text-muted">${p.detailsPending}</p>`}
             ${whatsapp ? button({ label: 'Message us on WhatsApp', href: `https://wa.me/${whatsapp}`, iconStart: 'message-circle', variant: 'soft' }) : ''}

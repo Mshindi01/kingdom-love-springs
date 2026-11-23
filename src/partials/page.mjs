@@ -71,13 +71,13 @@ export function helpStrip(ctx, { exclude = [] } = {}) {
 export function ctaBand({ title, text, button: label, path, icon: ic = 'heart', id = 'cta-title', script }) {
   return html`<section class="cta-band-wrap" aria-labelledby="${id}">
     <div class="container">
-      <div class="cta-band" data-surface="forest" data-reveal>
+      <div class="cta-band" data-surface="navy" data-reveal>
         <div class="cta-band__text">
           <h2 class="cta-band__title" id="${id}">${title}</h2>
           ${text ? html`<p class="cta-band__lead">${text}</p>` : ''}
         </div>
         ${button({ label, href: path, iconStart: ic, variant: 'soft', size: 'lg' })}
-        ${script ? html`<div class="cta-band__script">${scriptLine({ text: script, swoosh: 'loop', size: 'md', color: 'sage' })}</div>` : ''}
+        ${script ? html`<div class="cta-band__script">${scriptLine({ text: script, swoosh: 'loop', size: 'md', color: 'butter' })}</div>` : ''}
       </div>
     </div>
   </section>`;

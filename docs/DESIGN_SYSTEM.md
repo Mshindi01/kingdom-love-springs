@@ -37,31 +37,50 @@
 
 ---
 
-## 2. Colour: green, warm, hopeful Kenya
+## 2. Colour: KLS brand (scarlet, blue, purple, light yellow)
 
-(Placeholder brand until the KLS logo/colours arrive. The swap happens in `tokens.css` only.)
+Client brand colours (Part B, round 1, 2026-11-23). These replace the green placeholder palette.
+Each colour has a meaning and a job:
+
+- **Blue = the spring.** Deep navy carries the page: dark bands, footer, menu. Royal blue for links and focus.
+- **Purple = the Kingdom.** Royal purple is the secondary dark (hover on dark, the Kenya map), with a soft lavender tint for light sections.
+- **Scarlet = love.** Kept for the one thing we ask: the **Sponsor a child** button and other primary actions, plus decorative handwriting on light backgrounds.
+- **Light yellow = light and hope.** Handwriting and numbers on dark, the soft button. A deeper sunflower yellow is used for small highlights on photos.
 
 | Token | Hex | Role |
 |---|---|---|
-| `--forest-900` | `#12352A` | Deep green: pill band, quote band, footer, dark cards (Genocide Edu's navy/ink role) |
-| `--forest-700` | `#1F5A43` | Hover on dark, secondary dark surfaces |
-| `--leaf-600` | `#2B7548` | **Primary action** (buttons with white text 5.6:1, green text on cream 5.3:1) |
-| `--leaf-500` | `#3E9A5F` | Decorative green, icons, illustrations (not small text) |
-| `--sage-300` | `#B7D3A0` | Handwriting on dark (8.2:1 on forest-900), soft fills, highlights |
-| `--mint-50` | `#EEF6EF` | Light section background (the "reports" mint) |
-| `--sun-400` | `#F2B544` | Sunrise gold: highlights, badges, the script accent on photos, CTA hover glow |
-| `--sun-700` | `#85590A` | Gold as text on cream (5.7:1) |
-| `--clay-500` | `#C8693F` | Kenyan red soil: decorative accents, illustration, chips with dark text |
-| `--clay-700` | `#9C4A26` | Clay as text (5.7:1) |
-| `--cream-50` | `#FBF7EF` | Page background (warm, not white) |
-| `--sand-100` | `#F3EBDD` | Soft cards (Genocide Edu's grey cards, warmed) |
+| `--navy-900` | `#17224F` | Deep "spring" blue: pill band, quote band, footer, dark cards |
+| `--plum-700` | `#4B2A7E` | Royal purple: hover on dark, secondary dark surfaces (white 10.9:1) |
+| `--blue-600` | `#2A4AB0` | Royal blue: links, focus ring, form selection (7.4:1 on cream; white 7.8:1) |
+| `--violet-500` | `#8A63D2` | Soft purple: decorative icons, illustration (not small text) |
+| `--butter-200` | `#FCE7A2` | Light yellow: handwriting on dark (12.4:1 on navy), soft button |
+| `--lavender-50` | `#F3F0FA` | Light purple-tinted section background |
+| `--sun-400` | `#F6C744` | Sunflower yellow: badges, script accent on photos, button hover glow |
+| `--sun-700` | `#7D5E00` | Yellow as text on cream (5.8:1) |
+| `--scarlet-500` | `#E0344B` | Scarlet: decorative handwriting on light (large display only, 4.2:1) |
+| `--scarlet-600` | `#C8102E` | Scarlet: **primary action** (white text 5.9:1) |
+| `--scarlet-700` | `#9E1A2E` | Scarlet as text, errors, primary hover (7.6:1 on cream) |
+| `--cream-50` | `#FCF9F2` | Page background (warm, not white) |
+| `--sand-100` | `#F5EEDF` | Soft cards |
 | `--white` | `#FFFFFF` | Floating cards, form fields |
-| `--ink-900` | `#1E2420` | Body/headings on light (14.8:1) |
-| `--ink-500` | `#5F6B63` | Muted body (5.2:1 on cream) |
+| `--ink-900` | `#1B1F33` | Body/headings on light (15.5:1) |
+| `--ink-500` | `#5C6178` | Muted body (5.8:1 on cream) |
 
-**Rules:** white text only on forest-900/700 and leaf-600. Never white on sun/clay/leaf-500. Gold/clay are accents, not large fills (except small chips with ink text).
+**Rules:** blue carries the page. Scarlet appears only where we ask for action. Purple and yellow are accents. Never put two saturated brand colours side by side as large fills (e.g. no scarlet block on purple). White text only on navy, plum, blue-600 and scarlet-600/700. Never white on yellow or violet-500.
 
-**Surfaces:** `data-surface="cream|sand|mint|white|forest|photo"` remaps `--bg`, `--fg`, `--muted`, `--accent`, `--line`.
+**Surfaces:** `data-surface="cream|sand|lavender|white|navy|photo"` remaps `--bg`, `--fg`, `--muted`, `--accent`, `--line`.
+
+### Logo (client, 2026-11-23)
+
+The logo is a circular waterfall photo with "KINGDOM LOVE SPRINGS" arched in black serif capitals, a dove and a green vine. Files are in `src/assets/images/brand/` and the partial is `src/partials/brand.mjs`.
+
+| Use | File | Where |
+|---|---|---|
+| **Full logo** | `kls-logo.png` (client original, 500px, transparent) | Footer, on a cream medallion; schema.org `logo`; OG image |
+| **Mark** (waterfall circle only) | `kls-mark.png` (96px, circle-cropped) | Header, mobile menu, hero float card. The site name is set beside it in General Sans |
+| Favicons | `favicon-32.png`, `favicon-48.png`, `apple-touch-icon.png` | `<head>` |
+
+**Rules:** the full logo always sits on a light background, because its lettering is black. On navy, use the cream medallion. Don't use the full logo below about 150px, because the arched name becomes unreadable; use the mark plus the text name instead. Never recolour, stretch or crop the full logo. The mark gets a 2px white ring (light-yellow ring on navy and over photos).
 
 ---
 

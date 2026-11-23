@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * Closing "across Kenya" map circle: a forest-900 circle with a simplified Kenya outline
+ * Closing "across Kenya" map circle: a navy-900 circle with a simplified Kenya outline
  * and glowing dots at Nairobi, Western Kenya and the Coast (regions only, never exact
  * locations of children).
  *
@@ -44,7 +44,7 @@ export function mapCircle({ regions, title = 'Across Kenya', script = 'across Ke
   const label = `Map of Kenya showing where we serve: ${regions.map((r) => r.name).join(', ')}`;
 
   return html`<div class="map-circle" data-map>
-    <div class="map-circle__disc" data-surface="forest">
+    <div class="map-circle__disc" data-surface="navy">
       <svg class="map-circle__map" viewBox="${KENYA_VIEWBOX}" role="img" aria-label="${label}" focusable="false">
         <path class="map-circle__kenya" d="${KENYA_PATH}" pathLength="1000"></path>
         ${dots.map(
@@ -55,7 +55,7 @@ export function mapCircle({ regions, title = 'Across Kenya', script = 'across Ke
           </g>`,
         )}
       </svg>
-      <div class="map-circle__script">${scriptLine({ text: script, swoosh: 'rise', size: 'lg', color: 'sage' })}</div>
+      <div class="map-circle__script">${scriptLine({ text: script, swoosh: 'rise', size: 'lg', color: 'butter' })}</div>
     </div>
     <div class="map-circle__text">
       <h2 class="map-circle__title" id="${id}">${title}</h2>

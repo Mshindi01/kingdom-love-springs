@@ -25,7 +25,7 @@
   .pill-band__num {
     display: grid;
     justify-items: center;
-    color: var(--sage-300);
+    color: var(--butter-200);
     font-size: clamp(2.5rem, 7vw, 6rem);
     line-height: 1;
 
@@ -76,7 +76,7 @@
   }
 
   .quote-band__mark {
-    color: var(--sage-300);
+    color: var(--butter-200);
 
     & .icon {
       width: 3rem;
@@ -108,8 +108,8 @@
     width: 3rem;
     height: 3rem;
     border-radius: var(--radius-circle);
-    background-color: var(--forest-700);
-    color: var(--sage-300);
+    background-color: var(--plum-700);
+    color: var(--butter-200);
   }
 
   .quote-band__script {

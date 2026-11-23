@@ -6,30 +6,35 @@
 
 @layer base {
   :root {
-    /* ── 2. Colour: green, warm, hopeful Kenya (placeholder brand) ─────────── */
-    --forest-900: #12352A; /* pill band, quote band, footer, dark cards */
-    --forest-700: #1F5A43; /* hover on dark, secondary dark surfaces */
-    --leaf-600: #2B7548;   /* primary action; white text 5.6:1, on cream 5.3:1 */
-    --leaf-500: #3E9A5F;   /* decorative green, icons, illustration (not small text) */
-    --sage-300: #B7D3A0;   /* handwriting on dark (8.2:1 on forest-900), soft fills */
-    --mint-50: #EEF6EF;    /* light "reports" section */
-    --sun-400: #F2B544;    /* sunrise gold: highlights, badges, script accent on photos */
-    --sun-700: #85590A;    /* gold as text on cream (5.7:1) */
-    --clay-500: #C8693F;   /* Kenyan red soil: decorative accents, chips with dark text */
-    --clay-700: #9C4A26;   /* clay as text (5.7:1) */
-    --cream-50: #FBF7EF;   /* page background */
-    --sand-100: #F3EBDD;   /* soft cards */
-    --white: #FFFFFF;      /* floating cards, form fields */
-    --ink-900: #1E2420;    /* body/headings on light (14.8:1) */
-    --ink-500: #5F6B63;    /* muted body (5.2:1 on cream) */
-    --black: #000000;      /* only for shadows/overlays via color-mix */
+    /* ── 2. Colour: KLS brand (client, Round 1): blue, purple, scarlet, light yellow ──
+     *  Blue = the spring (deep, calm anchor)   Purple = the Kingdom (royal, secondary dark)
+     *  Scarlet = love (the one call to action)  Light yellow = light & hope (handwriting on dark)
+     *  Rule of thumb: blue carries the page, scarlet only where we ask for action,
+     *  purple and yellow as accents. Never two saturated brand colours side by side as fills. */
+    --navy-900: #17224F;     /* deep "spring" blue: pill band, quote band, footer, dark cards */
+    --plum-700: #4B2A7E;     /* royal purple: hover on dark, secondary dark surfaces (white 10.9:1) */
+    --blue-600: #2A4AB0;     /* royal blue: links, focus, form selection (7.4:1 on cream, white 7.8:1) */
+    --violet-500: #8A63D2;   /* soft purple: decorative icons, illustration (not small text) */
+    --butter-200: #FCE7A2;   /* light yellow: handwriting on dark (12.4:1 on navy-900), soft button */
+    --lavender-50: #F3F0FA;  /* light purple-tinted section */
+    --sun-400: #F6C744;      /* sunflower yellow: highlights, badges, script accent on photos */
+    --sun-700: #7D5E00;      /* yellow as text on cream (5.8:1) */
+    --scarlet-500: #E0344B;  /* scarlet: decorative handwriting on light (large only, 4.2:1) */
+    --scarlet-600: #C8102E;  /* scarlet: primary "Sponsor" action (white 5.9:1) */
+    --scarlet-700: #9E1A2E;  /* scarlet as text / errors (7.6:1 on cream) */
+    --cream-50: #FCF9F2;     /* page background */
+    --sand-100: #F5EEDF;     /* soft cards */
+    --white: #FFFFFF;        /* floating cards, form fields */
+    --ink-900: #1B1F33;      /* body/headings on light (15.5:1), a touch of blue */
+    --ink-500: #5C6178;      /* muted body (5.8:1 on cream) */
+    --black: #000000;        /* only for shadows/overlays via color-mix */
 
     /* Derived (no new hues) */
     --line-on-light: color-mix(in srgb, var(--ink-900) 18%, transparent);
     --line-on-dark: color-mix(in srgb, var(--cream-50) 20%, transparent);
-    --muted-on-dark: color-mix(in srgb, var(--cream-50) 76%, var(--forest-900)); /* ≈7.5:1 on forest-900 */
+    --muted-on-dark: color-mix(in srgb, var(--cream-50) 76%, var(--navy-900)); /* ≈8:1 on navy-900 */
     /* Text over photos: strong enough for white text + sun accents on bright images */
-    --overlay-photo: linear-gradient(180deg, color-mix(in srgb, var(--forest-900) 58%, transparent) 0%, color-mix(in srgb, var(--forest-900) 48%, transparent) 40%, color-mix(in srgb, var(--forest-900) 80%, transparent) 100%);
+    --overlay-photo: linear-gradient(180deg, color-mix(in srgb, var(--navy-900) 58%, transparent) 0%, color-mix(in srgb, var(--navy-900) 48%, transparent) 40%, color-mix(in srgb, var(--navy-900) 80%, transparent) 100%);
 
     /* ── 3. Typography ─────────────────────────────────────────────────────── */
     --font-sans: "General Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -86,11 +91,11 @@
     --border-width: 1px;
     --icon-stroke: 1.5;
 
-    --shadow-float: 0 1.5rem 3.75rem -1.25rem color-mix(in srgb, var(--forest-900) 28%, transparent);
-    --shadow-soft: 0 0.5rem 1.5rem -0.75rem color-mix(in srgb, var(--forest-900) 18%, transparent);
+    --shadow-float: 0 1.5rem 3.75rem -1.25rem color-mix(in srgb, var(--navy-900) 28%, transparent);
+    --shadow-soft: 0 0.5rem 1.5rem -0.75rem color-mix(in srgb, var(--navy-900) 18%, transparent);
 
     /* Focus ring (WCAG 2.2: 2px, offset 3px) */
-    --focus-color: var(--leaf-600);
+    --focus-color: var(--blue-600);
     --focus-width: 2px;
     --focus-offset: 3px;
 
@@ -113,21 +118,21 @@
     --bg: var(--cream-50);
     --fg: var(--ink-900);
     --muted: var(--ink-500);
-    --accent: var(--leaf-600);
+    --accent: var(--blue-600);
     --line: var(--line-on-light);
     --raised: var(--sand-100);        /* soft cards, hovered story rows */
     --raised-fg: var(--ink-900);
-    --invert-bg: var(--forest-900);   /* soft-card hover invert, doc-card hover */
+    --invert-bg: var(--navy-900);   /* soft-card hover invert, doc-card hover */
     --invert-fg: var(--cream-50);
     --invert-muted: var(--muted-on-dark);
-    --invert-accent: var(--sage-300);
-    --script-color: var(--clay-500);  /* decorative handwriting (large display sizes only) */
+    --invert-accent: var(--butter-200);
+    --script-color: var(--scarlet-500);  /* decorative handwriting (large display sizes only) */
     --field-bg: var(--white);
     --field-border: color-mix(in srgb, var(--ink-900) 32%, transparent); /* ≥3:1 non-text contrast */
-    --error: var(--clay-700);
+    --error: var(--scarlet-700);
   }
 
-  /* ── Surfaces: data-surface="cream|sand|mint|white|forest|photo" ───────── */
+  /* ── Surfaces: data-surface="cream|sand|lavender|white|navy|photo" ─────── */
   [data-surface] {
     background-color: var(--bg);
     color: var(--fg);
@@ -136,22 +141,22 @@
   /* Light surfaces share everything except bg + raised */
   [data-surface="cream"],
   [data-surface="sand"],
-  [data-surface="mint"],
+  [data-surface="lavender"],
   [data-surface="white"] {
     --fg: var(--ink-900);
     --muted: var(--ink-500);
-    --accent: var(--leaf-600);
+    --accent: var(--blue-600);
     --line: var(--line-on-light);
-    --focus-color: var(--leaf-600);
+    --focus-color: var(--blue-600);
     --raised-fg: var(--ink-900);
-    --invert-bg: var(--forest-900);
+    --invert-bg: var(--navy-900);
     --invert-fg: var(--cream-50);
     --invert-muted: var(--muted-on-dark);
-    --invert-accent: var(--sage-300);
-    --script-color: var(--clay-500);
+    --invert-accent: var(--butter-200);
+    --script-color: var(--scarlet-500);
     --field-bg: var(--white);
     --field-border: color-mix(in srgb, var(--ink-900) 32%, transparent);
-    --error: var(--clay-700);
+    --error: var(--scarlet-700);
   }
 
   [data-surface="cream"] {
@@ -164,8 +169,8 @@
     --raised: var(--cream-50);
   }
 
-  [data-surface="mint"] {
-    --bg: var(--mint-50);
+  [data-surface="lavender"] {
+    --bg: var(--lavender-50);
     --raised: var(--white);
   }
 
@@ -174,20 +179,20 @@
     --raised: var(--sand-100);
   }
 
-  [data-surface="forest"] {
-    --bg: var(--forest-900);
+  [data-surface="navy"] {
+    --bg: var(--navy-900);
     --fg: var(--cream-50);
     --muted: var(--muted-on-dark);
-    --accent: var(--sage-300);
+    --accent: var(--butter-200);
     --line: var(--line-on-dark);
-    --focus-color: var(--sage-300);
-    --raised: var(--forest-700);
+    --focus-color: var(--butter-200);
+    --raised: var(--plum-700);
     --raised-fg: var(--cream-50);
     --invert-bg: var(--cream-50);
     --invert-fg: var(--ink-900);
     --invert-muted: var(--ink-500);
-    --invert-accent: var(--leaf-600);
-    --script-color: var(--sage-300);
+    --invert-accent: var(--blue-600);
+    --script-color: var(--butter-200);
     --field-bg: var(--white);
     --field-border: transparent;
     --error: var(--sun-400);
@@ -195,18 +200,18 @@
 
   /* Text over photography: always pair with --overlay-photo for contrast. */
   [data-surface="photo"] {
-    --bg: var(--forest-900);
+    --bg: var(--navy-900);
     --fg: var(--white);
     --muted: color-mix(in srgb, var(--white) 88%, transparent);
     --accent: var(--sun-400);
     --line: color-mix(in srgb, var(--white) 30%, transparent);
     --focus-color: var(--sun-400);
-    --raised: color-mix(in srgb, var(--forest-900) 72%, transparent);
+    --raised: color-mix(in srgb, var(--navy-900) 72%, transparent);
     --raised-fg: var(--white);
     --invert-bg: var(--white);
     --invert-fg: var(--ink-900);
     --invert-muted: var(--ink-500);
-    --invert-accent: var(--leaf-600);
+    --invert-accent: var(--blue-600);
     --script-color: var(--sun-400);
     --field-bg: var(--white);
     --field-border: transparent;

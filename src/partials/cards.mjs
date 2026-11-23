@@ -9,9 +9,10 @@ import { url } from '../lib/url.mjs';
 import { icon } from './icon.mjs';
 import { button } from './ui.mjs';
 import { initials } from './motifs.mjs';
+import { brandMark } from './brand.mjs';
 
 /**
- * Soft card → inverts to forest-900 on hover/focus. `featured` starts inverted (the middle
+ * Soft card → inverts to navy-900 on hover/focus. `featured` starts inverted (the middle
  * card in "How you can help"); it hands the dark state to whichever sibling is hovered.
  * @param {{ icon?: string, title: string, text: string, cta?: { label: string, href: string },
  *   featured?: boolean, headingLevel?: 2 | 3 }} o
@@ -34,7 +35,7 @@ export function softCard({ icon: ic, title, text, cta, featured = false, heading
 export function floatCard({ eyebrow: eb, icon: ic = 'heart', title, text, cta, meta }) {
   return html`<div class="float-card" data-surface="white" data-float>
     <div class="float-card__top">
-      ${eb ? html`<span class="float-card__brand">${icon('leaf')}${eb}</span>` : ''}
+      ${eb ? html`<span class="float-card__brand">${brandMark({ small: true })}${eb}</span>` : ''}
       ${meta ? html`<span class="float-card__meta"><span class="chip__dot" aria-hidden="true"></span>${meta}</span>` : ''}
     </div>
     <span class="float-card__icon">${icon(ic)}</span>

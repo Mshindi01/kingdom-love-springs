@@ -13,7 +13,7 @@ import { stepsStrip } from './steps.mjs';
 export default function homeEducation(ctx, s) {
   const programme = ctx.data.programmes.programmes.find((/** @type {any} */ p) => p.id === 'education');
 
-  return html`<section class="home-band home-education" data-surface="mint" aria-labelledby="home-education-title">
+  return html`<section class="home-band home-education" data-surface="lavender" aria-labelledby="home-education-title">
     <div class="container">
       <h2 class="sr-only" id="home-education-title">${s.eyebrow}</h2>
       <div data-reveal>

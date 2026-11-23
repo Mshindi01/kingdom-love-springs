@@ -40,7 +40,7 @@ export function render(ctx) {
 
     <section class="section section--flush-top" aria-labelledby="concern-title">
       <div class="container">
-        <div class="concern" data-surface="forest" data-reveal>
+        <div class="concern" data-surface="navy" data-reveal>
           <span class="involve__icon">${icon('shield-check')}</span>
           <div class="stack stack--sm">
             <h2 id="concern-title">${p.concernTitle}</h2>

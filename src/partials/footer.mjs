@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * Site footer (forest-900, rounded top): short mission, links, contact, socials,
+ * Site footer (navy-900, rounded top): short mission, links, contact, socials,
  * "Sponsor a child", safeguarding & privacy, ©. Anything still [CONFIRM] is never shown,
  * and links only appear once their page exists.
  */
@@ -9,6 +9,7 @@ import { url } from '../lib/url.mjs';
 import { isUnconfirmed } from '../lib/format.mjs';
 import { icon } from './icon.mjs';
 import { button } from './ui.mjs';
+import { brandLogo } from './brand.mjs';
 
 /** @param {import('../../tools/build.mjs').RenderContext} ctx */
 export function footer(ctx) {
@@ -27,10 +28,10 @@ export function footer(ctx) {
   const socials = (site.socials || []).filter((/** @type {any} */ s) => s.url && !isUnconfirmed(s.url));
   const hasContact = email || phone || whatsapp || location;
 
-  return html`<footer class="site-footer" data-surface="forest">
+  return html`<footer class="site-footer" data-surface="navy">
     <div class="container site-footer__grid">
       <div class="site-footer__about">
-        <p class="brand brand--footer"><span class="brand__mark">${icon('leaf')}</span><span class="brand__name">${site.name}</span></p>
+        <a class="site-footer__logo" href="${url('/')}">${brandLogo({ name: site.name })}<span class="sr-only">: home</span></a>
         <p class="site-footer__mission">${site.tagline}.</p>
         ${cta ? button({ label: cta.label, href: cta.path, variant: 'soft', iconStart: cta.icon || 'heart' }) : ''}
       </div>

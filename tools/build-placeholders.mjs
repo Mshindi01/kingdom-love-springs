@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // @ts-check
 /**
- * Generate on-brand SVG placeholders (sand + sunrise + football & leaf line drawing + slot label)
- * and the favicon. Colours are read from src/assets/css/tokens.css, so a brand swap is just
+ * Generate on-brand SVG placeholders (sand + sunrise + football & leaf line drawing + slot label).
+ * Colours are read from src/assets/css/tokens.css, so a brand swap is just
  * `npm run placeholders` after editing tokens. NO stock photos of children, ever.
  *
  *   npm run placeholders
@@ -24,12 +24,10 @@ function token(name) {
 const c = {
   sand: token('sand-100'),
   sun: token('sun-400'),
-  leaf: token('leaf-600'),
-  leafSoft: token('leaf-500'),
-  clay: token('clay-500'),
+  leaf: token('blue-600'),
+  leafSoft: token('violet-500'),
+  clay: token('scarlet-500'),
   ink: token('ink-500'),
-  forest: token('forest-900'),
-  sage: token('sage-300'),
 };
 
 /** Must match PLACEHOLDERS in src/partials/motifs.mjs */
@@ -89,18 +87,10 @@ function placeholder({ w, h, label }) {
 `;
 }
 
-function favicon() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <circle cx="32" cy="32" r="32" fill="${c.forest}"/>
-  <circle cx="32" cy="32" r="22" fill="${c.sun}" fill-opacity="0.22"/>
-  ${leaf(15, 41, 36, -38, 3.5).replace(new RegExp(c.leaf, 'g'), c.sage)}
-</svg>
-`;
-}
+// The favicon now comes from the client's logo (src/assets/images/brand/), not from here.
 
 await mkdir(path.join(IMAGES, 'placeholders'), { recursive: true });
 for (const [name, slot] of Object.entries(SLOTS)) {
   await writeFile(path.join(IMAGES, 'placeholders', `${name}.svg`), placeholder(slot));
 }
-await writeFile(path.join(IMAGES, 'favicon.svg'), favicon());
-console.log(`✓ ${Object.keys(SLOTS).length} placeholders + favicon.svg (colours from tokens.css)`);
+console.log(`✓ ${Object.keys(SLOTS).length} placeholders (colours from tokens.css)`);

@@ -47,7 +47,7 @@ export function render(ctx) {
 
     <section class="section involve" id="sponsor" aria-labelledby="sponsor-title">
       <div class="container">
-        <div class="involve-sponsor" data-surface="forest" data-reveal>
+        <div class="involve-sponsor" data-surface="navy" data-reveal>
           <span class="involve__icon">${icon('heart')}</span>
           <div class="stack stack--sm">
             <h2 id="sponsor-title">${p.sponsor.title}</h2>
@@ -83,7 +83,7 @@ export function render(ctx) {
       </div>
     </section>
 
-    <section class="section involve" id="volunteer" data-surface="mint" aria-labelledby="volunteer-title">
+    <section class="section involve" id="volunteer" data-surface="lavender" aria-labelledby="volunteer-title">
       <div class="container involve__grid">
         <div class="involve__intro" data-reveal>
           <span class="involve__icon">${icon('users')}</span>
@@ -114,7 +114,7 @@ export function render(ctx) {
           <span class="involve__icon">${icon('heart-handshake')}</span>
           <h2 id="partner-title">${p.partner.title}</h2>
           <p class="lead">${p.partner.text}</p>
-          <ul class="cluster" role="list">${inv.partnerTypes.map((/** @type {string} */ t) => html`<li>${chip(t, { tone: 'sage' })}</li>`)}</ul>
+          <ul class="cluster" role="list">${inv.partnerTypes.map((/** @type {string} */ t) => html`<li>${chip(t, { tone: 'butter' })}</li>`)}</ul>
         </div>
         <div class="involve__form" data-surface="white" data-reveal>
           ${composeForm(ctx, {

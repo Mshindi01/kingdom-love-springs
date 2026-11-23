@@ -138,11 +138,11 @@
   }
 
   ::selection {
-    background-color: var(--sage-300);
-    color: var(--forest-900);
+    background-color: var(--butter-200);
+    color: var(--navy-900);
   }
 
-  /* Focus ring: leaf-600 2px, offset 3px (sage/sun on dark & photo surfaces) */
+  /* Focus ring: blue-600 2px, offset 3px (light yellow/sun on dark & photo surfaces) */
   :focus-visible {
     outline: var(--focus-width) solid var(--focus-color);
     outline-offset: var(--focus-offset);
@@ -205,7 +205,7 @@
     z-index: 1000;
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-pill);
-    background-color: var(--forest-900);
+    background-color: var(--navy-900);
     color: var(--cream-50);
     font-weight: var(--weight-medium);
     text-decoration: none;

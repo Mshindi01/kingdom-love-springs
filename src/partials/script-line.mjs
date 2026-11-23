@@ -19,13 +19,13 @@ let counter = 0;
 
 const COLORS = /** @type {const} */ ({
   auto: null,
-  sage: 'var(--sage-300)',
+  butter: 'var(--butter-200)',
   sun: 'var(--sun-400)',
-  clay: 'var(--clay-500)',
+  scarlet: 'var(--scarlet-500)',
   cream: 'var(--cream-50)',
   white: 'var(--white)',
-  leaf: 'var(--leaf-500)',
-  forest: 'var(--forest-900)',
+  violet: 'var(--violet-500)',
+  navy: 'var(--navy-900)',
 });
 
 /**

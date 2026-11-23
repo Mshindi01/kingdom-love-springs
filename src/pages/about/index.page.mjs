@@ -32,7 +32,7 @@ export function render(ctx) {
           <h2 class="mv__title">${p.missionTitle}</h2>
           <p>${ctx.site.mission}</p>
         </article>
-        <article class="mv__card" data-surface="forest" data-reveal>
+        <article class="mv__card" data-surface="navy" data-reveal>
           <span class="mv__icon">${icon('sun')}</span>
           <h2 class="mv__title">${p.visionTitle}</h2>
           <p>${prog.vision}</p>
@@ -57,7 +57,7 @@ export function render(ctx) {
       </div>
     </section>
 
-    <section class="section" data-surface="mint" aria-labelledby="why-title">
+    <section class="section" data-surface="lavender" aria-labelledby="why-title">
       <div class="container split">
         <div data-reveal>${sectionHeader({ eyebrow: 'Outcomes', title: p.whyTitle, id: 'why-title', lead: p.whyIntro })}</div>
         <ul class="checklist checklist--lg" role="list" data-reveal>

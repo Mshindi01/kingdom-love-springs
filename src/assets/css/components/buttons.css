@@ -1,8 +1,9 @@
-/* Buttons: primary (leaf pill), soft (sage pill, Genocide Edu's "Donate"), outline, link, ghost. */
+/* Buttons: primary (scarlet pill: the "love" action), soft (light-yellow pill, Genocide Edu's
+   "Donate"), outline, link, ghost. */
 
 @layer components {
   .btn {
-    --btn-bg: var(--leaf-600);
+    --btn-bg: var(--scarlet-600);
     --btn-fg: var(--white);
     --btn-border: transparent;
     display: inline-flex;
@@ -52,18 +53,18 @@
 
   .btn--primary:hover,
   .btn--primary:focus-visible {
-    --btn-bg: var(--forest-700);
+    --btn-bg: var(--scarlet-700);
     box-shadow: 0 0 0 5px color-mix(in srgb, var(--sun-400) 45%, transparent);
   }
 
   .btn--soft {
-    --btn-bg: var(--sage-300);
-    --btn-fg: var(--forest-900);
+    --btn-bg: var(--butter-200);
+    --btn-fg: var(--navy-900);
 
     &:hover,
     &:focus-visible {
-      --btn-bg: color-mix(in srgb, var(--sage-300) 78%, var(--leaf-500));
-      box-shadow: 0 0 0 5px color-mix(in srgb, var(--sage-300) 35%, transparent);
+      --btn-bg: color-mix(in srgb, var(--butter-200) 70%, var(--sun-400));
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--butter-200) 35%, transparent);
     }
   }
 

@@ -29,8 +29,8 @@
   }
 
   .map-circle__kenya {
-    fill: var(--forest-700);
-    stroke: var(--sage-300);
+    fill: var(--plum-700);
+    stroke: var(--butter-200);
     stroke-width: 2;
     stroke-linejoin: round;
     stroke-dasharray: 1000 2000;

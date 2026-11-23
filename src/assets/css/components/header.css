@@ -58,7 +58,7 @@
   .site-header--overlay.is-scrolled {
     --fg: var(--ink-900);
     --line: var(--line-on-light);
-    --focus-color: var(--leaf-600);
+    --focus-color: var(--blue-600);
     --header-bg: color-mix(in srgb, var(--white) 88%, transparent);
     --header-blur: blur(14px) saturate(1.2);
     border-color: var(--line);
@@ -77,25 +77,25 @@
     flex-shrink: 0;
   }
 
+  /* Logo mark: the waterfall circle from the KLS logo, with a thin ring so it holds its edge
+     on cream, over photos and on navy. */
   .brand__mark {
-    display: grid;
-    place-items: center;
-    width: 2.375rem;
-    height: 2.375rem;
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: var(--radius-circle);
-    background-color: var(--forest-900);
-    color: var(--sage-300);
-
-    & .icon {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
+    box-shadow: 0 0 0 2px var(--white), var(--shadow-soft);
   }
 
-  [data-surface="forest"] .brand__mark,
+  .brand__mark--sm {
+    width: 1.25rem;
+    height: 1.25rem;
+    box-shadow: 0 0 0 1px var(--white);
+  }
+
+  [data-surface="navy"] .brand__mark:not(.brand__mark--sm),
   .site-header--overlay:not(.is-scrolled) .brand__mark {
-    background-color: var(--sage-300);
-    color: var(--forest-900);
+    box-shadow: 0 0 0 2px var(--butter-200);
   }
 
   .site-nav {
@@ -191,7 +191,8 @@
     }
   }
 
-  @media (width < 30rem) {
+  /* 36rem: logo mark + name + labelled CTA + menu button need ~460px */
+  @media (width < 36rem) {
     .site-header__cta .btn__label {
       position: absolute;
       width: 1px;

@@ -64,7 +64,7 @@ export function render(ctx, story) {
     <article class="story" aria-labelledby="story-title">
       <header class="container container--narrow story__header">
         ${breadcrumbs([{ label: 'Home', href: '/' }, { label: 'Stories', href: '/stories/' }, { label: story.title }])}
-        ${story.draft ? html`<p class="chip chip--clay">Draft: not published</p>` : ''}
+        ${story.draft ? html`<p class="chip chip--scarlet">Draft: not published</p>` : ''}
         <h1 class="story__title" id="story-title">${story.title}</h1>
         <p class="story-row__meta">
           <span>${authorOf(ctx, story)}</span><span aria-hidden="true">·</span>

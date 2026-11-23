@@ -27,7 +27,7 @@ export const meta = {
   motion: true,
 };
 
-const SURFACES = ['cream', 'sand', 'mint', 'white', 'forest', 'photo'];
+const SURFACES = ['cream', 'sand', 'lavender', 'white', 'navy', 'photo'];
 const PHRASES = /** @type {const} */ ([
   ['from struggle to purpose', 'rise'],
   ['light & salt', 'loop'],
@@ -74,16 +74,17 @@ function contrast(a, b) {
 }
 
 const PALETTE = [
-  ['forest-900', 'Pill band, quote band, footer, dark cards'],
-  ['forest-700', 'Hover on dark, secondary dark'],
-  ['leaf-600', 'Primary action'],
-  ['leaf-500', 'Decorative green, icons (not small text)'],
-  ['sage-300', 'Handwriting on dark, soft fills'],
-  ['mint-50', 'Light "reports" section'],
-  ['sun-400', 'Sunrise gold: highlights, badges'],
-  ['sun-700', 'Gold as text on cream'],
-  ['clay-500', 'Red soil: decorative accents'],
-  ['clay-700', 'Clay as text'],
+  ['navy-900', 'Deep blue: pill band, quote band, footer, dark cards'],
+  ['plum-700', 'Royal purple: secondary dark, hover on dark'],
+  ['blue-600', 'Royal blue: links, focus, form selection'],
+  ['violet-500', 'Soft purple: decorative icons (not small text)'],
+  ['butter-200', 'Light yellow: handwriting on dark, soft button'],
+  ['lavender-50', 'Light purple-tinted section'],
+  ['sun-400', 'Sunflower yellow: highlights, badges'],
+  ['sun-700', 'Yellow as text on cream'],
+  ['scarlet-500', 'Scarlet: decorative handwriting (large)'],
+  ['scarlet-600', 'Scarlet: primary Sponsor action'],
+  ['scarlet-700', 'Scarlet as text, errors, button hover'],
   ['cream-50', 'Page background'],
   ['sand-100', 'Soft cards'],
   ['white', 'Floating cards, fields'],
@@ -94,15 +95,16 @@ const PALETTE = [
 const PAIRS = [
   ['ink-900', 'cream-50', 'Body text'],
   ['ink-500', 'cream-50', 'Muted text'],
-  ['leaf-600', 'cream-50', 'Green text / links'],
-  ['white', 'leaf-600', 'Primary button'],
-  ['forest-900', 'sage-300', 'Soft button'],
-  ['cream-50', 'forest-900', 'Text on dark'],
-  ['sage-300', 'forest-900', 'Handwriting on dark'],
-  ['sun-700', 'cream-50', 'Gold text'],
-  ['clay-700', 'cream-50', 'Clay text / errors'],
-  ['ink-900', 'sun-400', 'Gold chip'],
-  ['clay-500', 'cream-50', 'Decorative script (large only)'],
+  ['blue-600', 'cream-50', 'Blue text / links'],
+  ['white', 'scarlet-600', 'Primary button'],
+  ['white', 'plum-700', 'Text on purple'],
+  ['navy-900', 'butter-200', 'Soft button'],
+  ['cream-50', 'navy-900', 'Text on dark'],
+  ['butter-200', 'navy-900', 'Handwriting on dark'],
+  ['sun-700', 'cream-50', 'Yellow text'],
+  ['scarlet-700', 'cream-50', 'Scarlet text / errors'],
+  ['ink-900', 'sun-400', 'Yellow chip'],
+  ['scarlet-500', 'cream-50', 'Decorative script (large only)'],
 ];
 
 /** @param {string} id */
@@ -162,7 +164,7 @@ export function render(ctx) {
             </tbody>
           </table>
         </div>
-        <p class="sg-note">${icon('info')}Rules: white text only on forest-900/700 and leaf-600. Never white on sun, clay or leaf-500. Gold and clay are accents, not large fills (except small chips with dark text).</p>
+        <p class="sg-note">${icon('info')}Rules: blue carries the page; scarlet only where we ask for action (Sponsor); purple and yellow are accents. White text only on navy, plum, blue-600 and scarlet-600/700. Never white on yellow or violet-500.</p>
       </div>
     </section>
 
@@ -187,17 +189,17 @@ export function render(ctx) {
     <section class="sg-section" id="sg-script" aria-labelledby="sg-script-t">
       <div class="container">
         ${sectionHeader({ eyebrow: 'Signature effect', title: 'Handwriting that draws itself', id: 'sg-script-t', lead: 'scriptLine({ text, swoosh, size, color, label }): the words are revealed by a zig-zag pen path (not a wipe), then a tapered swoosh strokes out. Once, when 40% visible.' })}
-        <div class="sg-decision" data-surface="mint">
+        <div class="sg-decision" data-surface="lavender">
           <p class="eyebrow">Script font decision (final)</p>
           <p><strong>Ms Madi</strong> (SIL OFL). Compared with Allison and Mrs Saint Delafield over photos and on forest-900: it has the slanted, flowing energy closest to Genocide Edu’s brush-pen hand, a larger x-height and stroke weight that stay legible over photographs, and the clearest numerals for the pill band. Mrs Saint Delafield was more brush-like but crowded (“light&amp;salt”) and less legible; Allison was too thin at display sizes.</p>
         </div>
         <div class="sg-script-grid">
           <div class="sg-script-panel" data-surface="cream" id="sg-script-light">
-            <p class="sg-label">On cream · clay</p>
+            <p class="sg-label">On cream · scarlet</p>
             ${PHRASES.map(([text, swoosh]) => html`<div class="sg-script-item"><span class="sg-label">${swoosh}</span>${scriptLine({ text, swoosh, size: 'lg', label: text })}</div>`)}
           </div>
-          <div class="sg-script-panel" data-surface="forest" id="sg-script-dark">
-            <p class="sg-label">On forest-900 · sage</p>
+          <div class="sg-script-panel" data-surface="navy" id="sg-script-dark">
+            <p class="sg-label">On navy-900 · light yellow</p>
             ${PHRASES.map(([text, swoosh]) => html`<div class="sg-script-item"><span class="sg-label">${swoosh}</span>${scriptLine({ text, swoosh, size: 'lg', label: text })}</div>`)}
           </div>
           <div class="sg-script-panel photo-panel" data-surface="photo" id="sg-script-photo">
@@ -208,7 +210,7 @@ export function render(ctx) {
         </div>
         <div class="cluster sg-actions">
           <button class="btn btn--outline btn--sm" type="button" data-replay="#sg-script-light">${icon('play')}Replay cream</button>
-          <button class="btn btn--outline btn--sm" type="button" data-replay="#sg-script-dark">${icon('play')}Replay forest</button>
+          <button class="btn btn--outline btn--sm" type="button" data-replay="#sg-script-dark">${icon('play')}Replay navy</button>
           <button class="btn btn--outline btn--sm" type="button" data-replay="#sg-script-photo">${icon('play')}Replay photo</button>
         </div>
       </div>
@@ -217,7 +219,7 @@ export function render(ctx) {
     <!-- ── Buttons ─────────────────────────────────────────────────────────── -->
     <section class="sg-section" id="sg-buttons" aria-labelledby="sg-buttons-t">
       <div class="container">
-        ${sectionHeader({ eyebrow: 'Buttons', title: 'Pills with icons', id: 'sg-buttons-t', lead: 'Primary (leaf), soft (sage, like Genocide Edu’s Donate), outline and link. All 48px tall by default, with a visible focus ring.' })}
+        ${sectionHeader({ eyebrow: 'Buttons', title: 'Pills with icons', id: 'sg-buttons-t', lead: 'Primary (scarlet), soft (light yellow, like Genocide Edu’s Donate), outline and link. All 48px tall by default, with a visible focus ring.' })}
         <div class="sg-row">
           ${button({ label: 'Sponsor a child', href: demo('sg-buttons'), iconStart: 'heart' })}
           ${button({ label: 'See our work', href: demo('sg-buttons'), variant: 'soft', icon: 'arrow-right' })}
@@ -237,7 +239,7 @@ export function render(ctx) {
     <!-- ── Surfaces matrix ─────────────────────────────────────────────────── -->
     <section class="sg-section" id="sg-surfaces" aria-labelledby="sg-surfaces-t">
       <div class="container">
-        ${sectionHeader({ eyebrow: 'Surfaces', title: 'Every component on every surface', id: 'sg-surfaces-t', lead: 'data-surface="cream | sand | mint | white | forest | photo" remaps --bg, --fg, --muted, --accent, --line (and raised/invert colours). No component needs a modifier.' })}
+        ${sectionHeader({ eyebrow: 'Surfaces', title: 'Every component on every surface', id: 'sg-surfaces-t', lead: 'data-surface="cream | sand | lavender | white | navy | photo" remaps --bg, --fg, --muted, --accent, --line (and raised/invert colours). No component needs a modifier.' })}
         <div class="sg-surfaces">
           ${SURFACES.map(
             (s) => html`<div class="sg-surface${s === 'photo' ? ' photo-panel' : ''}" data-surface="${s}">
@@ -251,7 +253,7 @@ export function render(ctx) {
                 ${button({ label: 'Volunteer', href: demo('sg-surfaces'), variant: 'outline', size: 'sm' })}
                 ${button({ label: 'More', href: demo('sg-surfaces'), variant: 'link', icon: 'arrow-right', size: 'sm' })}
               </div>
-              <div class="sg-row">${chip('Nairobi', { dot: true })}${chip('35 children', { tone: 'sun' })}${chip('Sports', { tone: 'sage' })}${chip('Coast', { tone: 'clay' })}</div>
+              <div class="sg-row">${chip('Nairobi', { dot: true })}${chip('35 children', { tone: 'sun' })}${chip('Sports', { tone: 'butter' })}${chip('Coast', { tone: 'scarlet' })}</div>
               <div class="soft-cards sg-mini-cards">
                 ${softCard({ icon: 'hand-heart', title: 'Pray with us', text: 'Hover or focus me: I invert.', cta: { label: 'Pray', href: demo('sg-surfaces') } })}
                 ${docCard({ href: demo('sg-surfaces'), type: 'PDF', title: 'Example document', date: '2026-11-10', dateLabel: formatDate('2026-11-10') })}
@@ -268,7 +270,7 @@ export function render(ctx) {
     <!-- ── Header ─────────────────────────────────────────────────────────── -->
     <section class="sg-section" id="sg-header" aria-labelledby="sg-header-t">
       <div class="container">
-        ${sectionHeader({ eyebrow: 'Header', title: 'Transparent over photos, solid after scrolling', id: 'sg-header-t', lead: 'Left: logo. Centre-left: links. Right: Contact | Sponsor a child. Below 64rem: a full-screen forest menu with a focus trap and Esc to close. (On the live site, links appear only once their page exists.)' })}
+        ${sectionHeader({ eyebrow: 'Header', title: 'Transparent over photos, solid after scrolling', id: 'sg-header-t', lead: 'Left: logo. Centre-left: links. Right: Contact | Sponsor a child. Below 64rem: a full-screen navy menu with a focus trap and Esc to close. (On the live site, links appear only once their page exists.)' })}
         <p class="sg-label">Overlay variant (over the hero photo)</p>
         <div class="sg-frame photo-panel" data-surface="photo">
           <div class="photo-panel__media">${placeholderImage('hero')}</div>
@@ -364,7 +366,7 @@ export function render(ctx) {
     </section>
 
     <!-- ── Programme rows ──────────────────────────────────────────────────── -->
-    <section class="sg-section" id="sg-programmes" aria-labelledby="sg-programmes-t" data-surface="mint">
+    <section class="sg-section" id="sg-programmes" aria-labelledby="sg-programmes-t" data-surface="lavender">
       <div class="container">
         ${sectionHeader({ eyebrow: 'Programmes', title: 'Alternating programme rows', id: 'sg-programmes-t' })}
         <div class="programme-rows">
@@ -449,7 +451,7 @@ export function render(ctx) {
     </section>
 
     <!-- ── Docs & people ───────────────────────────────────────────────────── -->
-    <section class="sg-section" id="sg-docs" aria-labelledby="sg-docs-t" data-surface="mint">
+    <section class="sg-section" id="sg-docs" aria-labelledby="sg-docs-t" data-surface="lavender">
       <div class="container">
         ${sectionHeader({ eyebrow: 'Reports & updates', title: 'Document cards', id: 'sg-docs-t', lead: 'Example cards: real documents only if KLS has them [to be confirmed].' })}
         <div class="docs">
@@ -476,8 +478,8 @@ export function render(ctx) {
             <div class="cluster">
               ${chip('Nairobi · Western · Coast', { dot: true })}
               ${chip('35 children sponsored', { tone: 'sun' })}
-              ${chip('Football', { tone: 'sage', icon: 'trophy' })}
-              ${chip('Draft', { tone: 'clay' })}
+              ${chip('Football', { tone: 'butter', icon: 'trophy' })}
+              ${chip('Draft', { tone: 'scarlet' })}
             </div>
             <div class="sg-glass photo-panel" data-surface="photo">
               <div class="photo-panel__media">${placeholderImage('landscape')}</div>
@@ -545,7 +547,7 @@ export function render(ctx) {
     </section>
 
     <!-- ── Motion lab ──────────────────────────────────────────────────────── -->
-    <section class="sg-section" id="sg-motion" aria-labelledby="sg-motion-t" data-surface="forest">
+    <section class="sg-section" id="sg-motion" aria-labelledby="sg-motion-t" data-surface="navy">
       <div class="container">
         ${sectionHeader({ eyebrow: 'Motion lab', title: 'Gentle and joyful, never in the way', id: 'sg-motion-t', lead: 'GSAP tweens, triggered by IntersectionObserver (and a tiny scrub helper for scroll-linked effects), all inside gsap.matchMedia(). With reduced motion everything shows in its final state instantly: no loops, scrubs or draws. Without JS, everything is visible.' })}
         <div class="sg-row">

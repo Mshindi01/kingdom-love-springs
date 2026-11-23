@@ -2,6 +2,32 @@
 
 ## Current part: **Part A, phase A5**: done (forms visual-only), **not deployed**. ⏸ End of Part A.
 
+### 2026-11-23: Part B round 1, brand colours (scarlet, blue, purple, light yellow)
+- Green placeholder palette replaced in `tokens.css`. Roles: navy-900 (dark anchor), plum-700
+  (secondary dark), blue-600 (links/focus/form selection), violet-500 (decorative), butter-200
+  (light yellow: script on dark, soft button), lavender-50 (tint section), sun-400/700 (yellow
+  highlights), scarlet-500/600/700 (decorative script on light / **primary button** / text, errors, hover).
+- Tokens, surfaces (`forest`→`navy`, `mint`→`lavender`), chip tones (`clay`→`scarlet`, `sage`→`butter`)
+  and script-line colours renamed across CSS/partials/pages. Primary button is now scarlet-600 (it was
+  the same token as the link accent; now split: buttons scarlet, links blue).
+- Regenerated placeholders + favicon (`npm run placeholders`) and the OG image (headless Edge from
+  `tools/og/og-template.html`).
+- Every text pairing checked: all ≥ 4.5:1 (see DESIGN_SYSTEM §2). Build + check clean.
+- Not yet done for this round: the 375/768/1600 + keyboard + no-JS sweep and Lighthouse rerun (colour-only change).
+
+### 2026-11-23: Part B round 1, logo
+- Client logo (500px transparent PNG) → `src/assets/images/brand/`: `kls-logo.png` (original),
+  `kls-mark.png` (waterfall circle cropped with an anti-aliased mask, 96px), `favicon-32/48.png`,
+  `apple-touch-icon.png`. Generated with Windows System.Drawing (one-off script, not added to the project).
+- `src/partials/brand.mjs`: `brandMark()` (header, mobile menu, hero float card; `alt=""` beside the
+  text name) and `brandLogo()` (footer, full logo on a cream medallion, links home).
+- `<head>`: PNG favicons + apple-touch icon. JSON-LD `logo` → `kls-logo.png`. OG image re-rendered
+  with the full logo. Old generated `favicon.svg` removed (and dropped from `build-placeholders.mjs`).
+- Header: the CTA label now collapses to an icon below 36rem (was 30rem). The bigger mark overflowed
+  between 480 and ~520px. Checked at 375 and 500px.
+- Asked the client for a higher-resolution or vector logo (the 500px source is soft on large/retina footers).
+- `[CONFIRM]` #22 closed: colours ✓, logo ✓ (hi-res pending).
+
 ### 2026-11-11: A5 Sponsor flow (visual), polish, SEO, client kit
 
 **Owner's instruction for this phase:** forms are about looks only, with zero functionality and no
@@ -258,7 +284,7 @@ two fonts were deleted; `--font-script` is set in `tokens.css`.
 | 19 | Statement of faith summary | About page (A4) |
 | 20 | Any reports / documents (annual report, newsletters) | Documents grid (A3/A4) |
 | 21 | Consented photos | `photos.json` (empty) |
-| 22 | Logo + brand colours | `tokens.css` (brand-swap) |
+| 22 | ✓ Logo + brand colours (2026-11-23). Hi-res/vector logo still wanted | `images/brand/` |
 | 23 | Full safeguarding policy (if any) | `/safeguarding/` (A4) |
 | 24 | Sponsor page "What happens next" steps | `pages.json → sponsor.next` |
 | 25 | Dennis's WhatsApp number for the review banner | `site.json → review.whatsapp` |

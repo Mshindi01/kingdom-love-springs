@@ -73,7 +73,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-color: color-mix(in srgb, var(--forest-900) 48%, transparent);
+      background-color: color-mix(in srgb, var(--navy-900) 48%, transparent);
     }
   }
 

@@ -21,7 +21,7 @@ function jsonLd(ctx) {
       name: site.name,
       description: site.mission,
       url: abs('/'),
-      logo: abs('/assets/images/og-default.png'),
+      logo: abs('/assets/images/brand/kls-logo.png'),
       areaServed: { '@type': 'Country', name: 'Kenya' },
       // [CONFIRM] social profiles: only confirmed URLs are listed
       sameAs: (site.socials || []).map((/** @type {any} */ s) => s.url).filter((/** @type {string} */ u) => u && !isUnconfirmed(u)),
@@ -73,7 +73,7 @@ export function head(ctx) {
     <meta name="description" content="${page.meta.description}">
     ${noindex ? html`<meta name="robots" content="noindex, nofollow">` : ''}
     ${page.isNotFound ? '' : html`<link rel="canonical" href="${canonical}">`}
-    <meta name="theme-color" content="${ctx.tokens['--forest-900']}">
+    <meta name="theme-color" content="${ctx.tokens['--navy-900']}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="${site.name}">
     <meta property="og:title" content="${title}">
@@ -84,7 +84,9 @@ export function head(ctx) {
     <meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">
     ${ogImage ? html`<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${site.name}: ${site.tagline}">` : ''}
     ${jsonLd(ctx)}
-    <link rel="icon" href="${asset('images/favicon.svg')}" type="image/svg+xml">
+    <link rel="icon" href="${asset('images/brand/favicon-32.png')}" sizes="32x32" type="image/png">
+    <link rel="icon" href="${asset('images/brand/favicon-48.png')}" sizes="48x48" type="image/png">
+    <link rel="apple-touch-icon" href="${asset('images/brand/apple-touch-icon.png')}">
     <link rel="preload" href="${url('/assets/fonts/GeneralSans-Regular.woff2')}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="${url('/assets/fonts/GeneralSans-Medium.woff2')}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="${asset('css/main.css')}">

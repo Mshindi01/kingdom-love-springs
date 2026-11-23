@@ -52,21 +52,21 @@
     color: var(--ink-900);
   }
 
-  .chip--clay {
+  .chip--scarlet {
     border-color: transparent;
-    background-color: color-mix(in srgb, var(--clay-500) 14%, var(--cream-50)); /* ≈5:1 with clay-700 */
-    color: var(--clay-700);
+    background-color: color-mix(in srgb, var(--scarlet-500) 14%, var(--cream-50)); /* ≈6:1 with scarlet-700 */
+    color: var(--scarlet-700);
   }
 
-  .chip--sage {
+  .chip--butter {
     border-color: transparent;
-    background-color: var(--sage-300);
-    color: var(--forest-900);
+    background-color: var(--butter-200);
+    color: var(--navy-900);
   }
 
   .chip--glass {
     border-color: color-mix(in srgb, var(--white) 32%, transparent);
-    background-color: color-mix(in srgb, var(--forest-900) 38%, transparent);
+    background-color: color-mix(in srgb, var(--navy-900) 38%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: var(--white);
@@ -301,7 +301,7 @@
     max-width: 32rem;
     padding: 0.875rem 1.375rem;
     border-radius: var(--radius-pill);
-    background-color: var(--forest-900);
+    background-color: var(--navy-900);
     color: var(--cream-50);
     box-shadow: var(--shadow-float);
     font-weight: var(--weight-medium);
@@ -309,7 +309,7 @@
     animation: toast-in var(--dur-hover) var(--ease-out);
 
     & .icon {
-      color: var(--sage-300);
+      color: var(--butter-200);
     }
 
     &.is-leaving {

@@ -26,7 +26,7 @@ export function button({ label, href, variant = 'primary', icon: iconEnd, iconSt
 
 /**
  * @param {string} text
- * @param {{ tone?: 'outline' | 'sun' | 'clay' | 'sage' | 'glass', icon?: string, dot?: boolean }} [o]
+ * @param {{ tone?: 'outline' | 'sun' | 'scarlet' | 'butter' | 'glass', icon?: string, dot?: boolean }} [o]
  */
 export function chip(text, { tone = 'outline', icon: ic, dot } = {}) {
   return html`<span class="chip chip--${tone}">${dot ? html`<span class="chip__dot" aria-hidden="true"></span>` : ''}${ic ? icon(ic) : ''}${text}</span>`;
