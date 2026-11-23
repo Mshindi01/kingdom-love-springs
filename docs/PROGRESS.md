@@ -2,6 +2,27 @@
 
 ## Current part: **Part A, phase A5**: done (forms visual-only), **not deployed**. ⏸ End of Part A.
 
+### 2026-11-23: Part B round 1, forms consolidated (Get involved removed)
+- Client: too many forms collecting the same data. **`/get-involved/` deleted** (page, nav link,
+  `pages.json` copy, its CSS). Two ways in remain: **`/sponsor/`** (unchanged) and **`/contact/`**.
+- `/contact/` is now a **two-step form**. Step 1, "What would you like to do?": Sponsor a child ·
+  Volunteer · Partner with us · Ask a question (`pages.contact.reasons`). Step 2 shows that reason's
+  panel. **Sponsor a child is a link card** (arrow, not a radio): one click goes straight to `/sponsor/`. Volunteer → roles. Partner → organisation, type, region,
+  how (host a tournament / support a tournament / another way). Shared: name, phone/email, message.
+- **Partner + support a tournament merged** into one option (`involve.partnerWays`). **Pray removed**
+  (form, help card, prayer points). Newsletter blurb no longer mentions prayer.
+- Step switching is **CSS-only** (`:has()`), so it works without JS. Browsers without `:has()` see every
+  panel. Panel fields are never `required`, so the no-JS mailto fallback can't be blocked.
+  `ui/compose.js`: only the active panel's fields go into the message (`form[data-choice]`), radio answers
+  are labelled by their question, and `initChoice()` preselects from the URL (`/contact/#reason-volunteer`,
+  `#reason-partner`). Every "Volunteer" / "Partner" CTA site-wide links there.
+- `composeForm({ interactive: true })`: step 1 stays clickable while WhatsApp/email are `[CONFIRM]`
+  (only the send buttons are disabled).
+- Help strip / home "How you can help" cards: Sponsor · Volunteer (featured) · Partner.
+- Checked at 375 and 1280px, with reduced motion. Build + check clean (15 pages).
+- Old `/get-involved/` URL now 404s. That's fine while the site is a noindex preview; add a redirect page if it was ever shared.
+- Header (desktop): nav links right-aligned so they sit in one group with Contact and the Sponsor button.
+
 ### 2026-11-23: Part B round 1, brand colours (scarlet, blue, purple, light yellow)
 - Green placeholder palette replaced in `tokens.css`. Roles: navy-900 (dark anchor), plum-700
   (secondary dark), blue-600 (links/focus/form selection), violet-500 (decorative), butter-200
@@ -278,7 +299,7 @@ two fonts were deleted; `--font-script` is set in `tokens.css`.
 | 13 | Partner churches / organisations + logo permission | `partners.json` |
 | 14 | Real stories (with guardian consent + child assent) | `stories.json` (3 drafts) |
 | 15 | Upcoming tournaments / clinics | `events.json` |
-| 16 | Prayer points | `involve.json → prayerPoints` |
+| 16 | ~~Prayer points~~ (Pray removed 2026-11-23) | n/a |
 | 17 | Volunteer roles | `involve.json → volunteerRoles` |
 | 18 | Quote-band verse + Bible translation (currently Matthew 5:16, KJV, as a default) | `home.json → quote` |
 | 19 | Statement of faith summary | About page (A4) |

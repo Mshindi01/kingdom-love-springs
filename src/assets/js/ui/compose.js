@@ -16,8 +16,25 @@ const ICON = (/** @type {string} */ name) => {
 
 /** @param {HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement} field */
 function labelFor(field) {
+  // Radio groups: the question (legend) is the label, the chosen value is the answer
+  if (field instanceof HTMLInputElement && field.type === 'radio') {
+    return (field.closest('fieldset')?.querySelector('legend')?.textContent || field.name).trim();
+  }
   const label = field.id ? document.querySelector(`label[for="${field.id}"]`) : null;
   return (label?.childNodes[0]?.textContent || field.name || '').trim();
+}
+
+/**
+ * Two-step forms (form[data-choice="<radio group name>"]): a field inside
+ * [data-panel="<radio id>"] only counts when that radio is checked.
+ * @param {HTMLFormElement} form @param {Element} el
+ */
+function inActivePanel(form, el) {
+  const group = form.dataset.choice;
+  const panel = group ? el.closest('[data-panel]') : null;
+  if (!panel) return true;
+  const chosen = /** @type {HTMLInputElement | null} */ (form.querySelector(`input[type="radio"][name="${CSS.escape(group || '')}"]:checked`));
+  return chosen?.id === /** @type {HTMLElement} */ (panel).dataset.panel;
 }
 
 /** @param {HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement} field @param {string | null} message */
@@ -52,9 +69,27 @@ function setError(field, message) {
 function fields(form) {
   return /** @type {(HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement)[]} */ (
     [...form.elements].filter(
-      (el) => 'value' in el && el.tagName !== 'BUTTON' && /** @type {any} */ (el).name && !(/** @type {any} */ (el).disabled),
+      (el) => 'value' in el && el.tagName !== 'BUTTON' && /** @type {any} */ (el).name && !(/** @type {any} */ (el).disabled) && inActivePanel(form, el),
     )
   );
+}
+
+/**
+ * Preselect a two-step form's reason from the URL, e.g. /contact/#reason-volunteer, so
+ * "Volunteer with us" links elsewhere land on step 2. Runs even before KLS's details are
+ * confirmed (the steps themselves are CSS).
+ */
+export function initChoice() {
+  const apply = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const radio = document.getElementById(id);
+    if (!(radio instanceof HTMLInputElement) || radio.type !== 'radio' || !radio.closest('form[data-choice]')) return;
+    radio.checked = true;
+    radio.closest('.compose')?.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  apply();
+  window.addEventListener('hashchange', apply);
 }
 
 export function initCompose() {

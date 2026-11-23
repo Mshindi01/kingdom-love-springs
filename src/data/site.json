@@ -52,8 +52,7 @@
       { "label": "Education", "path": "/education/" },
       { "label": "Sports", "path": "/sports/" },
       { "label": "Mentorship", "path": "/mentorship/" },
-      { "label": "Stories", "path": "/stories/" },
-      { "label": "Get involved", "path": "/get-involved/" }
+      { "label": "Stories", "path": "/stories/" }
     ],
     "secondary": [
       { "label": "Contact", "path": "/contact/" }

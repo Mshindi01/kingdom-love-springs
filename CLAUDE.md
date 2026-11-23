@@ -15,7 +15,7 @@ A hopeful, warm, faith-centred website for **Kingdom Love Springs (KLS)**, a Ken
 2. **Sports ministry:** football tournaments and clinics across Nairobi, Western Kenya and the Coast (~200 per event, ~500–600 a year), with Christian teaching.
 3. **Mentorship & family involvement**, and the Gospel shared through sports and relationships.
 
-**Primary goal of every page:** move a visitor toward **sponsoring a child** (an enquiry), or **getting involved** (pray, volunteer, partner, support a tournament).
+**Primary goal of every page:** move a visitor toward **sponsoring a child** (an enquiry), or **getting in touch** to volunteer or partner (incl. hosting or supporting a tournament) through the two-step contact form.
 
 ## 2. Current part: **Part A, the website on GitHub Pages**
 
@@ -48,7 +48,7 @@ Hard constraints for Part A:
 ```
 src/
   pages/        index.page.mjs  about/index.page.mjs  education/…  sports/…  mentorship/…
-                stories/index.page.mjs  get-involved/…  sponsor/…  contact/…  safeguarding/…  privacy/…  404.page.mjs
+                stories/index.page.mjs  sponsor/…  contact/… (two-step form; replaced get-involved)  safeguarding/…  privacy/…  404.page.mjs
   templates/    story.mjs  (generates /stories/<slug>/ for each item in data/stories.json)
   partials/     layout.mjs head.mjs header.mjs footer.mjs cards.mjs sections/*.mjs forms/*.mjs motifs.mjs
   data/         site.json home.json programmes.json stories.json stats.json team.json partners.json faqs.json

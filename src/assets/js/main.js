@@ -12,7 +12,7 @@ import { initCircleTaps } from './ui/circles.js';
 import { initToasts } from './ui/toast.js';
 import { initReduceToggle } from './ui/reduce-toggle.js';
 import { fitAllScriptLines, fontsReady } from './ui/script-fit.js';
-import { initCompose } from './ui/compose.js';
+import { initCompose, initChoice } from './ui/compose.js';
 import { initScrollHints } from './ui/scroll-hint.js';
 
 const root = document.documentElement;
@@ -24,6 +24,7 @@ initHeader();
 initCircleTaps();
 initToasts();
 initCompose();
+initChoice();
 initScrollHints();
 
 /** @type {any} */

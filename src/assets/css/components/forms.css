@@ -209,6 +209,68 @@
     border-color: var(--error);
   }
 
+  /* Link card (an option that navigates instead of being selected) */
+  .radio-card--link .radio-card__label {
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--blue-600);
+      background-color: var(--lavender-50);
+
+      & .radio-card__go {
+        transform: translateX(3px);
+      }
+    }
+
+    &:focus-visible {
+      outline: var(--focus-width) solid var(--focus-color);
+      outline-offset: 2px;
+    }
+  }
+
+  .radio-card__go {
+    border-color: var(--blue-600);
+    color: var(--blue-600);
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  /* Primary link card: same scarlet + heart as the main "Sponsor a child" button */
+  .radio-card--primary .radio-card__label {
+    border-color: var(--scarlet-600);
+    background-color: var(--scarlet-600);
+    color: var(--white);
+
+    & .radio-card__icon {
+      color: var(--white);
+
+      & .icon {
+        fill: currentColor; /* filled heart */
+      }
+    }
+
+    & .radio-card__desc {
+      color: color-mix(in srgb, var(--white) 90%, var(--scarlet-600)); /* ≈5.3:1 */
+    }
+
+    & .radio-card__go {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--scarlet-700);
+      background-color: var(--scarlet-700);
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--sun-400) 45%, transparent);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .radio-card--link .radio-card__label:hover .radio-card__go {
+      transform: none;
+    }
+  }
+
   /* Checkbox */
   .field--check {
     display: flex;

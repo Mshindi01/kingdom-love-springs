@@ -7,6 +7,7 @@
 import { html, attrs } from '../../lib/html.mjs';
 import { icon } from '../icon.mjs';
 import { slugify } from '../../lib/format.mjs';
+import { url } from '../../lib/url.mjs';
 
 /**
  * @typedef {{ id: string, name?: string, label: string, hint?: string, error?: string,
@@ -71,10 +72,15 @@ export function selectField(f) {
 /**
  * Radio cards: a fieldset of large selectable cards.
  * @param {{ name: string, legend: string, hint?: string, error?: string, required?: boolean, value?: string,
- *   options: { value: string, label: string, description?: string, icon?: string }[] }} f
+ *   options: { value: string, label: string, description?: string, icon?: string, id?: string, href?: string, primary?: boolean }[],
+ *   idBase?: string }} f  idBase / option.id give stable ids (e.g. for #reason-volunteer links).
+ *   An option with `href` is a link card instead of a radio: one click goes straight there
+ *   (e.g. "Sponsor a child" → /sponsor/). Not a radio, so arrow-keying through the group never
+ *   navigates away by accident.
+ *   `primary` (link cards only): scarlet like the main "Sponsor a child" button.
  */
 export function radioCards(f) {
-  const base = slugify(f.name);
+  const base = f.idBase || slugify(f.name);
   const hintId = f.hint ? `${base}-hint` : null;
   const errId = f.error ? `${base}-error` : null;
   return html`<fieldset class="field field--group${f.error ? ' field--error' : ''}"${attrs({ 'aria-describedby': [hintId, errId].filter(Boolean).join(' ') || null })}>
@@ -83,7 +89,17 @@ export function radioCards(f) {
     ${f.error ? html`<p class="field__error" id="${errId}">${icon('info')}<span><span class="sr-only">Error: </span>${f.error}</span></p>` : ''}
     <div class="radio-cards">
       ${f.options.map((o, i) => {
-        const id = `${base}-${slugify(o.value)}`;
+        const id = `${base}-${o.id || slugify(o.value)}`;
+        if (o.href) {
+          return html`<div class="radio-card radio-card--link${o.primary ? ' radio-card--primary' : ''}">
+            <a class="radio-card__label" id="${id}" href="${url(o.href)}">
+              ${o.icon ? html`<span class="radio-card__icon">${icon(o.icon)}</span>` : ''}
+              <span class="radio-card__title">${o.label}</span>
+              ${o.description ? html`<span class="radio-card__desc">${o.description}</span>` : ''}
+              <span class="radio-card__check radio-card__go">${icon('arrow-right')}</span>
+            </a>
+          </div>`;
+        }
         return html`<div class="radio-card">
           <input class="radio-card__input" type="radio"${attrs({ id, name: f.name, value: o.value, checked: o.value === f.value, required: f.required && i === 0 })}>
           <label class="radio-card__label" for="${id}">

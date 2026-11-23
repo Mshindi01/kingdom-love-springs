@@ -249,13 +249,13 @@ export function render(ctx) {
               <p class="text-muted">Our team regularly visits their schools and meets them during school holidays.</p>
               <div class="sg-row">
                 ${button({ label: 'Sponsor', href: demo('sg-surfaces'), iconStart: 'heart', size: 'sm' })}
-                ${button({ label: 'Pray', href: demo('sg-surfaces'), variant: 'soft', size: 'sm' })}
+                ${button({ label: 'Partner', href: demo('sg-surfaces'), variant: 'soft', size: 'sm' })}
                 ${button({ label: 'Volunteer', href: demo('sg-surfaces'), variant: 'outline', size: 'sm' })}
                 ${button({ label: 'More', href: demo('sg-surfaces'), variant: 'link', icon: 'arrow-right', size: 'sm' })}
               </div>
               <div class="sg-row">${chip('Nairobi', { dot: true })}${chip('35 children', { tone: 'sun' })}${chip('Sports', { tone: 'butter' })}${chip('Coast', { tone: 'scarlet' })}</div>
               <div class="soft-cards sg-mini-cards">
-                ${softCard({ icon: 'hand-heart', title: 'Pray with us', text: 'Hover or focus me: I invert.', cta: { label: 'Pray', href: demo('sg-surfaces') } })}
+                ${softCard({ icon: 'heart-handshake', title: 'Partner with us', text: 'Hover or focus me: I invert.', cta: { label: 'Partner', href: demo('sg-surfaces') } })}
                 ${docCard({ href: demo('sg-surfaces'), type: 'PDF', title: 'Example document', date: '2026-11-10', dateLabel: formatDate('2026-11-10') })}
               </div>
               ${textField({ id: `sg-surface-${s}-email`, label: 'Email', type: 'email', hint: 'We’ll only use it to reply.', autocomplete: 'email' })}
@@ -524,7 +524,7 @@ export function render(ctx) {
               name: 'sg-f-help',
               legend: 'How would you like to help?',
               hint: 'Choose one.',
-              value: 'pray',
+              value: 'volunteer',
               options: ways.slice(0, 3).map((/** @type {any} */ w) => ({ value: w.id, label: w.title, icon: w.icon })),
             })}
             ${radioCards({

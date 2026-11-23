@@ -63,7 +63,7 @@
     "eventsTitle": "Upcoming tournaments",
     "eventsEmpty": "Dates for the next tournaments are coming soon.",
     "eventsAsk": "Ask us about the next tournament",
-    "cta": { "title": "Host or support a tournament", "text": "Churches, schools and businesses can host, support or volunteer at a tournament near them.", "button": "Support a tournament", "path": "/get-involved/#tournament" }
+    "cta": { "title": "Host or support a tournament", "text": "Churches, schools and businesses can host, support or volunteer at a tournament near them.", "button": "Partner with us", "path": "/contact/#reason-partner" }
   },
 
   "mentorship": {
@@ -80,7 +80,7 @@
       { "id": "gospel", "icon": "church", "title": "The Gospel through relationships", "text": "Through sports and relationships, young people hear life-transforming Christian teaching and have space for a personal encounter with the love of Jesus Christ.", "image": { "photo": null, "placeholder": "landscape", "alt": "" } }
     ],
     "quote": { "text": "We believe every child and youth deserves the chance to move from struggle to purpose, and to become light and salt in their generation.", "cite": "Kingdom Love Springs", "script": "light & salt" },
-    "cta": { "title": "Become a mentor or volunteer", "text": "Help at tournaments or walk alongside young people as a mentor.", "button": "Volunteer with us", "path": "/get-involved/#volunteer" }
+    "cta": { "title": "Become a mentor or volunteer", "text": "Help at tournaments or walk alongside young people as a mentor.", "button": "Volunteer with us", "path": "/contact/#reason-volunteer" }
   },
 
   "stories": {
@@ -101,31 +101,31 @@
     ]
   },
 
-  "get-involved": {
-    "hero": {
-      "eyebrow": "Get involved",
-      "title": "Walk alongside a child with us",
-      "script": "walk alongside",
-      "intro": "Sponsor a child, pray with us, volunteer, partner with us, or support a football tournament."
-    },
-    "sponsor": { "title": "Sponsor a child", "text": "Walk with one child from primary through secondary school, with school fees and ongoing mentorship. Sponsorship enquiries are handled personally by our team.", "button": "Start a sponsorship enquiry", "path": "/sponsor/" },
-    "pray": { "title": "Pray with us", "text": "Pray for the children and youth we serve, their families, and our tournaments and mentors.", "pointsTitle": "Prayer points", "formTitle": "Send a prayer note" },
-    "volunteer": { "title": "Volunteer", "text": "Help at tournaments or walk alongside young people as a mentor.", "formTitle": "Volunteer with us" },
-    "partner": { "title": "Partner with us", "text": "Churches, schools and businesses can partner with us to reach more children and youth.", "formTitle": "Partner enquiry" },
-    "tournament": { "title": "Support a tournament", "text": "Our gatherings bring together around 200 children and youth at a time. Host one, support one, or volunteer at one.", "formTitle": "Tournament support" }
-  },
 
   "contact": {
     "hero": {
       "eyebrow": "Contact",
       "title": "We’d love to hear from you",
       "script": "across Kenya",
-      "intro": "Send us a message on WhatsApp or by email, and a member of our team will get back to you."
+      "intro": "Want to volunteer, partner with us, host a tournament or just ask a question? Tell us what you’d like to do, and a member of our team will get back to you."
     },
     "detailsTitle": "Contact details",
     "detailsPending": "Our phone, WhatsApp and email details will be listed here very soon.",
     "formTitle": "Send us a message",
-    "regionsTitle": "Our regions"
+    "regionsTitle": "Our regions",
+    "$reasonsNote": "Two-step form. Step 1 picks a reason; step 2 shows that reason's fields. A reason with an href (sponsor) is a link card that goes straight there. Link straight to a reason with /contact/#reason-<key>.",
+    "stepOne": "What would you like to do?",
+    "stepTwo": "Your details",
+    "reasons": [
+      { "key": "sponsor", "label": "Sponsor a child", "description": "Walk with one child through school", "icon": "heart", "href": "/sponsor/" },
+      { "key": "volunteer", "label": "Volunteer", "description": "Tournaments or mentoring", "icon": "users" },
+      { "key": "partner", "label": "Partner with us", "description": "Partner, or host or support a tournament", "icon": "heart-handshake" },
+      { "key": "question", "label": "Ask a question", "description": "Anything else", "icon": "message-circle" }
+    ],
+    "volunteer": { "legend": "How would you like to help?" },
+    "partner": { "orgLabel": "Church, school or business name", "typeLabel": "Type of organisation", "waysLegend": "How would you like to partner?" },
+    "messageLabel": "Your message",
+    "messageHint": "A few words about what you have in mind."
   },
 
   "safeguarding": {
@@ -158,7 +158,7 @@
     "updated": "2026-11-10",
     "sections": [
       { "title": "This website doesn’t store your messages", "body": ["When you fill in a form on this website, nothing is saved on the website. Your answers are turned into a message that opens in your own WhatsApp or email app, and you decide whether to send it.", "Once you send it, your message reaches Kingdom Love Springs like any other WhatsApp message or email."] },
-      { "title": "What we use your information for", "body": ["We use the details you send us only to reply to you and to follow up on your enquiry, for example about sponsoring a child, volunteering or praying with us.", "We never sell or share your information for marketing."] },
+      { "title": "What we use your information for", "body": ["We use the details you send us only to reply to you and to follow up on your enquiry, for example about sponsoring a child, volunteering or partnering with us.", "We never sell or share your information for marketing."] },
       { "title": "Information about children", "body": ["Our forms never ask for information about children. Please don’t include children’s names or personal details in your messages."] },
       { "title": "No tracking", "body": ["This website doesn’t use advertising or analytics cookies, and it doesn’t load tracking scripts. Fonts and images are served from this website itself.", "The website is hosted on GitHub Pages, which may keep basic technical logs (such as IP addresses) to keep the service secure."] },
       { "title": "Your rights", "body": ["Under the Kenya Data Protection Act, 2019, you can ask to see the information we hold about you, ask us to correct or delete it, and object to how it is used. Contact us and we’ll help."] }
@@ -214,7 +214,7 @@
   "help": {
     "eyebrow": "How you can help",
     "title": "Walk alongside a child with us",
-    "cards": ["sponsor", "pray", "volunteer"],
-    "featured": "pray"
+    "cards": ["sponsor", "volunteer", "partner"],
+    "featured": "volunteer"
   }
 }

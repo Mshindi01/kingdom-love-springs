@@ -606,41 +606,7 @@
     font-size: var(--text-h3);
   }
 
-  /* ── Get involved ── */
-  .involve-nav {
-    padding-block-end: var(--space-2);
-  }
-
-  .involve {
-    scroll-margin-top: var(--header-height);
-  }
-
-  .involve__grid {
-    display: grid;
-    gap: var(--space-6);
-    align-items: start;
-
-    @media (width >= 56rem) {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-      gap: clamp(3rem, 6vw, 5rem);
-    }
-  }
-
-  .involve__intro {
-    display: grid;
-    gap: var(--space-2);
-    justify-items: start;
-
-    & h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    @media (width >= 56rem) {
-      position: sticky;
-      inset-block-start: calc(var(--header-height) + var(--space-4));
-    }
-  }
-
+  /* ── Shared by Safeguarding (icon) and Contact (form card) ── */
   .involve__icon {
     display: grid;
     place-items: center;
@@ -656,18 +622,12 @@
     }
   }
 
-  .involve__sub {
-    margin-block-start: var(--space-2);
-    font-size: 1.125rem;
-  }
-
   .involve__form {
     padding: clamp(1.5rem, 3.5vw, 2.5rem);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
   }
 
-  .involve-sponsor,
   .concern {
     display: grid;
     gap: var(--space-4);
@@ -684,21 +644,71 @@
     }
   }
 
-  .role-list {
+
+  /* ── Contact: two-step form ──
+     Step 1 picks a reason (#reason-<key>); step 2 shows [data-panel="reason-<key>"].
+     CSS-only, so it works without JS. Without :has() support every panel shows. */
+  .contact-step {
     display: grid;
-    gap: var(--space-2);
-    margin-block-start: var(--space-2);
+    gap: var(--space-3);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
 
-  .role {
-    display: flex;
-    gap: 0.875rem;
-    align-items: flex-start;
+  .contact-step--1 .field--group > .field__label {
+    font-size: 1.375rem;
+    font-weight: var(--weight-medium);
+  }
 
-    & > .icon {
-      width: 1.5rem;
-      height: 1.5rem;
-      color: var(--accent);
+  .contact-step--2 {
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-width) solid var(--line);
+  }
+
+  .contact-panel,
+  .contact-shared {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  /* Reason cards: 2 × 2 */
+  .contact-step--1 .radio-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @supports selector(:has(*)) {
+    .contact-panel {
+      display: none;
+    }
+
+    /* Nothing chosen yet: only step 1 */
+    .contact-form:not(:has([id^="reason-"]:checked)) :is(.contact-step--2, .compose__send, .compose__note) {
+      display: none;
+    }
+
+    .contact-form:has(#reason-volunteer:checked) [data-panel="reason-volunteer"],
+    .contact-form:has(#reason-partner:checked) [data-panel="reason-partner"],
+    .contact-form:has(#reason-question:checked) [data-panel="reason-question"] {
+      display: grid;
+    }
+
+    .contact-step--2 {
+      animation: contact-step-in var(--dur-reveal) var(--ease-out);
+    }
+  }
+
+  @keyframes contact-step-in {
+    from {
+      opacity: 0;
+      transform: translateY(var(--reveal-rise));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-step--2 {
+      animation: none;
     }
   }
 
@@ -706,6 +716,7 @@
   .compose {
     display: grid;
     gap: var(--space-3);
+    scroll-margin-top: calc(var(--header-height) + var(--space-4)); /* #reason-… links */
   }
 
   .compose__title {
@@ -720,16 +731,22 @@
     padding: 0;
     border: 0;
 
-    &:disabled .btn {
+    &:disabled .btn,
+    & .btn:disabled {
       cursor: not-allowed;
       opacity: 0.55;
     }
 
-    & > .field__hint {
+    & .compose__send > .field__hint {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
+  }
+
+  /* Wrapper only so the contact form can hide the send area; lays out as if absent */
+  .compose__send {
+    display: contents;
   }
 
   .compose__note {

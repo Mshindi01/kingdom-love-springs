@@ -108,6 +108,11 @@
     gap: 0.25rem 1.75rem;
     list-style: none;
     padding: 0;
+
+    /* Desktop: links sit in one group with Contact, on the right (client, 2026-11-23) */
+    @media (width >= 64rem) {
+      justify-content: flex-end;
+    }
   }
 
   .site-nav__link {

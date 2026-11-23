@@ -4,6 +4,27 @@ Plain-language updates on the new website, newest first.
 
 ---
 
+## Simpler forms: one contact form instead of five (23 November 2026)
+
+As you suggested, we've removed the duplicate forms. There are now just **two ways** for people to reach you:
+
+1. **Sponsor a child:** the sponsorship enquiry stays exactly as it was.
+2. **Contact:** one form that starts by asking **"What would you like to do?"**
+   - **Sponsor a child:** takes them to the sponsorship enquiry.
+   - **Volunteer:** asks how they'd like to help (tournaments or mentoring).
+   - **Partner with us:** for churches, schools and businesses. **Partnering and supporting a tournament are now the same option**: they choose to host a tournament, support one, or partner in another way.
+   - **Ask a question:** just name, contact and message.
+
+   Everyone gives their name and phone or email once, and only sees the questions that apply to them.
+
+**Also removed:** the "Get involved" page (and its menu link), and the "Pray with us" form.
+
+Buttons elsewhere on the site, like "Volunteer with us" on the Mentorship page and "Partner with us" on the Sports page, now open the contact form with the right option already chosen.
+
+At the top of the page, the menu links now sit together on the right, next to **Contact** and **Sponsor a child**.
+
+---
+
 ## Your logo is in (23 November 2026)
 
 Thank you for the logo. Here's where it now appears:
@@ -94,7 +115,7 @@ It's there to show the design. It will send to your WhatsApp or email once we ha
 - **About:** your mission and vision, your four-part approach, and "Why it matters".
 - **Education & Sponsorship:** who you sponsor, what sponsorship covers, how it works, school visits and holiday meetups, what you're seeing, and common questions.
 - **Sports Ministry:** what happens at a gathering, where you play (with the map), your numbers, and a place for upcoming tournaments.
-- **Mentorship & Families**, **Stories** (with topic filters), **Get involved** (sponsor, pray, volunteer, partner, support a tournament), **Contact**, **Safeguarding**, **Privacy**, and a friendly "page not found" page.
+- **Mentorship & Families**, **Stories** (with topic filters), **Contact** (one form for volunteering, partnering and questions), **Safeguarding**, **Privacy**, and a friendly "page not found" page.
 
 **Good to know**
 - The forms (prayer note, volunteer, partner, tournament, contact) will open WhatsApp or email with the person's message ready to send. They're switched off until we have your WhatsApp number and email.

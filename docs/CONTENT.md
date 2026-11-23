@@ -65,7 +65,7 @@
 | **Sports Ministry** `/sports/` | Para 3: football tournaments & clinics, regions, ~200 per gathering, 500–600 a year, what happens at a tournament (play · friendships · Christian teaching · mentorship), upcoming tournaments [CONFIRM], how churches/schools can host, CTA "Support a tournament" |
 | **Mentorship & Families** `/mentorship/` | Consistent mentorship, active family involvement, walking alongside families, the Gospel through relationships |
 | **Stories** `/stories/` + `/stories/<slug>/` | From `data/stories.json` (title, date, author, excerpt, body blocks, cover, programme, consent flag) |
-| **Get Involved** `/get-involved/` | Sponsor a child · Pray (prayer points [CONFIRM]) · Volunteer · Partner (churches, schools, businesses) · Support a tournament |
+| ~~**Get Involved** `/get-involved/`~~ | **Removed 2026-11-23 (client).** Sponsorship → `/sponsor/`. Volunteer and Partner (incl. host/support a tournament, now one option) → the two-step form on `/contact/`. Pray removed. |
 | **Sponsor a child** `/sponsor/` | The multi-step enquiry (A5) |
 | **Contact** `/contact/` | Contact form (→ WhatsApp/email), details [CONFIRM] |
 | **Safeguarding** `/safeguarding/` | Child protection commitment (a summary; full policy [CONFIRM if they have one]) |

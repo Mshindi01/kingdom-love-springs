@@ -1,5 +1,5 @@
 {
-  "$note": "Ways to get involved (CONTENT §3.8 + §4). Forms compose WhatsApp/email messages in Part A (A5).",
+  "$note": "Ways to help (CONTENT §3.8 + §4). Sponsorship has its own enquiry (/sponsor/); everything else goes through the one contact form, preselected with /contact/#reason-<key> (contact.reasons in pages.json). 'Partner' and 'support a tournament' are one way to help (client, 2026-11-23); 'Pray' was removed.",
   "ways": [
     {
       "id": "sponsor",
@@ -9,33 +9,29 @@
       "cta": { "label": "Sponsor a child", "path": "/sponsor/" }
     },
     {
-      "id": "pray",
-      "title": "Pray with us",
-      "icon": "hand-heart",
-      "text": "Pray for the children and youth we serve, their families, and our tournaments and mentors.",
-      "cta": { "label": "Pray with us", "path": "/get-involved/#pray" }
-    },
-    {
       "id": "volunteer",
-      "title": "Volunteer or partner",
-      "icon": "heart-handshake",
-      "text": "Help at tournaments, mentor young people, or partner with us as a church, school or business.",
-      "cta": { "label": "Get involved", "path": "/get-involved/#volunteer" }
+      "title": "Volunteer",
+      "icon": "users",
+      "text": "Help at football tournaments and clinics, or walk alongside young people as a mentor.",
+      "cta": { "label": "Volunteer with us", "path": "/contact/#reason-volunteer" }
     },
     {
-      "id": "tournament",
-      "title": "Support a tournament",
-      "icon": "trophy",
-      "text": "Help us bring football, friendship and the Gospel to around 200 children and youth at a time.",
-      "cta": { "label": "Support a tournament", "path": "/get-involved/#tournament" }
+      "id": "partner",
+      "title": "Partner with us",
+      "icon": "heart-handshake",
+      "text": "Churches, schools and businesses can partner with us, or host or support a football tournament near them.",
+      "cta": { "label": "Partner with us", "path": "/contact/#reason-partner" }
     }
   ],
-  "prayerPoints": ["[CONFIRM]"],
-  "$prayerNote": "Prayer points from KLS [CONFIRM]. Unconfirmed items are never shown.",
   "volunteerRoles": [
     { "id": "tournaments", "title": "Tournaments", "text": "Help run football tournaments and clinics.", "icon": "trophy" },
     { "id": "mentorship", "title": "Mentorship", "text": "Walk alongside young people as a mentor.", "icon": "hand-heart" },
     { "id": "admin-media", "title": "Admin & media", "text": "[CONFIRM: is this a role KLS needs?]", "icon": "image", "draft": true }
   ],
-  "partnerTypes": ["Churches", "Schools", "Businesses"]
+  "partnerTypes": ["Churches", "Schools", "Businesses"],
+  "partnerWays": [
+    { "value": "Host a tournament", "label": "Host a tournament", "icon": "map-pin" },
+    { "value": "Support a tournament", "label": "Support a tournament", "icon": "trophy" },
+    { "value": "Partner in another way", "label": "Another way", "icon": "heart-handshake" }
+  ]
 }

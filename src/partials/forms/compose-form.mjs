@@ -13,21 +13,27 @@ import { icon } from '../icon.mjs';
 /**
  * @param {import('../../../tools/build.mjs').RenderContext} ctx
  * @param {{ id: string, title?: string, subject: string, intro: string, fields: unknown,
- *   note?: string, headingLevel?: 2 | 3 }} o
+ *   note?: string, headingLevel?: 2 | 3, className?: string, interactive?: boolean,
+ *   choice?: string }} o
+ *   interactive: keep the fields usable before KLS's details are confirmed (only the send
+ *     buttons stay disabled), e.g. so the contact form's step 1 can be tried in the preview.
+ *   choice: name of a radio group; fields inside [data-panel="<radio id>"] are only sent when
+ *     that radio is checked (ui/compose.js).
  */
-export function composeForm(ctx, { id, title, subject, intro, fields, note, headingLevel = 3 }) {
+export function composeForm(ctx, { id, title, subject, intro, fields, note, headingLevel = 3, className = '', interactive = false, choice }) {
   const c = ctx.site.contact || {};
   const email = isUnconfirmed(c.email) ? null : c.email;
   const whatsapp = isUnconfirmed(c.whatsapp) ? null : String(c.whatsapp).replace(/\D/g, '');
   const ready = Boolean(email || whatsapp);
   const titleId = `${id}-title`;
 
-  return html`<div class="compose" id="${id}">
+  return html`<div class="compose ${className}" id="${id}">
     ${title ? (headingLevel === 2 ? html`<h2 class="compose__title" id="${titleId}">${title}</h2>` : html`<h3 class="compose__title" id="${titleId}">${title}</h3>`) : ''}
     <form${attrs({
       class: 'form compose__form',
       'aria-labelledby': title ? titleId : null,
       'data-compose': 'auto',
+      'data-choice': choice,
       'data-to-email': email,
       'data-to-whatsapp': whatsapp,
       'data-subject': subject,
@@ -36,13 +42,15 @@ export function composeForm(ctx, { id, title, subject, intro, fields, note, head
       method: email ? 'post' : null,
       enctype: email ? 'text/plain' : null,
     })}>
-      <fieldset class="compose__fields"${attrs({ disabled: !ready })}>
+      <fieldset class="compose__fields"${attrs({ disabled: !ready && !interactive })}>
         <legend class="sr-only">${title || subject}</legend>
         ${fields}
+        <div class="compose__send">
         <p class="field__hint">${icon('shield-check')} Please don’t include children’s names or personal details.</p>
         <div class="cluster compose__actions">
           <button class="btn btn--primary" type="submit" name="via" value="whatsapp"${attrs({ disabled: !whatsapp })}>${icon('message-circle')}<span class="btn__label">Send on WhatsApp</span></button>
           <button class="btn btn--outline" type="submit" name="via" value="email"${attrs({ disabled: !email })}>${icon('mail')}<span class="btn__label">Send by email</span></button>
+        </div>
         </div>
       </fieldset>
       <p class="compose__note">${icon('info')}<span>${ready
